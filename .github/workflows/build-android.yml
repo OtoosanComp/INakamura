@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Extract source ZIP
-        run: unzip -q NakamuraTwinsStudio_Mobile_0.1_Source.zip -d source
+        run: unzip -q NakamuraTwinsStudio_0.3_Source.zip -d source
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -31,31 +31,34 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Install dependencies
-        working-directory: source/NakamuraTwinsStudio_Mobile_0.1
+        working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npm install
 
       - name: Build web app
-        working-directory: source/NakamuraTwinsStudio_Mobile_0.1
+        working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npm run build
 
       - name: Generate Android project
-        working-directory: source/NakamuraTwinsStudio_Mobile_0.1
+        working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npx cap add android
 
       - name: Sync Android assets
-        working-directory: source/NakamuraTwinsStudio_Mobile_0.1
+        working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npx cap sync android
 
       - name: Build debug APK
-        working-directory: source/NakamuraTwinsStudio_Mobile_0.1/android
+        working-directory: source/NakamuraTwinsStudio_0.3_Source/android
         run: chmod +x gradlew && ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Nakamura-Twins-Studio-Mobile-0.1-debug-apk
-          path: source/NakamuraTwinsStudio_Mobile_0.1/android/app/build/outputs/apk/debug/app-debug.apk
+          name: Nakamura-Twins-Studio-0.3-debug-apk
+          path: source/NakamuraTwinsStudio_0.3_Source/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
           
