@@ -31,9 +31,6 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install dependencies
         working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npm install
