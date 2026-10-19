@@ -17,8 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract source ZIP
-        run: unzip -q NakamuraTwinsStudio_0.3_Source.zip -d source
+      - name: Extract corrected source ZIP
+        run: unzip -q NakamuraTwinsStudio_0.3_Source_FIXED.zip -d source
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -58,4 +58,4 @@ jobs:
           path: source/NakamuraTwinsStudio_0.3_Source/android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
-  
+          
