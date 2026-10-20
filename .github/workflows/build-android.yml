@@ -4,7 +4,9 @@ name: Build Nakamura Twins Studio APK
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
+      - master
 
 permissions:
   contents: read
@@ -17,10 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract corrected source ZIP
-        run: unzip -q NakamuraTwinsStudio_0.3_Source_FIXED.zip -d source
-
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -29,33 +28,96 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: "17"
+
+      - name: Verify project files
+        run: |
+          test -f package.json
+          test -f assets/nts-icon-512.png
+          test -f assets/android-icons/mipmap-mdpi.png
+          node -e "const p=require('./package.json'); console.log('Proyecto:', p.name || 'Nakamura Twins Studio')"
 
       - name: Install dependencies
-        working-directory: source/NakamuraTwinsStudio_0.3_Source
         run: npm install
 
-      - name: Build web app
-        working-directory: source/NakamuraTwinsStudio_0.3_Source
+      - name: Build web application
         run: npm run build
 
-      - name: Generate Android project
-        working-directory: source/NakamuraTwinsStudio_0.3_Source
+      - name: Add Android platform
         run: npx cap add android
 
-      - name: Sync Android assets
-        working-directory: source/NakamuraTwinsStudio_0.3_Source
+      - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Build debug APK
-        working-directory: source/NakamuraTwinsStudio_0.3_Source/android
-        run: chmod +x gradlew && ./gradlew assembleDebug
+      - name: Apply launcher icon
+        shell: bash
+        run: |
+          set -euo pipefail
+          RES="android/app/src/main/res"
 
-      - name: Upload APK
+          for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
+            mkdir -p "$RES/mipmap-$density"
+            cp "assets/android-icons/mipmap-$density.png" \
+              "$RES/mipmap-$density/ic_launcher.png"
+            cp "assets/android-icons/mipmap-$density.png" \
+              "$RES/mipmap-$density/ic_launcher_round.png"
+          done
+
+          mkdir -p "$RES/drawable"
+          cp assets/nts-icon-512.png \
+            "$RES/drawable/nts_launcher_foreground.png"
+
+          if [ -f "$RES/mipmap-anydpi-v26/ic_launcher.xml" ]; then
+            cat > "$RES/mipmap-anydpi-v26/ic_launcher.xml" <<'XML'
+          <?xml version="1.0" encoding="utf-8"?>
+          <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+              <background android:drawable="@color/ic_launcher_background"/>
+              <foreground android:drawable="@drawable/nts_launcher_foreground"/>
+          </adaptive-icon>
+          XML
+            if [ -f "$RES/mipmap-anydpi-v26/ic_launcher_round.xml" ]; then
+              cp "$RES/mipmap-anydpi-v26/ic_launcher.xml" \
+                "$RES/mipmap-anydpi-v26/ic_launcher_round.xml"
+            fi
+          fi
+
+      - name: Build debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleDebug
+
+      - name: Collect APK diagnostics
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p diagnostics
+          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+
+          if [ -s "$APK" ]; then
+            sha256sum "$APK" > diagnostics/apk-sha256.txt
+            ls -lh "$APK" > diagnostics/apk-size.txt
+
+            SIGNER="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+            if [ -x "$SIGNER" ]; then
+              "$SIGNER" verify --verbose "$APK" \
+                > diagnostics/apk-signature.txt 2>&1 || true
+            else
+              echo "No se encontró apksigner en build-tools 35.0.0." \
+                > diagnostics/apk-signature.txt
+            fi
+          else
+            echo "No se generó el APK." > diagnostics/apk-size.txt
+          fi
+
+      - name: Upload APK and diagnostics
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Nakamura-Twins-Studio-0.3-debug-apk
-          path: source/NakamuraTwinsStudio_0.3_Source/android/app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+          name: Nakamura-Twins-Studio-0.4-test-apk-and-diagnostics
+          path: |
+            android/app/build/outputs/apk/debug/app-debug.apk
+            diagnostics/*
+          if-no-files-found: warn
           retention-days: 14
           
