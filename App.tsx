@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Aperture, Camera, Check, ChevronRight, Download, FileImage, FolderOpen, ImagePlus, Info, LoaderCircle, Palette, Sparkles, Trash2, Upload, WandSparkles } from 'lucide-react';
-import { yamiCanon } from './canon/yami.canon';
-import { tsukiCanon } from './canon/tsuki.canon';
-import { looks, type CharacterId } from './canon/profiles';
-import { captureRearCamera } from './lib/camera';
-import { dataUrlToBlob, renderLook } from './lib/photo';
+import { yamiCanon } from './yami.canon';
+import { tsukiCanon } from './tsuki.canon';
+import { looks, type CharacterId } from './profiles';
+import { captureRearCamera } from './camera';
+import { dataUrlToBlob, renderLook } from './photo';
+import { getProjects, removeProject, saveProject, type SavedProject } from './storage';import { dataUrlToBlob, renderLook } from './lib/photo';
 import { getProjects, removeProject, saveProject, type SavedProject } from './lib/storage';
 
 type Tab = 'camera' | 'editor' | 'projects' | 'ai';
