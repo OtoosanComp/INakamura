@@ -14,5 +14,14 @@
     "jsx": "react-jsx",
     "strict": true
   },
-  "include": ["src"]
+  "include": [
+  "App.tsx",
+  "main.tsx",
+  "camera.ts",
+  "photo.ts",
+  "profiles.ts",
+  "storage.ts",
+  "tsuki.canon.ts",
+  "yami.canon.ts"
+  ]
 }
