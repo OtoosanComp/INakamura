@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - master
 
 permissions:
   contents: read
@@ -32,10 +31,16 @@ jobs:
 
       - name: Verify project files
         run: |
+          set -eu
           test -f package.json
-          test -f assets/nts-icon-512.png
-          test -f assets/android-icons/mipmap-mdpi.png
-          node -e "const p=require('./package.json'); console.log('Proyecto:', p.name || 'Nakamura Twins Studio')"
+          test -f capacitor.config.ts
+          test -f nts-icon-512.png
+          test -f mipmap-mdpi.png
+          test -f mipmap-hdpi.png
+          test -f mipmap-xhdpi.png
+          test -f mipmap-xxhdpi.png
+          test -f mipmap-xxxhdpi.png
+          echo "Archivos principales encontrados."
 
       - name: Install dependencies
         run: npm install
@@ -52,34 +57,20 @@ jobs:
       - name: Apply launcher icon
         shell: bash
         run: |
-          set -euo pipefail
+          set -eu
           RES="android/app/src/main/res"
 
           for density in mdpi hdpi xhdpi xxhdpi xxxhdpi; do
             mkdir -p "$RES/mipmap-$density"
-            cp "assets/android-icons/mipmap-$density.png" \
+            cp "mipmap-$density.png" \
               "$RES/mipmap-$density/ic_launcher.png"
-            cp "assets/android-icons/mipmap-$density.png" \
+            cp "mipmap-$density.png" \
               "$RES/mipmap-$density/ic_launcher_round.png"
           done
 
           mkdir -p "$RES/drawable"
-          cp assets/nts-icon-512.png \
+          cp nts-icon-512.png \
             "$RES/drawable/nts_launcher_foreground.png"
-
-          if [ -f "$RES/mipmap-anydpi-v26/ic_launcher.xml" ]; then
-            cat > "$RES/mipmap-anydpi-v26/ic_launcher.xml" <<'XML'
-          <?xml version="1.0" encoding="utf-8"?>
-          <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-              <background android:drawable="@color/ic_launcher_background"/>
-              <foreground android:drawable="@drawable/nts_launcher_foreground"/>
-          </adaptive-icon>
-          XML
-            if [ -f "$RES/mipmap-anydpi-v26/ic_launcher_round.xml" ]; then
-              cp "$RES/mipmap-anydpi-v26/ic_launcher.xml" \
-                "$RES/mipmap-anydpi-v26/ic_launcher_round.xml"
-            fi
-          fi
 
       - name: Build debug APK
         working-directory: android
@@ -98,16 +89,19 @@ jobs:
             sha256sum "$APK" > diagnostics/apk-sha256.txt
             ls -lh "$APK" > diagnostics/apk-size.txt
 
-            SIGNER="$ANDROID_HOME/build-tools/35.0.0/apksigner"
-            if [ -x "$SIGNER" ]; then
+            SIGNER="$(find "$ANDROID_HOME/build-tools" \
+              -name apksigner -type f | sort -V | tail -n 1)"
+
+            if [ -n "$SIGNER" ]; then
               "$SIGNER" verify --verbose "$APK" \
                 > diagnostics/apk-signature.txt 2>&1 || true
             else
-              echo "No se encontró apksigner en build-tools 35.0.0." \
+              echo "No se encontró apksigner." \
                 > diagnostics/apk-signature.txt
             fi
           else
-            echo "No se generó el APK." > diagnostics/apk-size.txt
+            echo "No se generó el APK." \
+              > diagnostics/apk-size.txt
           fi
 
       - name: Upload APK and diagnostics
