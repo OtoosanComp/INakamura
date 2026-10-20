@@ -1,4 +1,4 @@
-import type { LookProfile } from '../canon/profiles';
+import type { LookProfile } from './profiles';
 
 export async function renderLook(source: Blob, look: LookProfile): Promise<Blob> {
   const bitmap = await createImageBitmap(source);
