@@ -65,13 +65,9 @@ La primera vez te pide nombre, modos y CLABE. Para solo probar, toca **"Solo qui
 
 El QR apunta a la dirección donde esté publicada la app, así que **para que funcione en otro teléfono debe estar publicada en internet (https)**.
 
-**Una sola vez:**
+Ya está configurado: la página se sirve desde la rama `gh-pages` en `https://otoosancomp.github.io/INakamura/`.
 
-1. En GitHub: **Settings → Pages → Build and deployment → Source: `GitHub Actions`**.
-2. Une esta rama a `main` (pull request). La acción **"Publicar en GitHub Pages"** corre las pruebas, compila y publica.
-3. La app queda en `https://otoosancomp.github.io/INakamura/`.
-
-Cada cambio que llegue a `main` se publica solo. Los teléfonos con la app instalada se actualizan al abrirla con internet.
+Cada cambio que llega a `main` activa la acción **"Publicar en GitHub Pages"**, que corre las pruebas, compila la app web y el APK, y actualiza la rama `gh-pages`. Los teléfonos con la app web instalada ven el aviso "Hay una versión nueva" al abrirla con internet.
 
 **Alternativa sin GitHub:** `npm run build` y arrastra la carpeta `dist/` a [Netlify Drop](https://app.netlify.com/drop) o Cloudflare Pages.
 
