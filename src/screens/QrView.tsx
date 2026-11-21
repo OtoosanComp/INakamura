@@ -4,8 +4,10 @@ import { useApp } from '../state';
 import { plainTextQr, qrToCanvas } from '../lib/qr';
 import { formatMXN, plainAmount } from '../lib/money';
 import { isPublicOrigin } from '../lib/payload';
+import { ticketHost } from '../lib/platform';
+import { appShareText } from '../lib/appShare';
 import { changeSaleStatus } from '../lib/db';
-import { shareOrCopy, vibrate } from '../lib/share';
+import { vibrate } from '../lib/share';
 import { StatusChip } from '../components/ui';
 
 /** Pantalla que la vendedora le muestra al cliente para que escanee. */
@@ -14,7 +16,7 @@ export function QrView() {
   const sale = sales.find((s) => s.id === qrSaleId);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [plain, setPlain] = useState(false);
-  const publicUrl = isPublicOrigin(location.href);
+  const publicUrl = sale ? isPublicOrigin(sale.ticketUrl) : true;
 
   const text = sale ? (plain && sale.account ? plainTextQr({ clabe: sale.account.clabe, amount: plainAmount(sale.totalCents), concept: sale.concept, beneficiary: sale.account.beneficiary }) : sale.ticketUrl) : '';
 
@@ -46,7 +48,7 @@ export function QrView() {
   };
 
   const share = async () => {
-    const r = await shareOrCopy({ title: `Ticket ${sale.folio}`, text: `Tu ticket de compra${seller ? ` con ${seller}` : ''} (${formatMXN(sale.totalCents)}):`, url: sale.ticketUrl });
+    const r = await appShareText({ title: `Ticket ${sale.folio}`, text: `Tu ticket de compra${seller ? ` con ${seller}` : ''} (${formatMXN(sale.totalCents)}):`, url: sale.ticketUrl });
     if (r === 'copied') toast('Enlace copiado: pégalo en WhatsApp');
   };
 
@@ -64,7 +66,7 @@ export function QrView() {
       {sale.demo && <div className="banner danger">DEMOSTRACIÓN · no es una venta real</div>}
       {!publicUrl && !plain && (
         <div className="banner warn">
-          <AlertTriangle size={18} /> Este QR apunta a {location.host || 'un archivo local'}: solo abrirá en esta red. Publica la app (ver README) para usarla en la convención.
+          <AlertTriangle size={18} /> Este QR apunta a {sale.ticketUrl.split('/')[2] || ticketHost() || 'un archivo local'}: solo abrirá en esta red. Publica la app (ver README) para usarla en la convención.
         </div>
       )}
 

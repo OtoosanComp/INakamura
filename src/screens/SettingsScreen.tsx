@@ -9,7 +9,8 @@ import { LINK_TYPES, MAX_LINKS, sanitizeHandle } from '../lib/links';
 import { validatePhone10, formatClabe } from '../lib/bankdata';
 import { exportBackup, importBackup, removeDemoData, saveAccount, saveProduct, wipeAll } from '../lib/db';
 import { demoAccount, demoProducts } from '../lib/demo';
-import { downloadBlob } from '../lib/share';
+import { appSaveFile } from '../lib/appShare';
+import { isNative, ticketBaseHref } from '../lib/platform';
 import { isPublicOrigin } from '../lib/payload';
 import { MODE_LABEL, type BankAccount, type LinkType, type Mode, type ModeProfile } from '../lib/types';
 
@@ -42,8 +43,8 @@ export function SettingsScreen() {
   const doExport = async () => {
     const json = await exportBackup();
     const d = new Date();
-    downloadBlob(new Blob([json], { type: 'application/json' }), `otoo-respaldo-${d.toISOString().slice(0, 10)}.json`);
-    toast('Respaldo descargado');
+    await appSaveFile(new Blob([json], { type: 'application/json' }), `otoo-respaldo-${d.toISOString().slice(0, 10)}.json`, 'Respaldo Otoo QR POS');
+    toast(isNative() ? 'Elige dónde guardar el respaldo' : 'Respaldo descargado');
   };
 
   const doImport = async (file: File | undefined) => {
@@ -173,10 +174,15 @@ export function SettingsScreen() {
       <section className="card">
         <h3>Acerca de</h3>
         <p className="field-hint">
-          Otoo QR POS 0.1 · Los QR apuntan a: <strong>{location.host || 'archivo local'}</strong>{' '}
-          {isPublicOrigin(location.href) ? '✓ público' : '⚠ no público (solo para pruebas)'}
+          Otoo QR POS 0.1{isNative() ? ' (app Android)' : ''} · Los QR apuntan a: <strong>{new URL(ticketBaseHref()).host || 'archivo local'}</strong>{' '}
+          {isPublicOrigin(ticketBaseHref()) ? '✓ público' : '⚠ no público (solo para pruebas)'}
         </p>
         <p className="field-hint">Otoo QR POS no procesa pagos ni cobra comisiones. El ticket no es un comprobante fiscal (CFDI).</p>
+        {!isNative() && isPublicOrigin(location.href) && (
+          <a className="btn secondary" href={new URL('otoo-qr-pos.apk', ticketBaseHref()).toString()} download>
+            <Smartphone size={18} /> Descargar app Android (APK)
+          </a>
+        )}
         <button
           className="btn ghost danger small"
           onClick={async () => {

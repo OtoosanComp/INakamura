@@ -7,6 +7,7 @@ import { formatMXN, parseToCents } from '../lib/money';
 import { createSale, uid } from '../lib/db';
 import type { PayMethod, Product } from '../lib/types';
 import { vibrate } from '../lib/share';
+import { ticketBaseHref } from '../lib/platform';
 
 export function SellScreen() {
   const { products, mode, cart, cartAdd, openProductForm } = useApp();
@@ -169,7 +170,7 @@ function Checkout({ onClose }: { onClose: () => void }) {
         cart,
         accountId: method === 'transferencia' ? accountId : null,
         method,
-        appHref: location.href.split('#')[0]
+        appHref: ticketBaseHref()
       });
       cartClear();
       await reload();

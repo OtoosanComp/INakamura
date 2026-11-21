@@ -37,6 +37,7 @@ Leyenda: ✅ terminado y probado · 🟡 terminado con limitación documentada �
 | Respaldo y cambio de teléfono (exportar/importar archivo) | ✅ |
 | La venta en curso no se pierde si Android cierra la app | ✅ |
 | Actualizaciones sin recarga sorpresa (aviso "Toca para actualizar") | ✅ |
+| APK para Android (Capacitor), descargable desde la página publicada | 🟡 compilado; falta probarlo en el Redmi real |
 
 ## Limitaciones conocidas (honestas)
 
@@ -60,7 +61,8 @@ Leyenda: ✅ terminado y probado · 🟡 terminado con limitación documentada �
 - ⏳ Reporte por evento (exportar ventas a Excel/CSV).
 - ⏳ Dominio propio para dar más confianza al cliente.
 - ⏳ Rediseño visual (segunda etapa).
-- ⏳ APK nativa (Capacitor) si se necesita algo que la PWA no pueda hacer.
+- ⏳ Firmar el APK con llave privada antes de distribuirlo (hoy usa llave de prueba).
+- ⏳ Mantener la pantalla encendida en el APK mientras se muestra el QR (en la versión web ya funciona).
 
 ### Fuera de alcance (según la biblia)
 Pasarelas de pago, Mercado Pago, CoDi, confirmación automática de transferencias, facturación, contabilidad, IA, comisiones.

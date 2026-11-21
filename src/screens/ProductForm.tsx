@@ -33,9 +33,10 @@ export function ProductForm() {
   const categories = [...new Set(products.filter((p) => p.mode === pMode).map((p) => p.category).filter(Boolean))];
   const close = () => openProductForm(null);
 
+  const [busy, setBusy] = useState(false);
   const save = async (another: boolean) => {
     setTouched(true);
-    if (!valid) return;
+    if (!valid || busy) return;
     const now = Date.now();
     const p: Product = {
       id: existing?.id ?? uid(),
@@ -50,17 +51,27 @@ export function ProductForm() {
       createdAt: existing?.createdAt ?? now,
       updatedAt: now
     };
-    await saveProduct(p);
-    await reload();
-    toast(existing ? 'Producto actualizado' : `"${p.name}" agregado`);
     if (another) {
+      // Limpiar ANTES de guardar: si la vendedora empieza a escribir el siguiente producto
+      // mientras se guarda, no se le borra lo que escribió.
       setName('');
       setPrice('');
       setStock('');
       setPhoto(undefined);
       setTouched(false);
       nameRef.current?.focus();
-    } else close();
+    }
+    setBusy(true);
+    try {
+      await saveProduct(p);
+      await reload();
+      toast(existing ? 'Producto actualizado' : `"${p.name}" agregado`);
+      if (!another) close();
+    } catch {
+      toast('No se pudo guardar el producto', 'error');
+    } finally {
+      setBusy(false);
+    }
   };
 
   const remove = async () => {

@@ -7,7 +7,8 @@ import { canChange } from '../lib/sale';
 import { decodePayload } from '../lib/payload';
 import { renderTicketPng } from '../lib/ticketImage';
 import { qrToDataUrl } from '../lib/qr';
-import { formatDateTime, shareFile, shareOrCopy } from '../lib/share';
+import { formatDateTime } from '../lib/share';
+import { appShareFile, appShareText } from '../lib/appShare';
 import { formatClabe } from '../lib/bankdata';
 import { MODE_LABEL, type PayMethod, type SaleStatus } from '../lib/types';
 
@@ -39,7 +40,7 @@ export function SaleDetail() {
         { ...payload, paidCash: sale.status === 'PAGADO' && sale.method === 'efectivo' },
         { qrDataUrl: sale.status === 'PENDIENTE' ? await qrToDataUrl(sale.ticketUrl) : undefined, status: statusText }
       );
-      await shareFile(blob, `ticket-${sale.folio}.png`, `Ticket ${sale.folio}`);
+      await appShareFile(blob, `ticket-${sale.folio}.png`, `Ticket ${sale.folio}`);
     } catch {
       toast('No se pudo crear la imagen', 'error');
     }
@@ -47,7 +48,7 @@ export function SaleDetail() {
 
   const shareLink = async () => {
     const seller = settings.profiles[sale.mode].displayName;
-    const r = await shareOrCopy({ title: `Ticket ${sale.folio}`, text: `Tu ticket de compra${seller ? ` con ${seller}` : ''} (${formatMXN(sale.totalCents)}):`, url: sale.ticketUrl });
+    const r = await appShareText({ title: `Ticket ${sale.folio}`, text: `Tu ticket de compra${seller ? ` con ${seller}` : ''} (${formatMXN(sale.totalCents)}):`, url: sale.ticketUrl });
     if (r === 'copied') toast('Enlace copiado');
   };
 

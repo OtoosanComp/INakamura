@@ -41,6 +41,18 @@ Cada modo tiene su propio nombre visible (puede ser un alias), color, mensaje, W
 
 ## Usarlo en tu teléfono (Android)
 
+Hay dos formas. Las dos hacen lo mismo; elige una (sus datos son independientes).
+
+### Opción A: APK (app instalable)
+
+1. Descarga `otoo-qr-pos.apk` desde `https://otoosancomp.github.io/INakamura/otoo-qr-pos.apk` (o el archivo que te mandaron).
+2. Ábrelo. Android pedirá permiso para **instalar apps de origen desconocido**: permítelo solo para Chrome o Archivos.
+3. Si Play Protect avisa "app no reconocida", toca **Más detalles → Instalar de todas formas** (pasa con toda app que no venga de Play Store).
+
+Los QR del APK apuntan a la página pública (`VITE_PUBLIC_URL` en `.env`), así que **la página debe estar publicada** para que el cliente abra el ticket.
+
+### Opción B: desde Chrome (PWA)
+
 1. Abre en Chrome la dirección publicada (ver abajo), por ejemplo `https://otoosancomp.github.io/INakamura/`.
 2. Menú ⋮ → **Instalar app** (o "Agregar a pantalla principal").
 3. Ábrela desde el ícono. A partir de ahí **funciona sin internet**.
@@ -79,7 +91,12 @@ npm run dev        # servidor de desarrollo (http://localhost:5173)
 npm test           # pruebas: cálculos, CLABE, ticket, QR, almacenamiento
 npm run build      # compila a dist/ (incluye PWA y service worker)
 npm run preview    # sirve dist/ para probar la versión compilada
+npm run android:apk  # compila el APK (requiere JDK 21 y Android SDK; ANDROID_HOME)
 ```
+
+El APK se genera en `android/app/build/outputs/apk/release/app-release.apk`. La acción de publicación también lo compila y lo deja en `https://…/INakamura/otoo-qr-pos.apk`.
+
+**Firma del APK:** las versiones de prueba se firman con una llave de **prueba** incluida en el repositorio (`android/keystore/otoo-test.keystore`), para poder actualizar sin desinstalar. Antes de distribuir la app a otras cosplayers, hay que cambiar a una llave privada (variables `OTOO_KEYSTORE_FILE`, `OTOO_KEYSTORE_PASSWORD`, `OTOO_KEY_ALIAS`, `OTOO_KEY_PASSWORD` desde GitHub Secrets). Ese cambio obliga a reinstalar una vez, así que conviene descargar un respaldo antes.
 
 Para probar desde el celular en la misma red: `npm run dev` y abre `http://IP-DE-TU-PC:5173`. Ojo: sin https, el portapapeles y la instalación pueden fallar, así que la prueba real es con la versión publicada.
 
@@ -87,6 +104,7 @@ Para probar desde el celular en la misma red: `npm run dev` y abre `http://IP-DE
 
 ```
 index.html            App de la vendedora (React)
+android/              Proyecto Android (Capacitor) para el APK
 t.html                Página pública del ticket (sin React, ~13 KB)
 src/
   App.tsx, state.tsx  Navegación y estado
@@ -117,6 +135,7 @@ docs/                 Almacenamiento, seguridad, estado y prueba en convención
 | fflate | Comprimir el ticket para que el QR sea menos denso |
 | lucide-react | Íconos |
 | vite-plugin-pwa (dev) | Service worker para funcionar sin internet |
+| @capacitor/* | Empaquetar como APK; compartir archivos y enlaces en Android |
 | vitest, jsqr, fake-indexeddb (dev) | Pruebas, incluida la lectura real del QR |
 
 ### Documentación

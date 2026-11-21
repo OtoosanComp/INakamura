@@ -28,5 +28,10 @@
 | **Archivo de respaldo filtrado** | Contiene datos bancarios y ventas. La app lo advierte; guárdalo en un lugar privado. |
 | **Anonimato del cliente (+18)** | El concepto que sale en el estado de cuenta es un texto genérico editable más el folio (no revela qué compró). Se pueden ocultar los artículos del ticket. Los datos van después de `#` y no llegan a ningún servidor. |
 
+## APK de prueba
+- Se firma con una **llave de prueba pública** (`android/keystore/otoo-test.keystore`) para que las actualizaciones se instalen encima sin perder datos.
+- Riesgo: cualquiera con el repositorio podría firmar un APK falso que se instale encima. Mitigación: instalar solo desde la página oficial o desde los archivos que manda el equipo.
+- **Antes de vender la app a otras cosplayers**: firmar con una llave privada guardada en GitHub Secrets (`OTOO_KEYSTORE_*`).
+
 ## Comisiones y pagos
 Otoo QR POS no procesa pagos, no retiene dinero y no cobra comisiones por transacción. El ticket no es un CFDI.
