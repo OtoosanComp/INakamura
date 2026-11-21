@@ -1,0 +1,24 @@
+name: Pruebas
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Pruebas (cálculos, CLABE, ticket y QR)
+        run: npm test
+      - name: Compilar
+        run: npm run build

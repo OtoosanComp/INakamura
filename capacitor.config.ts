@@ -1,8 +1,19 @@
 import type { CapacitorConfig } from '@capacitor/cli';
+
 const config: CapacitorConfig = {
-  appId: 'com.otoosan.nakamuratwinsstudio',
-  appName: 'Nakamura Twins Studio',
+  appId: 'com.otoosan.otooqrpos',
+  appName: 'Otoo QR POS',
   webDir: 'dist',
-  bundledWebRuntime: false
+  android: {
+    // Los enlaces externos (ticket público, WhatsApp, redes) se abren en el navegador/app correspondiente
+    allowMixedContent: false
+  },
+  plugins: {
+    SystemBars: {
+      insetsHandling: 'native',
+      initialViewportFitValueHint: 'cover'
+    }
+  }
 };
+
 export default config;
