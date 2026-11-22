@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react';
-import { Banknote, Minus, PackagePlus, Plus, QrCode, Search, ShoppingCart, Trash2 } from 'lucide-react';
+import { Banknote, CreditCard, Minus, PackagePlus, Plus, QrCode, Search, ShoppingCart, Trash2 } from 'lucide-react';
 import { useApp } from '../state';
 import { Empty, Field, ProductThumb, Sheet } from '../components/ui';
 import { cartCount, cartTotal, lineSubtotal, validateCart } from '../lib/cart';
@@ -178,7 +178,7 @@ function Checkout({ onClose }: { onClose: () => void }) {
       onClose();
       if (method === 'transferencia') openQr(sale.id);
       else {
-        toast(`Venta ${sale.folio} pagada en efectivo · ${formatMXN(sale.totalCents)}`);
+        toast(`Venta ${sale.folio} pagada ${method === 'tarjeta' ? 'con tarjeta' : 'en efectivo'} · ${formatMXN(sale.totalCents)}`);
         openQr(sale.id);
       }
     } catch (e) {
@@ -211,9 +211,15 @@ function Checkout({ onClose }: { onClose: () => void }) {
               <QrCode size={24} /> Generar QR · {formatMXN(total)}
             </button>
           )}
-          <button className="btn secondary" disabled={busy || !!error} onClick={() => charge('efectivo')}>
-            <Banknote size={22} /> Cobrar en efectivo
-          </button>
+          <div className="row">
+            <button className="btn secondary" disabled={busy || !!error} onClick={() => charge('efectivo')}>
+              <Banknote size={22} /> Efectivo
+            </button>
+            <button className="btn secondary" disabled={busy || !!error} onClick={() => charge('tarjeta')}>
+              <CreditCard size={22} /> Tarjeta
+            </button>
+          </div>
+          <p className="field-hint center">Tarjeta: cobra primero en tu app de Clip, Mercado Pago u otra y luego registra aquí la venta.</p>
         </div>
       }
     >

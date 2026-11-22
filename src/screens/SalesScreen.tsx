@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Banknote, Check, Receipt, Search } from 'lucide-react';
+import { Banknote, Check, CreditCard, Receipt, Search } from 'lucide-react';
 import { useApp } from '../state';
 import { Empty, StatusChip } from '../components/ui';
 import { startOfDay, summarize } from '../lib/sale';
@@ -89,6 +89,12 @@ export function SalesScreen() {
             <span>Efectivo</span>
             <strong>{formatMXN(sum.cashCents)}</strong>
           </div>
+          {sum.cardCents > 0 && (
+            <div>
+              <span>Tarjeta</span>
+              <strong>{formatMXN(sum.cardCents)}</strong>
+            </div>
+          )}
         </div>
       </section>
 
@@ -130,6 +136,7 @@ export function SalesScreen() {
                 <div className="sale-bottom">
                   <StatusChip status={s.status} method={s.method} />
                   {s.method === 'efectivo' && s.status === 'PAGADO' && <Banknote size={16} className="muted" />}
+                  {s.method === 'tarjeta' && s.status === 'PAGADO' && <CreditCard size={16} className="muted" />}
                 </div>
               </button>
               <div className="sale-side">

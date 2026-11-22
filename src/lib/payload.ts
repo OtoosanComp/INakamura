@@ -38,7 +38,8 @@ export interface TicketPayload {
   totalCents: number;
   items: TicketItem[] | null; // null = artículos ocultos (anonimato)
   itemCount: number;
-  paidCash: boolean;
+  /** Pagada al momento (efectivo o tarjeta): el ticket no muestra datos bancarios */
+  paidWith: 'efectivo' | 'tarjeta' | null;
   account: TicketAccount | null;
   concept: string;
   reference: string;
@@ -87,7 +88,7 @@ export function encodePayload(p: TicketPayload): string {
     p.totalCents,
     items,
     p.itemCount,
-    p.paidCash ? 1 : 0,
+    p.paidWith === 'efectivo' ? 1 : p.paidWith === 'tarjeta' ? 2 : 0,
     acct,
     p.concept,
     p.reference,
@@ -146,7 +147,7 @@ export function decodePayload(encoded: string): TicketPayload {
       dimoPhone: dimoPhone || undefined
     };
   }
-  if (!account && paid !== 1) throw new PayloadError('El ticket no tiene datos de pago.');
+  if (!account && paid !== 1 && paid !== 2) throw new PayloadError('El ticket no tiene datos de pago.');
 
   const safeLinks = Array.isArray(links)
     ? links
@@ -165,7 +166,7 @@ export function decodePayload(encoded: string): TicketPayload {
     totalCents: total,
     items: parsedItems,
     itemCount,
-    paidCash: paid === 1,
+    paidWith: paid === 1 ? 'efectivo' : paid === 2 ? 'tarjeta' : null,
     account,
     concept,
     reference,

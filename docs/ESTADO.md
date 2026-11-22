@@ -38,6 +38,8 @@ Leyenda: ✅ terminado y probado · 🟡 terminado con limitación documentada �
 | La venta en curso no se pierde si Android cierra la app | ✅ |
 | Actualizaciones sin recarga sorpresa (aviso "Toca para actualizar") | ✅ |
 | APK para Android (Capacitor), descargable desde la página publicada | 🟡 compilado; falta probarlo en el Redmi real |
+| Pago con tarjeta registrado (cobrado en Clip / Mercado Pago con NFC) | ✅ rama de desarrollo (v0.2) |
+| Laboratorio QR para conocer el formato oficial del QR SPEI | ✅ rama de desarrollo (v0.2) |
 
 ## Limitaciones conocidas (honestas)
 
@@ -49,7 +51,14 @@ Leyenda: ✅ terminado y probado · 🟡 terminado con limitación documentada �
 
 ## Pendiente (siguientes versiones)
 
-### v0.2: cuentas en la nube (necesario para vender la app a cada cosplayer)
+Ver el plan detallado en [PLAN_V0.2.md](PLAN_V0.2.md).
+
+### v0.2: QR cobrable oficial de SPEI (Banxico, vigente desde el 14/12/2026)
+- ⏳ Capturar QR "para recibir" reales de varias apps bancarias con el laboratorio.
+- ⏳ Generar en Otoo el QR oficial (CLABE + monto + concepto + referencia) para que el comprador pague escaneando con su app del banco.
+- ⏳ Código de activación para cobrar la función a cada cosplayer.
+
+### v0.3: cuentas en la nube
 - ⏳ Inicio de sesión: misma cuenta en 3-4 teléfonos (staff) con usuario y contraseña.
 - ⏳ Sincronizar catálogo, existencias y ventas entre teléfonos (sigue funcionando sin internet y sincroniza al volver la señal).
 - ⏳ Respaldo automático en la nube.

@@ -108,8 +108,8 @@ function render(p: TicketPayload) {
   parts.push(ticket);
 
   // ---- Pago ----
-  if (p.paidCash) {
-    parts.push(h('section', { class: 'card paid' }, h('strong', {}, '✓ Pagado en efectivo'), h('p', {}, 'Guarda este ticket como comprobante de tu compra.')));
+  if (p.paidWith) {
+    parts.push(h('section', { class: 'card paid' }, h('strong', {}, p.paidWith === 'tarjeta' ? '✓ Pagado con tarjeta' : '✓ Pagado en efectivo'), h('p', {}, 'Guarda este ticket como comprobante de tu compra.')));
   } else if (p.account) {
     const a = p.account;
     const allText = [
@@ -155,7 +155,7 @@ function render(p: TicketPayload) {
 
   // ---- Acciones ----
   const actions = h('section', { class: 'actions' });
-  if (p.whatsapp && !p.paidCash) {
+  if (p.whatsapp && !p.paidWith) {
     const msg = `Hola ${p.seller}, ya pagué mi compra con folio ${p.folio} por ${total}. Te envío mi comprobante.`;
     actions.append(h('a', { class: 'btn whatsapp', href: whatsappUrl(p.whatsapp, msg), target: '_blank', rel: 'noopener noreferrer' }, 'Ya pagué · Enviar comprobante por WhatsApp'));
   }

@@ -1,4 +1,4 @@
-import { Banknote, Check, Download, ExternalLink, QrCode, Share2, XCircle } from 'lucide-react';
+import { Banknote, Check, CreditCard, Download, ExternalLink, QrCode, Share2, XCircle } from 'lucide-react';
 import { useApp } from '../state';
 import { Sheet, StatusChip } from '../components/ui';
 import { formatMXN } from '../lib/money';
@@ -35,9 +35,9 @@ export function SaleDetail() {
     try {
       const payload = decodePayload(new URL(sale.ticketUrl).hash.slice(1));
       const statusText =
-        sale.status === 'CANCELADO' ? 'CANCELADO' : sale.status === 'PAGADO' ? (sale.method === 'efectivo' ? 'PAGADO · EFECTIVO' : 'PAGADO') : 'PENDIENTE DE PAGO';
+        sale.status === 'CANCELADO' ? 'CANCELADO' : sale.status === 'PAGADO' ? (sale.method === 'efectivo' ? 'PAGADO · EFECTIVO' : sale.method === 'tarjeta' ? 'PAGADO · TARJETA' : 'PAGADO') : 'PENDIENTE DE PAGO';
       const blob = await renderTicketPng(
-        { ...payload, paidCash: sale.status === 'PAGADO' && sale.method === 'efectivo' },
+        { ...payload, paidWith: sale.status === 'PAGADO' && sale.method !== 'transferencia' ? sale.method : null },
         { qrDataUrl: sale.status === 'PENDIENTE' ? await qrToDataUrl(sale.ticketUrl) : undefined, status: statusText }
       );
       await appShareFile(blob, `ticket-${sale.folio}.png`, `Ticket ${sale.folio}`);
@@ -96,9 +96,14 @@ export function SaleDetail() {
             <button className="btn success" onClick={() => change('PAGADO', 'transferencia')}>
               <Check size={20} /> Pagó por transferencia
             </button>
-            <button className="btn secondary" onClick={() => change('PAGADO', 'efectivo')}>
-              <Banknote size={20} /> Pagó en efectivo
-            </button>
+            <div className="row">
+              <button className="btn secondary" onClick={() => change('PAGADO', 'efectivo')}>
+                <Banknote size={20} /> Efectivo
+              </button>
+              <button className="btn secondary" onClick={() => change('PAGADO', 'tarjeta')}>
+                <CreditCard size={20} /> Tarjeta
+              </button>
+            </div>
           </>
         )}
         {sale.status !== 'CANCELADO' && (

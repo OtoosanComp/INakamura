@@ -29,7 +29,10 @@ export interface SaleItem {
 }
 
 export type SaleStatus = 'PENDIENTE' | 'PAGADO' | 'CANCELADO';
-export type PayMethod = 'transferencia' | 'efectivo';
+/** tarjeta = cobrada con una terminal o app externa (Clip, Mercado Pago Tap to Pay, etc.) */
+export type PayMethod = 'transferencia' | 'efectivo' | 'tarjeta';
+
+export const METHOD_LABEL: Record<PayMethod, string> = { transferencia: 'transferencia', efectivo: 'efectivo', tarjeta: 'tarjeta' };
 
 export interface StatusChange {
   status: SaleStatus;

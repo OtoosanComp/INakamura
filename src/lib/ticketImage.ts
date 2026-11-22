@@ -98,10 +98,10 @@ export async function renderTicketPng(p: TicketPayload, opts: { qrDataUrl?: stri
   ctx.textAlign = 'left';
   y += 64;
 
-  if (p.paidCash) {
+  if (p.paidWith) {
     ctx.fillStyle = '#16a34a';
     ctx.font = font(18, 700);
-    ctx.fillText('Pagado en efectivo', PAD, y + 10);
+    ctx.fillText(p.paidWith === 'tarjeta' ? 'Pagado con tarjeta' : 'Pagado en efectivo', PAD, y + 10);
     y += 40;
   } else if (p.account) {
     hr();

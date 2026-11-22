@@ -3,6 +3,7 @@ import { ChevronRight, Download, Landmark, Plus, Smartphone, Upload } from 'luci
 import { useApp } from '../state';
 import { Field, Toggle } from '../components/ui';
 import { AccountForm } from './AccountForm';
+import { QrLab } from './QrLab';
 import { ACCENTS } from '../lib/defaults';
 import { CONCEPT_TEXT_MAX, NAME_MAX, THANKS_MAX, buildConcept, buildFolio, sanitizeFolioPrefix } from '../lib/concept';
 import { LINK_TYPES, MAX_LINKS, sanitizeHandle } from '../lib/links';
@@ -22,6 +23,7 @@ export function SettingsScreen() {
   const { settings, accounts, updateSettings, reload, toast, products, sales } = useApp();
   const [editAccount, setEditAccount] = useState<BankAccount | 'new' | null>(null);
   const [install, setInstall] = useState<InstallEvent | null>(null);
+  const [showLab, setShowLab] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const hasDemo = products.some((p) => p.demo) || accounts.some((a) => a.demo) || sales.some((s) => s.demo);
 
@@ -172,6 +174,14 @@ export function SettingsScreen() {
       </section>
 
       <section className="card">
+        <h3>Laboratorio QR bancario (prueba)</h3>
+        <p className="field-hint">Lee el QR “para recibir” de tu app del banco para preparar el cobro con QR oficial de SPEI en la siguiente versión.</p>
+        <button className="btn secondary" onClick={() => setShowLab(true)}>
+          Abrir laboratorio
+        </button>
+      </section>
+
+      <section className="card">
         <h3>Acerca de</h3>
         <p className="field-hint">
           Otoo QR POS 0.1{isNative() ? ' (app Android)' : ''} · Los QR apuntan a: <strong>{new URL(ticketBaseHref()).host || 'archivo local'}</strong>{' '}
@@ -196,6 +206,7 @@ export function SettingsScreen() {
         </button>
       </section>
 
+      {showLab && <QrLab onClose={() => setShowLab(false)} />}
       {editAccount && <AccountForm account={editAccount === 'new' ? null : editAccount} onClose={() => setEditAccount(null)} />}
     </div>
   );

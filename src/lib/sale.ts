@@ -25,7 +25,7 @@ export function buildSale(a: BuildSaleArgs): Sale {
   const folio = buildFolio(a.settings.folioPrefix, a.seq);
   const items = cartToItems(a.cart);
   const totalCents = cartTotal(items);
-  const status: SaleStatus = a.method === 'efectivo' ? 'PAGADO' : 'PENDIENTE';
+  const status: SaleStatus = a.method === 'transferencia' ? 'PENDIENTE' : 'PAGADO';
   const account =
     a.method === 'transferencia' && a.account
       ? {
@@ -74,7 +74,7 @@ export function saleToPayload(sale: Sale, settings: Settings): TicketPayload {
     totalCents: sale.totalCents,
     items: profile.showItems ? sale.items.map((i) => ({ name: i.name, qty: i.qty, unitCents: i.unitCents })) : null,
     itemCount: sale.items.reduce((n, i) => n + i.qty, 0),
-    paidCash: sale.method === 'efectivo' && sale.status === 'PAGADO',
+    paidWith: sale.status === 'PAGADO' && sale.method !== 'transferencia' ? sale.method : null,
     account: sale.account
       ? {
           bankName: sale.account.bankName,
@@ -119,12 +119,13 @@ export interface DaySummary {
   pendingCents: number;
   pendingCount: number;
   cashCents: number;
+  cardCents: number;
   transferCents: number;
   cancelledCount: number;
 }
 
 export function summarize(sales: Sale[]): DaySummary {
-  const s: DaySummary = { count: 0, totalCents: 0, paidCents: 0, pendingCents: 0, pendingCount: 0, cashCents: 0, transferCents: 0, cancelledCount: 0 };
+  const s: DaySummary = { count: 0, totalCents: 0, paidCents: 0, pendingCents: 0, pendingCount: 0, cashCents: 0, cardCents: 0, transferCents: 0, cancelledCount: 0 };
   for (const x of sales) {
     if (x.status === 'CANCELADO') {
       s.cancelledCount++;
@@ -135,6 +136,7 @@ export function summarize(sales: Sale[]): DaySummary {
     if (x.status === 'PAGADO') {
       s.paidCents += x.totalCents;
       if (x.method === 'efectivo') s.cashCents += x.totalCents;
+      else if (x.method === 'tarjeta') s.cardCents += x.totalCents;
       else s.transferCents += x.totalCents;
     } else {
       s.pendingCents += x.totalCents;

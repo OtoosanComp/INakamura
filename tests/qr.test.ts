@@ -36,7 +36,7 @@ function sale(itemsCount: number): TicketPayload {
     totalCents: items.reduce((s, i) => s + i.qty * i.unitCents, 0),
     items,
     itemCount: items.reduce((s, i) => s + i.qty, 0),
-    paidCash: false,
+    paidWith: null,
     account: { bankName: 'BBVA México', beneficiary: 'María Fernanda Pérez Núñez', clabe: '002010077777777771', dimoPhone: '5512345678' },
     concept: 'Compra A-0123',
     reference: '0000123',

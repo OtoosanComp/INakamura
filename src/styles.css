@@ -475,3 +475,12 @@ strong.warn { color: var(--warn); }
 :root[data-mode='adult'] .toast { background: #f4f1f8; color: #17141c; }
 .toast.error { background: var(--danger); color: #fff; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- laboratorio QR ---------- */
+.lab-result { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.lab-result p { margin: 0; }
+.lab-raw { white-space: pre-wrap; word-break: break-all; background: var(--soft); padding: 10px; border-radius: 10px; font-size: 0.8rem; max-height: 220px; overflow: auto; margin: 0; }
+.tlv { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; }
+.tlv li { padding: 4px 0; border-bottom: 1px dashed var(--line); }
+.tlv code { font-weight: 800; color: var(--accent); }
+.tlv-value { word-break: break-all; }

@@ -77,7 +77,7 @@ export function QrView() {
       <p className="qr-hint">
         {plain
           ? 'QR de respaldo: la cámara muestra el texto con la CLABE para copiarlo (no necesita abrir página).'
-          : sale.method === 'efectivo'
+          : sale.method !== 'transferencia'
             ? 'Ticket del cliente (opcional): que lo escanee para guardar su comprobante.'
             : 'Pide al cliente que lo escanee con la cámara de su celular.'}
       </p>

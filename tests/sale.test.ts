@@ -42,8 +42,19 @@ describe('ventas', () => {
     expect(s.status).toBe('PAGADO');
     expect(s.account).toBeNull();
     const p = decodePayload(new URL(s.ticketUrl).hash.slice(1));
-    expect(p.paidCash).toBe(true);
+    expect(p.paidWith).toBe('efectivo');
     expect(p.account).toBeNull();
+  });
+
+  it('tarjeta (terminal externa): pagada, sin cuenta, ticket "Pagado con tarjeta"', () => {
+    const s = buildSale({ id: 'v5', seq: 4, settings: testSettings(), mode: 'anime', cart, account, method: 'tarjeta', now: 1000, appHref: href });
+    expect(s.status).toBe('PAGADO');
+    expect(s.account).toBeNull();
+    const p = decodePayload(new URL(s.ticketUrl).hash.slice(1));
+    expect(p.paidWith).toBe('tarjeta');
+    expect(p.account).toBeNull();
+    expect(summarize([s]).cardCents).toBe(161000);
+    expect(summarize([s]).cashCents).toBe(0);
   });
 
   it('transferencia sin cuenta: error', () => {

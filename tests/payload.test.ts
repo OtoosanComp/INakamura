@@ -14,7 +14,7 @@ const base: TicketPayload = {
     { name: 'Espada de foam', qty: 2, unitCents: 48000 }
   ],
   itemCount: 3,
-  paidCash: false,
+  paidWith: null,
   account: { bankName: 'Banamex', beneficiary: 'María Pérez Núñez', clabe: '002010077777777771', dimoPhone: '5512345678' },
   concept: 'Compra A-0001',
   reference: '0000001',

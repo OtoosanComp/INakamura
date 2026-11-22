@@ -42,7 +42,7 @@ export function Toast() {
 }
 
 export function StatusChip({ status, method }: { status: SaleStatus; method?: string }) {
-  const label = status === 'PAGADO' ? (method === 'efectivo' ? 'Pagado · efectivo' : 'Pagado') : status === 'PENDIENTE' ? 'Pendiente' : 'Cancelado';
+  const label = status === 'PAGADO' ? (method === 'efectivo' ? 'Pagado · efectivo' : method === 'tarjeta' ? 'Pagado · tarjeta' : 'Pagado') : status === 'PENDIENTE' ? 'Pendiente' : 'Cancelado';
   return <span className={`chip status-${status.toLowerCase()}`}>{label}</span>;
 }
 
