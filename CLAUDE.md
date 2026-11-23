@@ -10,7 +10,12 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 
 ## Decisiones tomadas (no re-discutir)
 - Reels de **60 s o menos**, gancho en el segundo 1, 3 por semana (Lun/Mié/Vie 8 pm CDMX). Largo de domingo después.
-- Voz: Kokoro (gratis, Apache-2.0) mezcla ef_dora+af_heart, afinada a **La3 = 220 Hz** (Tsuki irá en Re). Sin ElevenLabs (créditos).
+- Voz: Kokoro (gratis, Apache-2.0) mezcla ef_dora+af_heart, ahora en **Sol3 = 196 Hz** (cuarta de Re; antes La3 sonaba más robótico), sin eco.
+  En evaluación: ElevenLabs v4 voz "Kevin - Calm, Expressive and Warm" (wg3kHEV2ptlzBG8TbOem, femenina latina). OJO: el plan
+  gratis de ElevenLabs NO permite uso comercial; para monetizar hace falta Starter. ~231 créditos por 13 s; ~750 por Reel.
+  Chatterbox (MIT) probado: lento (~15 min/Reel) y se come palabras ("uwu", "Yami"→"Ami").
+- Yami entra desde abajo (rebote + barrido + campanita) en sus escenas. Portada = cuadro 0.6 s (`portada.jpg`).
+- Kotonoha: ilustración ORIGINAL inspirada (`assets/fondos/kotonoha-retrato.jpg`), no arte oficial (derechos/monetización).
 - Imágenes: Yami = recortes de rostro de sus referencias (sin tomas sugerentes); fondos = anime generado localmente
   (MeinaMix V11 + LCM, OpenRAIL-M). Nunca clips/capturas de anime.
 - Subtítulos: se entregan quemados (`_subtitulado.mp4`) + `.es_LA.srt` aparte (CapCut móvil no importa .srt).
@@ -20,7 +25,8 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 ## Estado (actualizar al terminar cada sesión)
 - Semana 1 (Kotonoha / School Days): 3 guiones listos en `guiones/semana-01-kotonoha/`, con todos sus fondos generados.
   Piloto r1 renderizado (50 s, 220 Hz, -14 LUFS, ~64 MB) y entregado junto con las muestras de voz A (ef_dora+af_heart,
-  la actual) y B (ef_dora pura). **Siguiente paso: con el OK del usuario (voz A o B, estilo), renderizar r2 y r3**
+  la actual) y B (ef_dora pura). Vista previa con animación nueva entregada. **Siguiente paso: el usuario elige voz (ElevenLabs / Kokoro mejorado / Chatterbox);
+  luego re-renderizar r1 y renderizar r2 y r3**
   (`render.py` ~6-9 min c/u). Si elige B: cambiar `mezcla` en `personajes/yami/voz.yaml` a `[[ef_dora, 1.0]]` y re-renderizar r1.
 - Largo del domingo: solo esquema (`largo-domingo-ESQUEMA.md`).
 - Tsuki: voz propuesta en `personajes/tsuki/voz.yaml`, sin probar.
