@@ -82,10 +82,16 @@ def sintetizar(textos, personaje, destino):
         crudo = Path(tmp) / "crudo.wav"
         sf.write(crudo, np.concatenate(trozos), sr)
         f0 = mediana_f0(crudo)
-        razon = conf["f0_objetivo_hz"] / f0 if f0 else 1.0
-        cadena = f"rubberband=pitch={razon:.5f}:formant=preserved:pitchq=quality," + " ".join(conf["efectos"].split())
-        ffmpeg("-i", crudo, "-af", cadena, "-ar", 48000, "-ac", 1, destino)
-    final = mediana_f0(destino)
+        objetivo = conf["f0_objetivo_hz"]
+        razon = objetivo / f0 if f0 else 1.0
+        efectos = " ".join(conf["efectos"].split())
+        for _ in range(3):  # el desplazamiento real no siempre es exacto: medir y corregir
+            cadena = f"rubberband=pitch={razon:.5f}:formant=preserved:pitchq=quality:transients=smooth,{efectos}"
+            ffmpeg("-i", crudo, "-af", cadena, "-ar", 48000, "-ac", 1, destino)
+            final = mediana_f0(destino)
+            if not final or abs(final / objetivo - 1) < 0.02:
+                break
+            razon *= objetivo / final
     return tramos, {"f0_original": round(f0, 1), "f0_final": round(final, 1), "razon": round(razon, 4)}
 
 

@@ -41,8 +41,9 @@ def musica(duracion, ruta, semilla=1):
     sf.write(ruta, (mezcla * np.clip(fade, 0, 1) * 0.6).astype(np.float32), SR)
 
 
-def efectos(duracion, inicios, ruta, semilla=2):
-    """Golpe grave en el segundo 0 (gancho) + 'whoosh' suave en cada cambio de escena."""
+def efectos(duracion, inicios, ruta, semilla=2, entradas_yami=()):
+    """Golpe grave en el segundo 0 (gancho), 'whoosh' suave en cada cambio de escena y,
+    cuando Yami sube desde abajo, un barrido ascendente + campanita."""
     rng = np.random.default_rng(semilla)
     n = int(duracion * SR)
     out = np.zeros(n)
@@ -58,4 +59,22 @@ def efectos(duracion, inicios, ruta, semilla=2):
         i = int(max(t0 - 0.2, 0) * SR)
         ruido = _suavizar(rng.standard_normal(len(tw)), 0.6) * env * 0.12
         out[i:i + len(tw)] += ruido[:max(0, min(len(tw), n - i))]
+    # entrada de Yami: ruido que sube de tono + campanita (La5 y Mi6, acorde de La)
+    from scipy.signal import butter, sosfilt
+    ts = np.arange(int(0.5 * SR)) / SR
+    for t0 in entradas_yami:
+        i = int(max(t0 - 0.05, 0) * SR)
+        ruido = rng.standard_normal(len(ts))
+        barrido = np.zeros(len(ts))
+        for k in range(10):  # banda que sube de 400 a 3000 Hz
+            a, b = k * len(ts) // 10, (k + 1) * len(ts) // 10
+            fc = 400 * (3000 / 400) ** (k / 9)
+            sos = butter(2, [fc * 0.7, fc * 1.3], btype="band", fs=SR, output="sos")
+            barrido[a:b] = sosfilt(sos, ruido[a:b])
+        barrido *= np.sin(np.pi * ts / ts[-1]) * 0.35
+        tc = np.arange(int(1.2 * SR)) / SR
+        campana = (np.sin(2 * np.pi * 880 * tc) + 0.5 * np.sin(2 * np.pi * 1318.5 * tc)) * np.exp(-tc * 4) * 0.10
+        j = i + int(0.42 * SR)
+        out[i:i + len(ts)] += barrido[:max(0, min(len(ts), n - i))]
+        out[j:j + len(tc)] += campana[:max(0, min(len(tc), n - j))]
     sf.write(ruta, out.astype(np.float32), SR)

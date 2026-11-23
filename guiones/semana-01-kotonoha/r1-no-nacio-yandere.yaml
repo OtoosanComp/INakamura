@@ -9,7 +9,7 @@ cierre_pantalla: "¿YANDERE...\nO LA VOLVIERON UNA?"
 resaltar: [yandere, Kotonoha, aburría, rumores, sola, consolarla, vínculo traumático, fuerte, volvieron]
 
 escenas:
-  - visual: yami/ojo
+  - visual: fondo/kotonoha-retrato
     texto: "La yandere más famosa del anime... no nació así."
   - visual: yami/seria
     texto: "No tengas miedo... yo te explico por qué pasó."

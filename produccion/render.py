@@ -32,6 +32,7 @@ COLA = 1.2       # segundos extra al final
 FUNDIDO = 0.30   # transición entre escenas
 # Zonas seguras de Reels (1080x1920): arriba ~0-180 y abajo ~1450-1920 los tapa la interfaz.
 Y_TITULO, Y_TARJETA, Y_SUBS = 320, 910, 1280
+ENTRADA_YAMI = 0.55  # segundos que tarda Yami en subir desde abajo
 
 
 def fuente(peso, tam):
@@ -156,11 +157,19 @@ class Escena:
         caja = (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)
         img = self.fondo.resize((ANCHO, ALTO), Image.BILINEAR, box=caja)
         if self.tarjeta is not None:
-            s = 0.97 + 0.05 * p
-            tj = self.tarjeta.resize((int(self.tarjeta.width * s), int(self.tarjeta.height * s)), Image.BILINEAR)
-            img = img.convert("RGBA")
-            img.alpha_composite(tj, ((ANCHO - tj.width) // 2, int(Y_TARJETA - tj.height / 2)))
-            img = img.convert("RGB")
+            # Yami entra desde abajo con un pequeño rebote (ease-out-back) al empezar a hablar.
+            e = (t - self.ini) / ENTRADA_YAMI
+            if self.ini == 0:
+                e = 1.0  # si abre el video, ya está en su lugar desde el primer cuadro
+            if e > 0:
+                e = min(e, 1.0)
+                rebote = 1 + 2.70158 * (e - 1) ** 3 + 1.70158 * (e - 1) ** 2
+                dy = (1 - rebote) * 1150
+                s = 0.97 + 0.05 * p
+                tj = self.tarjeta.resize((int(self.tarjeta.width * s), int(self.tarjeta.height * s)), Image.BILINEAR)
+                img = img.convert("RGBA")
+                img.alpha_composite(tj, ((ANCHO - tj.width) // 2, int(Y_TARJETA - tj.height / 2 + dy)))
+                img = img.convert("RGB")
         return np.asarray(img, dtype=np.float32)
 
 
@@ -227,7 +236,8 @@ def render(ruta_guion, solo_voz=False):
     print("· audio")
     inicios = [0.0] + [t0 for t0, _ in tramos[1:]]
     audio.musica(total, out / "musica.wav")
-    audio.efectos(total, inicios, out / "efectos.wav")
+    entradas_yami = [a for e, a in zip(g["escenas"], inicios) if e["visual"].startswith("yami/") and a > 0]
+    audio.efectos(total, inicios, out / "efectos.wav", entradas_yami=entradas_yami)
     mezcla_cruda, mezcla = out / "mezcla_cruda.wav", out / "mezcla.wav"
     ffmpeg("-i", ruta_voz, "-i", out / "musica.wav", "-i", out / "efectos.wav", "-filter_complex",
            "[0:a]apad,asplit=2[v][sc];[1:a]volume=0.55[m];"
@@ -267,7 +277,10 @@ def render(ruta_guion, solo_voz=False):
         if i == len(escenas) - 1:
             cierre.pegar(f, suave((t - e.ini) / 0.4))
         sello.pegar(f, 1.0)
-        enc.stdin.write(acabado.aplicar(f, n, t).tobytes())
+        cuadro = acabado.aplicar(f, n, t)
+        if n == int(0.6 * FPS):  # portada para subir como 'cover' del Reel
+            Image.fromarray(cuadro).save(out / "portada.jpg", quality=92)
+        enc.stdin.write(cuadro.tobytes())
         if n % (FPS * 10) == 0:
             print(f"  {t:4.0f} s / {total:.0f} s", flush=True)
     enc.stdin.close()

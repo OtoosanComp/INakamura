@@ -47,3 +47,8 @@ fondos:
     prompt: still life, a glass heart wrapped in a thin silver chain lying on black velvet, soft purple glow, symbolic, object only
     semilla: 134
     negativo_extra: 1girl, girl, woman, person, human, face, body, skin, hands
+  - id: kotonoha-retrato
+    # Ilustración ORIGINAL inspirada en el arquetipo (no es arte oficial ni captura de School Days).
+    prompt: 1girl, upper body portrait, very long straight black hair, hime cut, blunt bangs, gentle melancholic expression, purple eyes, white school blouse with red ribbon, dark navy cardigan, holding a book against her chest, rainy window behind her, evening light
+    semilla: 141
+    negativo_extra: cleavage, bare shoulders, revealing clothes, short skirt, panties, smile, blood
