@@ -51,7 +51,8 @@ def main():
     pipe = pipeline()
     for f in pendientes:
         t = time.time()
-        img = pipe(f"{f['prompt']}, {estilo}", negative_prompt=negativo,
+        neg = negativo + (", " + f["negativo_extra"] if f.get("negativo_extra") else "")
+        img = pipe(f"{f['prompt']}, {estilo}", negative_prompt=neg,
                    num_inference_steps=f.get("pasos", 6), guidance_scale=1.5,
                    width=512, height=896,
                    generator=torch.Generator().manual_seed(f.get("semilla", 7))).images[0]

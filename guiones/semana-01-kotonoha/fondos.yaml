@@ -36,11 +36,14 @@ fondos:
     prompt: small yacht far away on a dark calm sea at night, full moon, mist, eerie silence, no people visible
     semilla: 99
   - id: diario-rosa
-    prompt: pink flip phone diary covered with small hearts, glowing in a dark room, obsessive mood, purple light
-    semilla: 111
+    prompt: still life, close-up of a pink flip phone with heart stickers lying on an open diary on a wooden desk, dark bedroom, purple light, object only
+    semilla: 112
+    negativo_extra: 1girl, girl, woman, person, human, face, body, skin, bare shoulders
   - id: dos-siluetas
-    prompt: two anime girls standing back to back in silhouette, one with long pink hair, one with long straight black hair, dark violet background, dramatic rim light
-    semilla: 122
+    prompt: 2girls, two dark silhouettes standing back to back, both fully clothed in school uniforms, one with long pink hair, one with long straight black hair, full body, dark violet background, dramatic rim light
+    semilla: 123
+    negativo_extra: 1girl, solo, bare shoulders, skin, cleavage
   - id: corazon-cadena
-    prompt: a glass heart wrapped in a thin silver chain, floating in darkness, soft purple glow, symbolic, no people
-    semilla: 133
+    prompt: still life, a glass heart wrapped in a thin silver chain lying on black velvet, soft purple glow, symbolic, object only
+    semilla: 134
+    negativo_extra: 1girl, girl, woman, person, human, face, body, skin, hands
