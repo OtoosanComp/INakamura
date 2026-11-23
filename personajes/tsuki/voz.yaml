@@ -1,0 +1,14 @@
+# PROPUESTA (sin aprobar) de voz para Tsuki — Re4 (293.66 Hz), una cuarta arriba de Yami (La3).
+# Más enérgica y brillante. Probar con:  python produccion/voz.py --personaje tsuki --prueba "Hola, soy Tsuki."
+nombre: Tsuki
+motor: kokoro-v1.0
+mezcla:
+  - [ef_dora, 0.6]
+  - [af_bella, 0.4]
+velocidad: 1.0
+f0_objetivo_hz: 293.66   # Re4
+pausa_entre_escenas_s: 0.25
+efectos: >-
+  highpass=f=100,deesser=i=0.4,
+  equalizer=f=3000:t=q:w=1.5:g=1.5,
+  acompressor=threshold=-18dB:ratio=3:attack=8:release=120

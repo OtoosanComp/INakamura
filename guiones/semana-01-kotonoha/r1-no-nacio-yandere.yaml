@@ -1,0 +1,49 @@
+# Reel 1 — Lunes 8:00 pm (CDMX). Pilar: Psicología de anime.
+# Sintaxis en "texto": [como se lee en pantalla|como lo pronuncia la voz]
+id: s01-r1-no-nacio-yandere
+titulo: La yandere más famosa no nació así
+publicar: Lunes 8:00 pm (hora CDMX)
+pilar: Psicología de anime (40 %)
+gancho_pantalla: "LA YANDERE MÁS FAMOSA\nNO NACIÓ ASÍ"
+cierre_pantalla: "¿YANDERE...\nO LA VOLVIERON UNA?"
+resaltar: [yandere, Kotonoha, aburría, rumores, sola, consolarla, vínculo traumático, fuerte, volvieron]
+
+escenas:
+  - visual: yami/ojo
+    texto: "La yandere más famosa del anime... no nació así."
+  - visual: yami/seria
+    texto: "No tengas miedo... yo te explico por qué pasó."
+  - visual: fondo/salon-vacio
+    etiqueta: "SCHOOL DAYS · 2007"
+    texto: "[School Days|Escul Deis], [2007|dos mil siete]. [Kotonoha|Kotonoja] era la chica tímida del salón: buena alumna, callada, siempre con un libro."
+  - visual: fondo/telefono-noche
+    etiqueta: "DATO 1"
+    texto: "Primero: su novio, Makoto, le confesó a otra chica que se aburría con ella."
+  - visual: fondo/pasillo-rumores
+    etiqueta: "DATO 2"
+    texto: "Segundo: empezaron los rumores sobre ella... y se fue quedando sola."
+  - visual: fondo/paraguas
+    etiqueta: "DATO 3"
+    texto: "Tercero: él le dijo que ya no le gustaba... y días después volvió a consolarla, como si nada."
+  - visual: yami/seria2
+    etiqueta: "VÍNCULO TRAUMÁTICO"
+    texto: "Eso tiene nombre: vínculo traumático. Cuando alguien te lastima y después te da cariño, el apego no se rompe... se hace más fuerte."
+  - visual: fondo/estacion-lluvia
+    texto: "No es un diagnóstico, es un personaje... pero pasa en la vida real."
+  - visual: yami/sonrisa
+    texto: "Entonces... ¿[Kotonoha|Kotonoja] era yandere, o la volvieron una? ¿Tú qué hubieras hecho, uwu?"
+
+descripcion: |
+  ¿Kotonoha Katsura era yandere... o la volvieron una? 🌙
+  School Days explicado con psicología: el vínculo traumático detrás de la yandere más famosa del anime.
+
+  Contenido educativo y de divulgación, sin material gráfico. Personaje de ficción: no es un diagnóstico.
+  Avatar virtual con IA.
+hashtags: ["#yandere", "#schooldays", "#psicologiadelanime"]
+comentario_fijado: "¿Tú la habrías perdonado o te habrías alejado? Te leo 👇"
+
+fuentes:
+  - "Capítulos 3, 7-11 (traición, rumores, ruptura, 'consuelo'): https://en.wikipedia.org/wiki/List_of_School_Days_episodes"
+  - "Personalidad de Kotonoha: https://en.wikipedia.org/wiki/List_of_School_Days_characters"
+  - "Vínculo traumático (Dutton y Painter, 1981): https://www.psychologytoday.com/us/basics/trauma-bonding"
+  - "'Yandere adquirida, no de nacimiento' (opinión de fans): https://anibase.net/de/character/lyjq5/Kotonoha-Katsura"

@@ -1,0 +1,46 @@
+# Fondos de la semana 1. Reglas: sin sangre, sin armas, sin cuerpos, sin fan service,
+# sin copiar diseños de personajes de School Days (solo siluetas y escenarios).
+estilo: >-
+  anime illustration, cinematic lighting, dark melancholic atmosphere, purple and crimson tones,
+  highly detailed background, masterpiece, best quality
+negativo: >-
+  blood, gore, corpse, weapon, knife, saw, axe, violence, nsfw, nude, cleavage, panties,
+  text, letters, watermark, signature, logo, lowres, bad anatomy, extra fingers, deformed
+
+fondos:
+  - id: estacion-lluvia
+    prompt: girl with very long straight black hair seen from behind, standing alone at a train station platform at night, heavy rain, cold blue and purple lighting
+    semilla: 8
+  - id: salon-vacio
+    prompt: empty japanese high school classroom at sunset, rows of desks, golden light through windows, long shadows, no people
+    semilla: 21
+  - id: azotea
+    prompt: japanese school rooftop, chain-link fence, city skyline at dusk, crimson and violet sky, light rain, no people
+    semilla: 33
+  - id: telefono-noche
+    prompt: smartphone lying on a desk in a dark bedroom at night, glowing screen, rain on the window, lonely mood, no people
+    semilla: 44
+  - id: pasillo-rumores
+    prompt: long school hallway, a lonely girl with long black hair in the foreground looking down, blurred silhouettes of students whispering far behind, cold lighting
+    semilla: 55
+  - id: paraguas
+    prompt: girl with long black hair holding an umbrella, seen from behind, alone on a wet street at night, neon reflections, rain
+    semilla: 66
+  - id: fiordo-barco
+    prompt: small white ferry boat sailing on a calm norwegian fjord, green mountains, soft daylight, peaceful scenic landscape
+    semilla: 77
+  - id: tele-antigua
+    prompt: old crt television glowing in a dark room, the screen shows a calm sea landscape with a boat, dust in the light, nostalgic 2000s
+    semilla: 88
+  - id: mar-noche
+    prompt: small yacht far away on a dark calm sea at night, full moon, mist, eerie silence, no people visible
+    semilla: 99
+  - id: diario-rosa
+    prompt: pink flip phone diary covered with small hearts, glowing in a dark room, obsessive mood, purple light
+    semilla: 111
+  - id: dos-siluetas
+    prompt: two anime girls standing back to back in silhouette, one with long pink hair, one with long straight black hair, dark violet background, dramatic rim light
+    semilla: 122
+  - id: corazon-cadena
+    prompt: a glass heart wrapped in a thin silver chain, floating in darkness, soft purple glow, symbolic, no people
+    semilla: 133

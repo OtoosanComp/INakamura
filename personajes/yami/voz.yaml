@@ -1,0 +1,18 @@
+# Voz de Yami — motor Kokoro v1.0 (licencia Apache-2.0: uso comercial permitido).
+# Diseño: suave, lenta, cercana. Centro tonal La3 (220 Hz) = dominante de Re,
+# para complementar a Tsuki (Re). Medido con Praat: la mezcla base queda en ~181 Hz
+# y se sube a 220 Hz conservando los formantes (no suena a "ardilla").
+nombre: Yami
+motor: kokoro-v1.0
+mezcla:            # estilo de voz = suma ponderada de voces de Kokoro
+  - [ef_dora, 0.75]  # española, femenina
+  - [af_heart, 0.25] # calidez/claridad
+velocidad: 0.85    # 1.0 = normal; más bajo = más lento
+f0_objetivo_hz: 220.0   # La3
+pausa_entre_escenas_s: 0.30
+# Cadena de efectos (ffmpeg) aplicada DESPUÉS del cambio de tono:
+efectos: >-
+  highpass=f=90,lowpass=f=11000,deesser=i=0.4,
+  equalizer=f=220:t=q:w=1:g=2,equalizer=f=3500:t=q:w=1.5:g=-2,
+  acompressor=threshold=-20dB:ratio=3:attack=10:release=150,
+  aecho=0.8:0.5:35|70:0.12|0.06

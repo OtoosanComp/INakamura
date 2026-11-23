@@ -1,0 +1,16 @@
+# Versiones probadas el 2026-11-23 (Python 3.13, CPU). torch/torchvision vienen del índice CPU de PyTorch (ver setup.sh).
+kokoro-onnx==0.6.1
+onnxruntime==1.32.0
+soundfile==0.14.0
+praat-parselmouth==0.4.7
+numpy==2.5.5
+scipy==1.18.1
+faster-whisper==1.2.1
+diffusers==0.43.0
+transformers==5.24.0
+accelerate==1.16.0
+safetensors==0.8.0
+peft==0.22.0
+spandrel==0.4.2
+PyYAML==6.0.4
+pillow==13.0.0

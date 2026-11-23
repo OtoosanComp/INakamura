@@ -1,0 +1,46 @@
+# Reel 3 — Viernes 8:00 pm (CDMX). Pilar: Psicología de anime (debate → comentarios).
+id: s01-r3-kotonoha-vs-yuno
+titulo: Kotonoha vs Yuno, ¿quién es la mejor yandere?
+publicar: Viernes 8:00 pm (hora CDMX)
+pilar: Psicología de anime (40 %)
+gancho_pantalla: "¿YUNO ES LA REINA\nDE LAS YANDERE?"
+cierre_pantalla: "¿TEAM YUNO O\nTEAM KOTONOHA?"
+resaltar: [Yuno, reina, segura, enfermo, enamorado, obsesión, diez minutos, Kotonoha, rompieron, apego ansioso, control, espera]
+
+escenas:
+  - visual: fondo/dos-siluetas
+    texto: "Todos dicen que Yuno Gasai es la reina de las yandere... yo no estoy tan segura."
+  - visual: yami/seria
+    texto: "No tengas miedo... yo te explico."
+  - visual: fondo/corazon-cadena
+    etiqueta: "YANDERE"
+    texto: "Yandere viene del japonés: yanderu, enfermo... y deredere, enamorado. Amor que se vuelve obsesión."
+  - visual: fondo/diario-rosa
+    etiqueta: "MIRAI NIKKI · 2011"
+    texto: "Yuno, de [Mirai Nikki|Mirai Niki]: su diario del futuro le dice qué hará él cada diez minutos. Es obsesiva desde el inicio."
+  - visual: fondo/pasillo-rumores
+    etiqueta: "SCHOOL DAYS · 2007"
+    texto: "[Kotonoha|Kotonoja] empieza al revés: tímida, dulce, insegura. Cambia después de traiciones y rumores."
+  - visual: fondo/estacion-lluvia
+    texto: "Por eso hay fans que dicen que no es yandere de nacimiento... sino que la rompieron."
+  - visual: yami/seria2
+    etiqueta: "APEGO ANSIOSO"
+    texto: "En psicología se habla de apego ansioso: un miedo enorme a que te abandonen. Yuno lo vive como control... [Kotonoha|Kotonoja], como espera."
+  - visual: yami/sonrisa
+    texto: "Son personajes, no diagnósticos. ¿[Team|Tim] Yuno o [team|tim] [Kotonoha|Kotonoja]? ¿Tú qué hubieras hecho, uwu?"
+
+descripcion: |
+  Kotonoha Katsura vs Yuno Gasai: ¿quién es la verdadera reina yandere? 🌙
+  School Days vs Mirai Nikki explicado con psicología del apego.
+
+  Contenido educativo y de divulgación, sin material gráfico. Personajes de ficción: no son diagnósticos.
+  Avatar virtual con IA.
+hashtags: ["#yandere", "#mirainikki", "#schooldays"]
+comentario_fijado: "Vota: 🩷 Yuno o 🖤 Kotonoha 👇"
+
+fuentes:
+  - "Etimología de yandere y Yuno como popularizadora: https://en.wikipedia.org/wiki/Yandere"
+  - "Mirai Nikki (manga 2006-2010; anime Asread 2011-2012, 26 eps): https://en.wikipedia.org/wiki/Future_Diary"
+  - "Rankings (MAL top 15: Kotonoha y Yuno): https://myanimelist.net/featured/1220/Top_15_Yandere_Characters_in_Anime__Yandere_Definition"
+  - "Apego ansioso: https://www.simplypsychology.org/anxious-preoccupied-attachment.html"
+  - "'Adquirida, no de nacimiento' (opinión de fans): https://anibase.net/de/character/lyjq5/Kotonoha-Katsura"

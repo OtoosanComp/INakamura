@@ -1,0 +1,19 @@
+# Recortes del rostro de Yami (coordenadas en píxeles sobre la referencia original: x, y, ancho, alto).
+# Solo rostro y hombros: para monetizar en Meta conviene evitar tomas sugerentes.
+# Se escalan x4 con Real-ESRGAN:  python produccion/recortes.py
+seria:
+  fuente: referencias/ficha-yami.jpg
+  caja: [438, 30, 154, 255]
+  uso: narradora tranquila / fría (gancho, "No tengas miedo")
+seria2:
+  fuente: referencias/ficha-yami.jpg
+  caja: [598, 436, 165, 196]
+  uso: explicación de psicología ("Plus Yami")
+ojo:
+  fuente: referencias/ficha-yami.jpg
+  caja: [441, 858, 104, 104]
+  uso: gancho dramático (acercamiento al ojo verde)
+sonrisa:
+  fuente: referencias/yami-y-tsuki.jpg
+  caja: [120, 80, 420, 480]
+  uso: cierre "¿Tú qué hubieras hecho, uwu?"

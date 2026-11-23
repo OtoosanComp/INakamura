@@ -1,0 +1,51 @@
+# Reel 2 — Miércoles 8:00 pm (CDMX). Pilar: Psicología de anime / curiosidad.
+# El hecho real de Kioto se menciona SOLO como "un hecho violento real", sin detalles,
+# sin nombres y sin insinuar que el anime lo causó.
+id: s01-r2-nice-boat
+titulo: Japón canceló el final y puso un barco
+publicar: Miércoles 8:00 pm (hora CDMX)
+pilar: Psicología de anime (40 %)
+gancho_pantalla: "JAPÓN CANCELÓ EL FINAL\nY PUSO UN BARCO"
+cierre_pantalla: "¿HICIERON BIEN\nEN CANCELARLO?"
+resaltar: [canceló, barco, cancelaron, paisajes, Nice boat, meme, irónico, reactancia, prohíben, leyenda]
+
+escenas:
+  - visual: fondo/tele-antigua
+    texto: "Japón canceló el final de este anime... y en su lugar puso un barco."
+  - visual: yami/seria
+    texto: "No tengas miedo... yo te explico por qué pasó."
+  - visual: fondo/salon-vacio
+    etiqueta: "SEPTIEMBRE · 2007"
+    texto: "Septiembre de [2007|dos mil siete]. Un día antes del último capítulo de [School Days|Escul Deis], ocurrió un hecho violento real en Japón... y varios canales lo cancelaron por respeto."
+  - visual: fondo/fiordo-barco
+    etiqueta: "DATO 1"
+    texto: "Uno: un canal lo cambió por media hora de paisajes con música clásica."
+  - visual: fondo/fiordo-barco
+    etiqueta: "DATO 2"
+    texto: "Dos: alguien subió la imagen de un barco noruego y escribió: [Nice boat|nais bout]. Se volvió meme mundial."
+  - visual: fondo/telefono-noche
+    etiqueta: "DATO 3"
+    texto: "Tres: el estudio llamó así a su puesto en una convención... y vendió mercancía del meme."
+  - visual: fondo/mar-noche
+    texto: "Y lo más irónico: el final original... también termina en un barco."
+  - visual: yami/seria2
+    etiqueta: "REACTANCIA"
+    texto: "Eso se llama reactancia: cuando te prohíben algo, tu mente lo quiere más. Por eso un final prohibido se vuelve leyenda."
+  - visual: yami/sonrisa
+    texto: "¿Hicieron bien en cancelarlo? ¿Tú qué hubieras hecho, uwu?"
+
+descripcion: |
+  ¿Por qué cancelaron el final de School Days? La historia real detrás del meme "Nice boat" 🚢🌙
+  Y la psicología que explica por qué lo prohibido se vuelve leyenda.
+
+  Contenido educativo y de divulgación, sin material gráfico.
+  Avatar virtual con IA.
+hashtags: ["#schooldays", "#niceboat", "#animeexplicado"]
+comentario_fijado: "¿Ustedes sabían lo del barco? 🚢 Te leo 👇"
+
+fuentes:
+  - "Cancelación (tvk 18-sep-2007, Chiba TV, TV Aichi) y paisajes sustitutos: https://en.wikipedia.org/wiki/School_Days_(anime)"
+  - "Contexto y el bote: https://globalvoices.org/2007/09/21/japan-axe-murder-school-days-and-a-nice-boat/"
+  - "Meme, ferry noruego MS Skagastøl, Comiket 73 y mercancía: https://en.wikipedia.org/wiki/Nice_boat"
+  - "Final en un barco (fuentes de fans): https://anibase.net/en/anime/ma576/School-Days y https://dic.pixiv.net/history/SchoolDays/683849/source"
+  - "Reactancia psicológica (Brehm, 1966): https://en.wikipedia.org/wiki/Reactance_(psychology)"
