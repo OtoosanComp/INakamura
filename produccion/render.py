@@ -173,7 +173,7 @@ class Acabado:
         r = np.sqrt(((xx - ANCHO / 2) / (ANCHO * 0.75)) ** 2 + ((yy - ALTO / 2) / (ALTO * 0.70)) ** 2)
         self.vin = (1 - 0.55 * np.clip(r, 0, 1) ** 2.2)[..., None]
         self.tinte = np.array([10, 0, 18], np.float32)
-        self.grano = [rng.normal(0, 6, (ALTO, ANCHO, 1)).astype(np.float32) for _ in range(6)]
+        self.grano = [rng.normal(0, 4, (ALTO, ANCHO, 1)).astype(np.float32) for _ in range(6)]
         self.polvo = rng.uniform(0, 1, (70, 4))  # x, y, velocidad, tamaño
 
     def aplicar(self, f, n, t):
@@ -186,6 +186,20 @@ class Acabado:
             r = 1 + int(s * 2.5)
             f[py:py + r, px:px + r] += 70 + 80 * s
         return np.clip(f, 0, 255).astype(np.uint8)
+
+
+# ---------------------------------------------------------------- audio final
+
+def normalizar(entrada, salida, objetivo=-14.0, pico=-1.5):
+    """Loudnorm en dos pasadas (medir y luego aplicar lineal) → -14 LUFS, estándar de Reels."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(entrada), "-af",
+                        f"loudnorm=I={objetivo}:TP={pico}:LRA=11:print_format=json", "-f", "null", "-"],
+                       capture_output=True, text=True, check=True).stderr
+    m = json.loads(r[r.rindex("{"):r.rindex("}") + 1])
+    ffmpeg("-i", entrada, "-af",
+           f"loudnorm=I={objetivo}:TP={pico}:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+           f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true",
+           "-ar", 48000, salida)
 
 
 # ---------------------------------------------------------------- principal
@@ -214,12 +228,14 @@ def render(ruta_guion, solo_voz=False):
     inicios = [0.0] + [t0 for t0, _ in tramos[1:]]
     audio.musica(total, out / "musica.wav")
     audio.efectos(total, inicios, out / "efectos.wav")
-    mezcla = out / "mezcla.wav"
+    mezcla_cruda, mezcla = out / "mezcla_cruda.wav", out / "mezcla.wav"
     ffmpeg("-i", ruta_voz, "-i", out / "musica.wav", "-i", out / "efectos.wav", "-filter_complex",
            "[0:a]apad,asplit=2[v][sc];[1:a]volume=0.55[m];"
            "[m][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=350[md];"
            "[v][md][2:a]amix=inputs=3:normalize=0:duration=longest,"
-           f"atrim=0:{total:.3f},loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", 48000, "-ac", 2, mezcla)
+           f"atrim=0:{total:.3f}", "-ar", 48000, "-ac", 2, mezcla_cruda)
+    normalizar(mezcla_cruda, mezcla)
+    mezcla_cruda.unlink()
 
     print("· video")
     finales = inicios[1:] + [total]
@@ -232,7 +248,8 @@ def render(ruta_guion, solo_voz=False):
     enc = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{ANCHO}x{ALTO}",
          "-r", str(FPS), "-i", "-", "-i", str(mezcla), "-map", "0:v", "-map", "1:a",
-         "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p", "-profile:v", "high",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M",
+         "-pix_fmt", "yuv420p", "-profile:v", "high",
          "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(limpio)],
         stdin=subprocess.PIPE)
     n_cuadros = int(total * FPS)
@@ -258,8 +275,8 @@ def render(ruta_guion, solo_voz=False):
 
     print("· versión con subtítulos")
     ffmpeg("-i", limpio, "-vf", f"subtitles={out / 'subtitulos.ass'}:fontsdir={FUENTES}",
-           "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p",
-           "-c:a", "copy", "-movflags", "+faststart", out / f"{g['id']}_subtitulado.mp4")
+           "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M",
+           "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart", out / f"{g['id']}_subtitulado.mp4")
 
     dur = duracion(limpio)
     (out / "publicar.txt").write_text(

@@ -18,8 +18,10 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Claude-Mem, Free-LLM/OmniRoute y MoneyPrinterV2 no sirven en la nube (ver `docs/pendientes-skills.md`).
 
 ## Estado (actualizar al terminar cada sesión)
-- Semana 1 (Kotonoha / School Days): 3 guiones listos en `guiones/semana-01-kotonoha/`. Piloto r1 renderizado y
-  entregado para aprobación de voz y estilo. **Siguiente paso: con el OK del usuario, renderizar r2 y r3.**
+- Semana 1 (Kotonoha / School Days): 3 guiones listos en `guiones/semana-01-kotonoha/`, con todos sus fondos generados.
+  Piloto r1 renderizado (50 s, 220 Hz, -14 LUFS, ~64 MB) y entregado junto con las muestras de voz A (ef_dora+af_heart,
+  la actual) y B (ef_dora pura). **Siguiente paso: con el OK del usuario (voz A o B, estilo), renderizar r2 y r3**
+  (`render.py` ~6-9 min c/u). Si elige B: cambiar `mezcla` en `personajes/yami/voz.yaml` a `[[ef_dora, 1.0]]` y re-renderizar r1.
 - Largo del domingo: solo esquema (`largo-domingo-ESQUEMA.md`).
 - Tsuki: voz propuesta en `personajes/tsuki/voz.yaml`, sin probar.
 
