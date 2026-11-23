@@ -31,7 +31,7 @@ MAX_SEG = 60.0
 COLA = 1.2       # segundos extra al final
 FUNDIDO = 0.30   # transición entre escenas
 # Zonas seguras de Reels (1080x1920): arriba ~0-180 y abajo ~1450-1920 los tapa la interfaz.
-Y_TITULO, Y_TARJETA, Y_SUBS = 320, 910, 1280
+Y_TITULO, Y_TARJETA, Y_SUBS = 300, 950, 1290
 ENTRADA_YAMI = 0.55  # segundos que tarda Yami en subir desde abajo
 
 
@@ -156,7 +156,7 @@ class Escena:
                 for clave, sufijo in (("habla", "-habla"), ("parpadeo", "-parpadeo"), ("habla_parpadeo", "-habla-parpadeo")):
                     if (anime / f"{nombre}{sufijo}.png").exists():
                         variantes[clave] = anime / f"{nombre}{sufijo}.png"
-                alto = 980
+                alto = 900
             else:  # yamireal/<recorte> → fotos realistas
                 variantes = {"base": RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png"}
                 alto = 820
