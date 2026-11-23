@@ -106,19 +106,64 @@ def marca():
 
 # ---------------------------------------------------------------- escenas visuales
 
-class Escena:
-    def __init__(self, visual, ini, fin, semilla):
+class Animador:
+    """Decide, cuadro por cuadro, si Yami tiene la boca abierta, si parpadea y cuánta energía hay en la voz."""
+
+    def __init__(self, ruta_voz, palabras, semilla=5):
+        import soundfile as sf
+        a, sr = sf.read(str(ruta_voz), dtype="float32")
+        a = a.mean(axis=1) if a.ndim > 1 else a
+        paso = sr // FPS
+        n = len(a) // paso + 1
+        rms = np.array([np.sqrt(np.mean(a[i * paso:(i + 1) * paso] ** 2) + 1e-12) for i in range(n)])
+        ref = np.percentile(rms[rms > 1e-4], 90) if (rms > 1e-4).any() else 1.0
+        self.energia = np.clip(rms / ref, 0, 1.5)
+        # dentro de una palabra y con energía → boca abierta (mínimo 2 cuadros por estado, sin parpadeos raros)
+        en_palabra = np.zeros(n, bool)
+        for w in palabras:
+            en_palabra[int(w["ini"] * FPS):int(w["fin"] * FPS) + 1] = True
+        crudo = en_palabra & (self.energia > 0.35)
+        boca = crudo.copy()
+        for i in range(1, n - 1):
+            if crudo[i - 1] == crudo[i + 1] != crudo[i]:
+                boca[i] = crudo[i - 1]
+        self.boca = boca
         rng = np.random.default_rng(semilla)
-        self.ini, self.fin = ini, fin
+        self.parpadeo = np.zeros(n + FPS * 10, bool)
+        t = rng.uniform(1.0, 2.5)
+        while t * FPS < n:
+            i = int(t * FPS)
+            self.parpadeo[i:i + 4] = True
+            t += rng.uniform(2.5, 5.0)
+
+    def estado(self, t):
+        i = min(int(t * FPS), len(self.boca) - 1)
+        return bool(self.boca[i]), bool(self.parpadeo[i]), float(self.energia[i])
+
+
+class Escena:
+    def __init__(self, visual, ini, fin, semilla, animador=None):
+        rng = np.random.default_rng(semilla)
+        self.ini, self.fin, self.animador = ini, fin, animador
         tipo, nombre = visual.split("/", 1)
+        self.tarjetas = None
         if tipo == "fondo":
             self.fondo = Image.open(RAIZ / "assets" / "fondos" / f"{nombre}.jpg").convert("RGB")
-            self.tarjeta = None
         else:
-            cara = Image.open(RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png").convert("RGB")
-            self.fondo = self._cubrir(cara).filter(ImageFilter.GaussianBlur(36))
+            anime = RAIZ / "personajes" / "yami" / "anime" / "listas"
+            if tipo == "yami" and (anime / f"{nombre}.png").exists():
+                variantes = {"base": anime / f"{nombre}.png"}
+                for clave, sufijo in (("habla", "-habla"), ("parpadeo", "-parpadeo"), ("habla_parpadeo", "-habla-parpadeo")):
+                    if (anime / f"{nombre}{sufijo}.png").exists():
+                        variantes[clave] = anime / f"{nombre}{sufijo}.png"
+                alto = 980
+            else:  # yamireal/<recorte> → fotos realistas
+                variantes = {"base": RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png"}
+                alto = 820
+            caras = {k: Image.open(v).convert("RGB") for k, v in variantes.items()}
+            self.fondo = self._cubrir(caras["base"]).filter(ImageFilter.GaussianBlur(36))
             self.fondo = Image.eval(self.fondo, lambda v: int(v * 0.42))
-            self.tarjeta = self._tarjeta(cara, cuadrada=(nombre == "ojo"))
+            self.tarjetas = {k: self._tarjeta(c, cuadrada=(nombre == "ojo"), alto_max=alto) for k, c in caras.items()}
         self.z0, self.z1 = (1.0, 1.09) if rng.random() < 0.6 else (1.09, 1.0)
         self.dx, self.dy = rng.uniform(-0.5, 0.5), rng.uniform(-0.5, 0.5)
 
@@ -130,8 +175,10 @@ class Escena:
         return img.crop((x, y, x + w, y + h))
 
     @staticmethod
-    def _tarjeta(cara, cuadrada):
-        ancho_max, alto_max = (780, 780) if cuadrada else (780, 820)
+    def _tarjeta(cara, cuadrada, alto_max=820):
+        ancho_max = 780
+        if cuadrada:
+            alto_max = 780
         s = min(ancho_max / cara.width, alto_max / cara.height)
         cara = cara.resize((int(cara.width * s), int(cara.height * s)), Image.LANCZOS)
         w, h = cara.size
@@ -156,7 +203,7 @@ class Escena:
         cy = H / 2 + self.dy * (H - ch) * (p - 0.5)
         caja = (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)
         img = self.fondo.resize((ANCHO, ALTO), Image.BILINEAR, box=caja)
-        if self.tarjeta is not None:
+        if self.tarjetas is not None:
             # Yami entra desde abajo con un pequeño rebote (ease-out-back) al empezar a hablar.
             e = (t - self.ini) / ENTRADA_YAMI
             if self.ini == 0:
@@ -165,8 +212,14 @@ class Escena:
                 e = min(e, 1.0)
                 rebote = 1 + 2.70158 * (e - 1) ** 3 + 1.70158 * (e - 1) ** 2
                 dy = (1 - rebote) * 1150
-                s = 0.97 + 0.05 * p
-                tj = self.tarjeta.resize((int(self.tarjeta.width * s), int(self.tarjeta.height * s)), Image.BILINEAR)
+                habla, parpadea, energia = self.animador.estado(t) if self.animador else (False, False, 0.0)
+                clave = {(True, True): "habla_parpadeo", (True, False): "habla",
+                         (False, True): "parpadeo", (False, False): "base"}[(habla, parpadea)]
+                tarjeta = self.tarjetas.get(clave) or self.tarjetas.get("habla" if habla else "base") or self.tarjetas["base"]
+                # al hablar se mueve un poquito (respira y rebota con la voz)
+                s = 0.97 + 0.05 * p + 0.012 * energia
+                dy += -6 * energia + 3 * math.sin(t * 2.1)
+                tj = tarjeta.resize((int(tarjeta.width * s), int(tarjeta.height * s)), Image.BILINEAR)
                 img = img.convert("RGBA")
                 img.alpha_composite(tj, ((ANCHO - tj.width) // 2, int(Y_TARJETA - tj.height / 2 + dy)))
                 img = img.convert("RGB")
@@ -213,7 +266,7 @@ def normalizar(entrada, salida, objetivo=-14.0, pico=-1.5):
 
 # ---------------------------------------------------------------- principal
 
-def render(ruta_guion, solo_voz=False):
+def render(ruta_guion, solo_voz=False, audio_externo=None):
     g = yaml.safe_load(Path(ruta_guion).read_text())
     out = SALIDA / g["id"]
     out.mkdir(parents=True, exist_ok=True)
@@ -221,14 +274,19 @@ def render(ruta_guion, solo_voz=False):
 
     print("· voz")
     ruta_voz = out / f"{g['id']}_voz.wav"
-    tramos, tono = voz.sintetizar(textos, "yami", ruta_voz)
+    if audio_externo:  # voz ya generada (p. ej. ElevenLabs): se alinea con el guion, sin cambiar el tono
+        tramos, palabras, tono = voz.desde_audio(audio_externo, textos, ruta_voz)
+    else:
+        tramos, tono = voz.sintetizar(textos, "yami", ruta_voz)
+        palabras = None
     total = tramos[-1][1] + COLA
     print(f"  {tramos[-1][1]:.1f} s de voz · tono {tono}")
     if solo_voz:
         return
 
     print("· subtítulos")
-    palabras = voz.tiempos_palabras(ruta_voz, textos, tramos)
+    if palabras is None:
+        palabras = voz.tiempos_palabras(ruta_voz, textos, tramos)
     bs = subtitulos.bloques(palabras)
     subtitulos.escribir_srt(bs, out / f"{g['id']}.es_LA.srt")
     subtitulos.escribir_ass(bs, out / "subtitulos.ass", g.get("resaltar", []), y=Y_SUBS)
@@ -249,7 +307,9 @@ def render(ruta_guion, solo_voz=False):
 
     print("· video")
     finales = inicios[1:] + [total]
-    escenas = [Escena(e["visual"], a, b, i + 11) for i, (e, a, b) in enumerate(zip(g["escenas"], inicios, finales))]
+    animador = Animador(ruta_voz, palabras)
+    escenas = [Escena(e["visual"], a, b, i + 11, animador)
+               for i, (e, a, b) in enumerate(zip(g["escenas"], inicios, finales))]
     gancho = texto_grande(g["gancho_pantalla"].split("\n"), Y_TITULO)
     cierre = texto_grande(g["cierre_pantalla"].split("\n"), Y_TITULO, tam=86)
     etiquetas = [etiqueta(e["etiqueta"]) if e.get("etiqueta") else None for e in g["escenas"]]
@@ -318,5 +378,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("guion")
     ap.add_argument("--solo-voz", action="store_true")
+    ap.add_argument("--audio", help="voz ya generada (ElevenLabs): mp3/wav del guion completo")
     a = ap.parse_args()
-    render(a.guion, a.solo_voz)
+    render(a.guion, a.solo_voz, a.audio)

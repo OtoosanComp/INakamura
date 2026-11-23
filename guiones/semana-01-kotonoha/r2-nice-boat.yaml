@@ -12,7 +12,7 @@ resaltar: [canceló, barco, cancelaron, paisajes, Nice boat, meme, irónico, rea
 escenas:
   - visual: fondo/tele-antigua
     texto: "Japón canceló el final de este anime... y en su lugar puso un barco."
-  - visual: yami/seria
+  - visual: yami/susurrando
     texto: "No tengas miedo... yo te explico por qué pasó."
   - visual: fondo/salon-vacio
     etiqueta: "SEPTIEMBRE · 2007"
@@ -28,10 +28,10 @@ escenas:
     texto: "Tres: el estudio llamó así a su puesto en una convención... y vendió mercancía del meme."
   - visual: fondo/mar-noche
     texto: "Y lo más irónico: el final original... también termina en un barco."
-  - visual: yami/seria2
+  - visual: yami/pensativa
     etiqueta: "REACTANCIA"
     texto: "Eso se llama reactancia: cuando te prohíben algo, tu mente lo quiere más. Por eso un final prohibido se vuelve leyenda."
-  - visual: yami/sonrisa
+  - visual: yami/tierna
     texto: "¿Hicieron bien en cancelarlo? ¿Tú qué hubieras hecho, uwu?"
 
 descripcion: |

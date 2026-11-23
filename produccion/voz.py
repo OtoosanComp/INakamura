@@ -27,6 +27,11 @@ def para_voz(texto):
     return MARCA.sub(lambda m: m.group(2), texto)
 
 
+def prompt_eleven(escenas):
+    """Texto para ElevenLabs v4: cada escena con su indicación de tono, p. ej. "[whispering] ..."."""
+    return " ".join(f"[{e.get('tono', 'softly')}] {para_voz(e['texto'])}" for e in escenas)
+
+
 def cargar_voz(personaje):
     return yaml.safe_load((RAIZ / "personajes" / personaje / "voz.yaml").read_text())
 
@@ -144,6 +149,46 @@ def tiempos_palabras(ruta, textos, tramos):
                 tiempos[j] = (cortes[n], cortes[n + 1])
         salida += [{"palabra": g, "ini": float(a), "fin": float(b), "escena": i} for g, (a, b) in zip(guion, tiempos)]
     return salida
+
+
+def desde_audio(origen, textos, destino):
+    """Voz ya generada (p. ej. ElevenLabs, guion completo en una toma): limpieza suave, sin cambio de tono.
+    Alinea con Whisper todas las palabras del guion y deduce dónde empieza y termina cada escena."""
+    ffmpeg("-i", origen, "-af", "highpass=f=70,acompressor=threshold=-22dB:ratio=2:attack=15:release=200",
+           "-ar", 48000, "-ac", 1, destino)
+    import soundfile as sf
+    total = sf.info(str(destino)).duration
+    guion = [(p, i) for i, texto in enumerate(textos) for p in para_pantalla(texto).split()]
+    segs, _ = _asr().transcribe(_audio16k(destino, 0, total), language="es", word_timestamps=True)
+    oidas = [(w.word.strip(), w.start, w.end) for s in segs for w in (s.words or [])]
+    tiempos = [None] * len(guion)
+    sm = difflib.SequenceMatcher(a=[_norm(g) for g, _ in guion], b=[_norm(o[0]) for o in oidas], autojunk=False)
+    for b in sm.get_matching_blocks():
+        for j in range(b.size):
+            tiempos[b.a + j] = oidas[b.b + j][1:]
+    anclas = [(-1, 0.0, 0.0)] + [(j, *tt) for j, tt in enumerate(tiempos) if tt] + [(len(guion), total, total)]
+    for (ja, _, fa), (jb, ib, _) in zip(anclas, anclas[1:]):
+        hueco = list(range(ja + 1, jb))
+        if hueco:
+            pesos = np.array([max(len(_norm(guion[j][0])), 1) for j in hueco], float)
+            cortes = fa + (ib - fa) * np.concatenate([[0], np.cumsum(pesos) / pesos.sum()])
+            for n, j in enumerate(hueco):
+                tiempos[j] = (cortes[n], cortes[n + 1])
+    # Quitar el silencio del principio: el gancho tiene que sonar desde el segundo 0.
+    corte = max(tiempos[0][0] - 0.05, 0.0)
+    if corte > 0.02:
+        recortado = Path(str(destino) + ".tmp.wav")
+        ffmpeg("-ss", f"{corte:.3f}", "-i", destino, recortado)
+        recortado.replace(destino)
+    palabras = [{"palabra": g, "ini": float(a) - corte, "fin": float(b) - corte, "escena": i}
+                for (g, i), (a, b) in zip(guion, tiempos)]
+    tramos = []
+    for i in range(len(textos)):
+        ps = [p for p in palabras if p["escena"] == i]
+        tramos.append((ps[0]["ini"], ps[-1]["fin"]))
+    reconocidas = sum(1 for t in sm.get_matching_blocks() for _ in range(t.size))
+    return tramos, palabras, {"f0_final": round(mediana_f0(destino), 1),
+                              "palabras_reconocidas": f"{reconocidas}/{len(guion)}"}
 
 
 if __name__ == "__main__":

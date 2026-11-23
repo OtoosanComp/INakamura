@@ -10,10 +10,11 @@ Meta: 30 días de constancia para buscar la invitación a Content Monetization.
 ## Quién es Yami (canon)
 - **Yami I. Nakamura** (やみ・なかむら). Avatar con IA; en la bio dice "Avatar virtual con IA". No es persona real.
 - 21 años, 1.49 m, ascendencia japonesa (madre) y mexicana (padre). Cosplayer.
-- **Aspecto (según la ficha de personaje):** cabello largo cobrizo/rojizo con fleco, ojos verdes, piel muy blanca.
-  Paleta: cobrizo, durazno, verde, negro, blanco. *(La biblia original decía "pelo negro con mecha morada"; mandan las imágenes.)*
+- **Aspecto:** estilo anime "Mystery & Mind": cabello largo rojo cobrizo en coleta con moño negro, ojos verdes, pecas,
+  piercings con cruz, choker con aro, chamarra negra con detalles morados. Paleta: cobrizo, verde, negro, morado.
+  *(La biblia original decía "pelo negro con mecha morada"; mandan las imágenes. La versión realista queda para pruebas.)*
 - Gemela de **Tsuki** (cabello corto lila, ojos verdes; más alta y atlética).
-- **Voz:** suave, lenta, cercana; no grita. Centro tonal **La3 (220 Hz)**, dominante de Re → complementa a Tsuki en **Re**.
+- **Voz:** suave, susurrada, cercana; no grita. ElevenLabs v4 (voz natural elegida por el usuario). Respaldo: Kokoro en Sol3.
 - **Personalidad:** tranquila, fría, explica lo oscuro sin morbo.
 - **Frase:** "No tengas miedo... yo te explico por qué pasó."
 - **Cierre:** "¿Tú qué hubieras hecho, uwu?"

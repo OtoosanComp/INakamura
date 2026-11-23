@@ -5,20 +5,19 @@ from PIL import Image
 
 from comun import MODELOS
 
-_modelo = None
+_modelos = {}
 
 
-def _cargar():
-    global _modelo
-    if _modelo is None:
+def _cargar(archivo):
+    if archivo not in _modelos:
         from spandrel import ModelLoader
-        _modelo = ModelLoader().load_from_file(str(MODELOS / "RealESRGAN_x4plus.pth")).model.eval()
-    return _modelo
+        _modelos[archivo] = ModelLoader().load_from_file(str(MODELOS / archivo)).model.eval()
+    return _modelos[archivo]
 
 
-def escalar_x4(img: Image.Image, tile=256) -> Image.Image:
-    """Escala x4 por mosaicos para no agotar la RAM."""
-    m = _cargar()
+def escalar_x4(img: Image.Image, tile=256, modelo="RealESRGAN_x4plus.pth") -> Image.Image:
+    """Escala x4 por mosaicos para no agotar la RAM. Para anime: modelo="RealESRGAN_x4plus_anime_6B.pth"."""
+    m = _cargar(modelo)
     x = torch.from_numpy(np.asarray(img.convert("RGB"), dtype=np.float32) / 255.0).permute(2, 0, 1)[None]
     _, _, h, w = x.shape
     out = torch.zeros(1, 3, h * 4, w * 4)

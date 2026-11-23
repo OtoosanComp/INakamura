@@ -1,0 +1,23 @@
+# Yami anime ("Mystery & Mind"). Imágenes hechas con ChatGPT a partir de la hoja de personaje.
+# python produccion/expresiones.py  → arma las combinaciones y las escala x4 (Real-ESRGAN anime) en listas/
+#
+# "seria" es la cara que HABLA: a la base se le pegan solo la boca (de seria-habla) y los ojos
+# (de seria-parpadeo), porque ChatGPT redibuja un poco el cabello en cada versión.
+base_habla: originales/seria.png
+boca:            # zona de la boca en la imagen de 384x512 (centro x, y; radios)
+  de: originales/seria-habla.png
+  centro: [222, 271]
+  radios: [24, 15]
+ojos:
+  de: originales/seria-parpadeo.png
+  caja: [132, 186, 292, 236]   # x0, y0, x1, y1
+expresiones:      # nombre → imagen (todas 384x512, mismo encuadre)
+  susurrando: originales/susurrando.png
+  pensativa: originales/pensativa.png
+  sorprendida: originales/sorprendida.png
+  leyendo: originales/leyendo.png
+  tierna: originales/tierna.png
+# Usos sugeridos en el guion:
+#   susurrando → gancho / "No tengas miedo"   seria → habla (contexto, Plus Yami)
+#   sorprendida → dato raro   pensativa → pregunta   leyendo → casos/investigación   tierna → cierre uwu
+# Las hd-*.png (1024x1536) sirven para portadas; no están alineadas con las de arriba.

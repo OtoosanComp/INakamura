@@ -10,10 +10,15 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 
 ## Decisiones tomadas (no re-discutir)
 - Reels de **60 s o menos**, gancho en el segundo 1, 3 por semana (Lun/Mié/Vie 8 pm CDMX). Largo de domingo después.
-- Voz: Kokoro (gratis, Apache-2.0) mezcla ef_dora+af_heart, ahora en **Sol3 = 196 Hz** (cuarta de Re; antes La3 sonaba más robótico), sin eco.
-  En evaluación: ElevenLabs v4 voz "Kevin - Calm, Expressive and Warm" (wg3kHEV2ptlzBG8TbOem, femenina latina). OJO: el plan
-  gratis de ElevenLabs NO permite uso comercial; para monetizar hace falta Starter. ~231 créditos por 13 s; ~750 por Reel.
-  Chatterbox (MIT) probado: lento (~15 min/Reel) y se come palabras ("uwu", "Yami"→"Ami").
+- **Voz (elegida por el usuario): ElevenLabs v4, voz "Kevin - Calm, Expressive and Warm" (wg3kHEV2ptlzBG8TbOem), natural,
+  SIN cambio de tono.** Flujo: `voz.prompt_eleven(escenas)` arma el texto con `[tono]` por escena → generar con el conector
+  de ElevenLabs (1 llamada por Reel, 2 tomas) → descargar a `assets/voces/` → `render.py guion.yaml --audio toma.mp3`.
+  Elegir la toma con mejor coincidencia de Whisper. ~1 crédito por carácter (Reel ≈ 800 × 2 tomas). Plan gratis: 10k/mes y
+  NO permite uso comercial → para monetizar hace falta un plan de pago (pendiente, el usuario lo resolverá).
+  Respaldo gratis: Kokoro (`personajes/yami/voz.yaml`, Sol3 196 Hz) si no hay créditos.
+- **Yami = anime "Mystery & Mind"** (cabello rojo cobrizo con moño negro, ojos verdes, pecas, chamarra negra/morada, choker).
+  `personajes/yami/anime/`: originales de ChatGPT + `listas/` escaladas x4. `yami/seria` habla (boca) y parpadea;
+  `yami/susurrando|pensativa|sorprendida|leyendo|tierna` son fijas (se mueven con la voz). Fotos realistas: `yamireal/<recorte>`.
 - Yami entra desde abajo (rebote + barrido + campanita) en sus escenas. Portada = cuadro 0.6 s (`portada.jpg`).
 - Kotonoha: ilustración ORIGINAL inspirada (`assets/fondos/kotonoha-retrato.jpg`), no arte oficial (derechos/monetización).
 - Imágenes: Yami = recortes de rostro de sus referencias (sin tomas sugerentes); fondos = anime generado localmente
@@ -23,13 +28,11 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Claude-Mem, Free-LLM/OmniRoute y MoneyPrinterV2 no sirven en la nube (ver `docs/pendientes-skills.md`).
 
 ## Estado (actualizar al terminar cada sesión)
-- Semana 1 (Kotonoha / School Days): 3 guiones listos en `guiones/semana-01-kotonoha/`, con todos sus fondos generados.
-  Piloto r1 renderizado (50 s, 220 Hz, -14 LUFS, ~64 MB) y entregado junto con las muestras de voz A (ef_dora+af_heart,
-  la actual) y B (ef_dora pura). Vista previa con animación nueva entregada. **Siguiente paso: el usuario elige voz (ElevenLabs / Kokoro mejorado / Chatterbox);
-  luego re-renderizar r1 y renderizar r2 y r3**
-  (`render.py` ~6-9 min c/u). Si elige B: cambiar `mezcla` en `personajes/yami/voz.yaml` a `[[ef_dora, 1.0]]` y re-renderizar r1.
-- Largo del domingo: solo esquema (`largo-domingo-ESQUEMA.md`).
-- Tsuki: voz propuesta en `personajes/tsuki/voz.yaml`, sin probar.
+- Semana 1: Reel de hoy r1 (Kotonoha) y Reel de presentación p0 (`guiones/presentacion/`) renderizados con voz ElevenLabs y
+  Yami anime. r2 (Nice boat) y r3 (Kotonoha vs Yuno) tienen guion y fondos; el usuario pidió la presentación en su lugar.
+- Pendiente: plan de ElevenLabs con uso comercial; idea de APK "Yami Media Studio" (panel en el teléfono + render en GitHub
+  Actions) analizada, NO iniciada; Yami realista como prueba A/B; largo del domingo (esquema).
+- Tsuki: voz propuesta en `personajes/tsuki/voz.yaml` (Re4), sin probar.
 
 ## Al empezar una sesión
 1. `bash produccion/setup.sh` (los modelos no persisten entre contenedores).

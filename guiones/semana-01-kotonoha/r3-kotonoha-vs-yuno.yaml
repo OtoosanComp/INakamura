@@ -10,7 +10,7 @@ resaltar: [Yuno, reina, segura, enfermo, enamorado, obsesión, diez minutos, Kot
 escenas:
   - visual: fondo/dos-siluetas
     texto: "Todos dicen que Yuno Gasai es la reina de las yandere... yo no estoy tan segura."
-  - visual: yami/seria
+  - visual: yami/susurrando
     texto: "No tengas miedo... yo te explico."
   - visual: fondo/corazon-cadena
     etiqueta: "YANDERE"
@@ -23,10 +23,10 @@ escenas:
     texto: "[Kotonoha|Kotonoja] empieza al revés: tímida, dulce, insegura. Cambia después de traiciones y rumores."
   - visual: fondo/estacion-lluvia
     texto: "Por eso hay fans que dicen que no es yandere de nacimiento... sino que la rompieron."
-  - visual: yami/seria2
+  - visual: yami/seria
     etiqueta: "APEGO ANSIOSO"
     texto: "En psicología se habla de apego ansioso: un miedo enorme a que te abandonen. Yuno lo vive como control... [Kotonoha|Kotonoja], como espera."
-  - visual: yami/sonrisa
+  - visual: yami/tierna
     texto: "Son personajes, no diagnósticos. ¿[Team|Tim] Yuno o [team|tim] [Kotonoha|Kotonoja]? ¿Tú qué hubieras hecho, uwu?"
 
 descripcion: |

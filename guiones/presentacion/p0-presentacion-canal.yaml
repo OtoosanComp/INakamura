@@ -1,0 +1,48 @@
+# Reel de presentación del canal — se publica primero y se fija en el perfil.
+id: p0-presentacion-canal
+titulo: Hola, soy Yami (presentación del canal)
+publicar: Antes del primer Reel (y fijarlo en el perfil)
+pilar: Presentación
+gancho_pantalla: "HAY HISTORIAS QUE\nNADIE TE EXPLICÓ"
+cierre_pantalla: "NOS VEMOS\nLUN · MIÉ · VIE 8 PM"
+resaltar: [historias, explicó, Yami, avatar, inteligencia, psicología, anime, casos, mente, lunes, miércoles, viernes, yandere, quedas]
+
+escenas:
+  - visual: yami/susurrando
+    tono: whispering
+    texto: "Shhh... acércate. Hay historias que nadie te explicó bien."
+  - visual: yami/seria
+    etiqueta: "AVATAR CON IA"
+    tono: softly
+    texto: "Soy Yami Nakamura... y sí, soy un avatar creado con inteligencia artificial."
+  - visual: fondo/estacion-lluvia
+    etiqueta: "PSICOLOGÍA OSCURA · ANIME"
+    tono: calm
+    texto: "Aquí hablamos de psicología oscura, de anime... y de casos reales que dan miedo, pero sin imágenes fuertes."
+  - visual: yami/leyendo
+    etiqueta: "CASE NOTES"
+    tono: serious
+    texto: "Yo investigo cada historia... y te explico qué pasaba por la mente de cada persona."
+  - visual: yami/sorprendida
+    tono: curious
+    texto: "Porque lo más aterrador... casi nunca es el monstruo. Es la mente."
+  - visual: fondo/azotea
+    etiqueta: "LUN · MIÉ · VIE · 8 PM"
+    tono: calm
+    texto: "Nos vemos lunes, miércoles y viernes, a las ocho de la noche."
+  - visual: yami/pensativa
+    tono: curious
+    texto: "Y empezamos con la yandere más famosa del anime... ¿adivinas quién es?"
+  - visual: yami/tierna
+    tono: playful
+    texto: "No tengas miedo... yo te explico. ¿Te quedas, uwu?"
+
+descripcion: |
+  Hola, soy Yami 🌙 Avatar virtual con IA.
+  Psicología oscura + anime + true crime explicado con calma, sin imágenes fuertes.
+  Nuevos videos lunes, miércoles y viernes a las 8 pm (hora CDMX).
+
+  Contenido educativo y de divulgación, sin material gráfico.
+hashtags: ["#psicologiaoscura", "#anime", "#truecrime"]
+comentario_fijado: "¿Qué caso o personaje quieres que te explique primero? 👇"
+fuentes: []
