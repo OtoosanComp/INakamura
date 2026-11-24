@@ -14,10 +14,11 @@ Meta: 30 días de constancia para buscar la invitación a Content Monetization.
   piercings con cruz, choker con aro, chamarra negra con detalles morados. Paleta: cobrizo, verde, negro, morado.
   *(La biblia original decía "pelo negro con mecha morada"; mandan las imágenes. La versión realista queda para pruebas.)*
 - Gemela de **Tsuki** (cabello corto lila, ojos verdes; más alta y atlética).
-- **Voz:** suave, susurrada, cercana; no grita. ElevenLabs v4 (voz natural elegida por el usuario). Respaldo: Kokoro en Sol3.
+- **Voz:** suave, cercana y claramente femenina; no grita y NO abre susurrando. ElevenLabs v4, voz "Ingrid – natural & soft"
+  (~220 Hz), sin indicaciones de tono. Respaldo gratis: Kokoro en Sol3.
 - **Personalidad:** tranquila, fría, explica lo oscuro sin morbo.
 - **Frase:** "No tengas miedo... yo te explico por qué pasó."
-- **Cierre:** "¿Tú qué hubieras hecho, uwu?"
+- **Cierre:** "¿Tú qué hubieras hecho?" — **sin "uwu" ni muletillas de ese estilo.**
 
 ## Tema: "El Elegido"
 Psicología oscura + true crime con estilo anime, al estilo de los narradores de leyendas pero con nuestro plus:
@@ -35,8 +36,9 @@ ellos cuentan con humor; **nosotros explicamos la mente** (psicología + anime +
 9. **(Nuevo)** Personajes de ficción: "se parece a…", nunca diagnósticos.
 
 ## Formato (70/30)
-- **70 % Reels de 60 s o menos** (decisión nuestra; la biblia original decía 60-90): 3 por semana, **Lun-Mié-Vie 8 pm**.
-- **30 % video largo de 3-4 min**: domingo. De un largo salen 2 Reels más.
+- **Reels de 60 s o menos**: idealmente uno al día, **sin horario ni días fijos** (y nunca prometer horarios en los videos).
+- **Meta de videos largos: 1 por semana, el día que se pueda**, de 8–10 min, en **YouTube** (ver `docs/videos-largos.md`).
+  De cada largo salen 3–4 Reels/Shorts. Facebook e Instagram para Reels; TikTok y Spotify como extra.
 
 ## Estructura de cada Reel (≤ 60 s)
 | Segundos | Parte |
@@ -46,7 +48,7 @@ ellos cuentan con humor; **nosotros explicamos la mente** (psicología + anime +
 | 6–15 | Contexto: año y lugar, sin nombres reales |
 | 15–40 | 3 datos raros (DATO 1/2/3) |
 | 40–52 | Plus Yami: concepto de psicología con ejemplo de anime |
-| 52–60 | Pregunta + "¿Tú qué hubieras hecho, uwu?" |
+| 52–60 | Pregunta + "¿Tú qué hubieras hecho?" |
 
 ## 4 pilares
 1. Psicología de anime — 40 % (ej. "Psicología del Yandere")

@@ -11,7 +11,7 @@
 4. **Psicología (60 s):** disociación (APA), aislamiento social (APA), apego ansioso, vínculo traumático. Siempre con "se parece a", nunca diagnóstico.
 5. **El final y "Nice boat" (40 s):** cancelación, paisajes, meme, ironía del barco. Sin detalles del final.
 6. **¿Villana o víctima? (20 s):** postura de Yami + pregunta al público.
-7. **Cierre:** "¿Tú qué hubieras hecho, uwu?"
+7. **Cierre:** "¿Tú qué hubieras hecho?"
 
 ## Ideas de producción para el largo
 - Yami con más expresiones (pedir 2–3 imágenes nuevas de ella en ambiente oscuro, ropa casual/oscura).

@@ -34,7 +34,9 @@ Ante cualquier palabra extranjera nueva, prueba: `python produccion/voz.py --pru
 3. **Contexto** (año, lugar, sin nombres reales de víctimas).
 4. **3 datos raros**, con `etiqueta: "DATO 1/2/3"`.
 5. **Plus Yami**: un concepto de psicología con fuente reputable, dicho como "se parece a", nunca diagnóstico.
-6. **Cierre**: pregunta + "¿Tú qué hubieras hecho, uwu?" (no "sígueme", no "mira hasta el final": Meta lo castiga).
+6. **Cierre**: pregunta + "¿Tú qué hubieras hecho?" (no "sígueme", no "mira hasta el final": Meta lo castiga).
+
+**Prohibido**: "uwu" y muletillas de ese estilo; abrir susurrando; anunciar días u horarios de publicación.
 
 Mide con `python produccion/render.py <guion> --solo-voz`; si la voz pasa de 58 s, recorta.
 

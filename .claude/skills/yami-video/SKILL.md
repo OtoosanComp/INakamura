@@ -28,7 +28,7 @@ Córrelo en segundo plano. Revisa las imágenes (sin texto raro, sin sangre/arma
 
 ## 3c. Voz con ElevenLabs (la elegida)
 1. `python -c "import yaml,voz;print(voz.prompt_eleven(yaml.safe_load(open(G))['escenas']))"` (G = ruta del guion).
-2. Conector ElevenLabs: `creative_generate_speech` con `model_id=eleven_v4`, `voice_id=wg3kHEV2ptlzBG8TbOem`
+2. Conector ElevenLabs: `creative_generate_speech` con `model_id=eleven_v4`, `voice_id=KVJNlB9xei0FCE8ekWnI` (Ingrid), SIN etiquetas `[tono]`
    (estimar primero con `estimate_only`; nunca reintentar una generación: cobra otra vez). Sondear con
    `creative_get_flow_run_status` y descargar las tomas a `assets/voces/<id>-tomaN.mp3`.
 3. Elegir la toma que Whisper transcribe mejor y renderizar con `--audio`.

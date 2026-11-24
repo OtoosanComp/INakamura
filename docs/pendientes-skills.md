@@ -11,11 +11,11 @@ Actualizado 2026-11-23. Contexto: solo Claude Code en la nube (sin PC); cada ses
 | **Free-LLM / OmniRoute** | ❌ No aplica | Routers de modelos para PC. Free-LLM se revisó (commit `85864c4`, sin código malicioso). Script en la rama `ccr-19057618-ez919c`. |
 | **VoiceStudio** | ➖ En el teléfono | https://github.com/debpalash/VoiceStudio (AGPL-3.0). Sirve para pruebas en el teléfono; la producción usa Kokoro aquí. |
 | **MoneyPrinterV2** | ❌ Descartado | Automatiza bots de X/YouTube, afiliados y correos en frío; necesita PC y arriesga las cuentas. Nuestro pipeline cubre "crear videos desde cero". |
-| **ElevenLabs** (conector) | ⏸ Reserva | Créditos limitados. Solo si se necesita algo que Kokoro/MeinaMix no logren (p. ej. labios sincronizados). |
+| **ElevenLabs** (conector) | ✅ En uso | Voz de Yami: "Ingrid – natural & soft". Plan gratis = 10k créditos/mes y sin uso comercial; para monetizar hace falta un plan de pago. |
 
 ## Pendientes
-1. Aprobar voz y estilo del piloto → renderizar r2 y r3.
+1. Plan de ElevenLabs con uso comercial; luego renderizar r2 y r3 con Ingrid.
 2. Probar la voz de Tsuki (Re4) cuando haga falta.
 3. Más imágenes de Yami en ambiente oscuro/casual (para más expresiones).
 4. Guardar `produccion/setup.sh` como script de arranque del entorno (para no reinstalar en cada sesión).
-5. Escribir el largo del domingo (esquema listo).
+5. Escribir el primer video largo para YouTube (esquema listo; ver `docs/videos-largos.md`).

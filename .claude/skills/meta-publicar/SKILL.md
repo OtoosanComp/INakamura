@@ -18,7 +18,9 @@ Basado en `docs/investigacion-semana-01.md` (Parte B). Las políticas cambian: s
 - [ ] Sin contenido sugerente de Yami.
 
 ## Calendario
-Reels Lun/Mié/Vie 8:00 pm (CDMX). Largo de 3-4 min el domingo. Programar en Meta Business Suite.
+Sin horario fijo: idealmente un Reel al día, cuando se pueda. Nunca anunciar días u horarios en los videos.
+Meta: 1 video largo por semana (8–10 min) en YouTube, el día que se pueda; recortar 3–4 Reels/Shorts de cada largo.
+Ver `docs/videos-largos.md` (requisitos de YouTube, TikTok, Spotify y Facebook desde México).
 
 ## Monetización
 - Content Monetization de Facebook es **por invitación**; se expresa interés en el Panel Profesional

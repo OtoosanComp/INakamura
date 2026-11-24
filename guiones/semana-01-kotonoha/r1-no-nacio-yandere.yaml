@@ -1,8 +1,8 @@
-# Reel 1 — Lunes 8:00 pm (CDMX). Pilar: Psicología de anime.
+# Reel 1. Pilar: Psicología de anime.
 # Sintaxis en "texto": [como se lee en pantalla|como lo pronuncia la voz]
 id: s01-r1-no-nacio-yandere
 titulo: La yandere más famosa no nació así
-publicar: Lunes 8:00 pm (hora CDMX)
+publicar: Cualquier día (sin horario fijo)
 pilar: Psicología de anime (40 %)
 gancho_pantalla: "LA YANDERE MÁS FAMOSA\nNO NACIÓ ASÍ"
 cierre_pantalla: "¿YANDERE...\nO LA VOLVIERON UNA?"
@@ -10,42 +10,31 @@ resaltar: [yandere, Kotonoha, aburría, rumores, sola, consolarla, vínculo trau
 
 escenas:
   # visual: yami/<expresión anime> (seria habla y parpadea) · fondo/<id>
-  # tono: indicación para ElevenLabs v4 (whispering, softly, calm, serious, curious, playful)
   - visual: fondo/kotonoha-retrato
-    tono: softly
     texto: "La yandere más famosa del anime... no nació así."
   - visual: yami/susurrando
-    tono: whispering
     texto: "No tengas miedo... yo te explico por qué pasó."
   - visual: fondo/salon-vacio
     etiqueta: "SCHOOL DAYS · 2007"
-    tono: calm
     texto: "[School Days|Escul Deis], [2007|dos mil siete]. [Kotonoha|Kotonoja] era la chica tímida del salón: buena alumna, callada, siempre con un libro."
   - visual: fondo/telefono-noche
     etiqueta: "DATO 1"
-    tono: serious
     texto: "Primero: su novio, Makoto, le confesó a otra chica que se aburría con ella."
   - visual: fondo/pasillo-rumores
     etiqueta: "DATO 2"
-    tono: serious
     texto: "Segundo: empezaron los rumores sobre ella... y se fue quedando sola."
   - visual: yami/sorprendida
     etiqueta: "DATO 3"
-    tono: curious
     texto: "Tercero: él le dijo que ya no le gustaba... y días después volvió a consolarla, como si nada."
   - visual: yami/seria
     etiqueta: "VÍNCULO TRAUMÁTICO"
-    tono: calm
     texto: "Eso tiene nombre: vínculo traumático. Cuando alguien te lastima y después te da cariño, el apego no se rompe... se hace más fuerte."
   - visual: fondo/estacion-lluvia
-    tono: softly
     texto: "No es un diagnóstico, es un personaje... pero pasa en la vida real."
   - visual: yami/pensativa
-    tono: curious
     texto: "Entonces... ¿[Kotonoha|Kotonoja] era yandere, o la volvieron una?"
   - visual: yami/tierna
-    tono: playful
-    texto: "¿Tú qué hubieras hecho, uwu?"
+    texto: "¿Tú qué hubieras hecho?"
 
 descripcion: |
   ¿Kotonoha Katsura era yandere... o la volvieron una? 🌙

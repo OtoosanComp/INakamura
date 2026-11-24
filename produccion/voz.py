@@ -28,8 +28,9 @@ def para_voz(texto):
 
 
 def prompt_eleven(escenas):
-    """Texto para ElevenLabs v4: cada escena con su indicación de tono, p. ej. "[whispering] ..."."""
-    return " ".join(f"[{e.get('tono', 'softly')}] {para_voz(e['texto'])}" for e in escenas)
+    """Texto para ElevenLabs. Sin indicaciones de tono por defecto: con [whispering]/[serious] la voz se iba a
+    registros graves y sonaba masculina. Si una escena trae `tono`, se antepone como "[tono]"."""
+    return " ".join((f"[{e['tono']}] " if e.get("tono") else "") + para_voz(e["texto"]) for e in escenas)
 
 
 def cargar_voz(personaje):

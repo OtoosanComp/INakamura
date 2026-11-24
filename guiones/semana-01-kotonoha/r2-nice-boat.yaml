@@ -1,9 +1,9 @@
-# Reel 2 — Miércoles 8:00 pm (CDMX). Pilar: Psicología de anime / curiosidad.
+# Reel 2. Pilar: Psicología de anime / curiosidad.
 # El hecho real de Kioto se menciona SOLO como "un hecho violento real", sin detalles,
 # sin nombres y sin insinuar que el anime lo causó.
 id: s01-r2-nice-boat
 titulo: Japón canceló el final y puso un barco
-publicar: Miércoles 8:00 pm (hora CDMX)
+publicar: Cualquier día (sin horario fijo)
 pilar: Psicología de anime (40 %)
 gancho_pantalla: "JAPÓN CANCELÓ EL FINAL\nY PUSO UN BARCO"
 cierre_pantalla: "¿HICIERON BIEN\nEN CANCELARLO?"
@@ -32,7 +32,7 @@ escenas:
     etiqueta: "REACTANCIA"
     texto: "Eso se llama reactancia: cuando te prohíben algo, tu mente lo quiere más. Por eso un final prohibido se vuelve leyenda."
   - visual: yami/tierna
-    texto: "¿Hicieron bien en cancelarlo? ¿Tú qué hubieras hecho, uwu?"
+    texto: "¿Hicieron bien en cancelarlo? ¿Tú qué hubieras hecho?"
 
 descripcion: |
   ¿Por qué cancelaron el final de School Days? La historia real detrás del meme "Nice boat" 🚢🌙

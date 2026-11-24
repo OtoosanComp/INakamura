@@ -9,9 +9,12 @@ Contenido para **Yami Nakamura**, avatar IA (psicología oscura + anime + true c
 Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-guion`, `yami-video`, `meta-publicar`.
 
 ## Decisiones tomadas (no re-discutir)
-- Reels de **60 s o menos**, gancho en el segundo 1, 3 por semana (Lun/Mié/Vie 8 pm CDMX). Largo de domingo después.
-- **Voz (elegida por el usuario): ElevenLabs v4, voz "Kevin - Calm, Expressive and Warm" (wg3kHEV2ptlzBG8TbOem), natural,
-  SIN cambio de tono.** Flujo: `voz.prompt_eleven(escenas)` arma el texto con `[tono]` por escena → generar con el conector
+- Reels de **60 s o menos**, gancho en el segundo 1, idealmente uno al día **sin horario fijo** (no mencionar horarios en los videos).
+  Meta de largos: **1 por semana (8–10 min) en YouTube**, día libre; de cada largo salen 3–4 Reels/Shorts (`docs/videos-largos.md`).
+- **Nada de "uwu" ni expresiones así.** Cierre: "¿Tú qué hubieras hecho?". No abrir susurrando.
+- **Voz: ElevenLabs v4, voz "Ingrid - natural & soft" (KVJNlB9xei0FCE8ekWnI), SIN indicaciones de tono y SIN cambio de tono.**
+  (Antes "Kevin": con [whispering]/[serious] bajaba a 120–140 Hz y sonaba masculina; Ingrid queda en ~220 Hz, nunca < 195.)
+  Revisar cada toma con `scratchpad`/evaluar: mediana ≥ 190 Hz y ninguna ventana de 4 s < 170 Hz. Flujo: `voz.prompt_eleven(escenas)` arma el texto con `[tono]` por escena → generar con el conector
   de ElevenLabs (1 llamada por Reel, 2 tomas) → descargar a `assets/voces/` → `render.py guion.yaml --audio toma.mp3`.
   Elegir la toma con mejor coincidencia de Whisper. ~1 crédito por carácter (Reel ≈ 800 × 2 tomas). Plan gratis: 10k/mes y
   NO permite uso comercial → para monetizar hace falta un plan de pago (pendiente, el usuario lo resolverá).
@@ -31,7 +34,7 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Semana 1: Reel de hoy r1 (Kotonoha) y Reel de presentación p0 (`guiones/presentacion/`) renderizados con voz ElevenLabs y
   Yami anime. r2 (Nice boat) y r3 (Kotonoha vs Yuno) tienen guion y fondos; el usuario pidió la presentación en su lugar.
 - Pendiente: plan de ElevenLabs con uso comercial; idea de APK "Yami Media Studio" (panel en el teléfono + render en GitHub
-  Actions) analizada, NO iniciada; Yami realista como prueba A/B; largo del domingo (esquema).
+  Actions) analizada, NO iniciada; Yami realista como prueba A/B; primer video largo (esquema en `guiones/semana-01-kotonoha/largo-domingo-ESQUEMA.md`).
 - Tsuki: voz propuesta en `personajes/tsuki/voz.yaml` (Re4), sin probar.
 
 ## Al empezar una sesión
