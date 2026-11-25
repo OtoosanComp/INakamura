@@ -203,7 +203,7 @@ def lienzo(ref, conf):
     if k not in _cache:
         im = imagen(ref, conf)
         ar = im.width / im.height
-        if 1.3 <= ar <= 2.0:
+        if 1.3 <= ar <= 2.0 or (ar > 2.0 and ar < 2.7 and im.height >= 700):  # panorámicas en HD: llenan
             _cache[k] = im
         else:
             GW, GH = int(W * 1.25), int(H * 1.25)
