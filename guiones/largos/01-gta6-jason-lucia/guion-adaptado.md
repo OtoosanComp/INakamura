@@ -1,0 +1,191 @@
+# GTA VI: ¿Qué hay detrás de Jason y Lucia?
+## La psicología de una pareja que quiere escapar de su pasado
+
+Video largo (~10 min) para YouTube · Adaptado del guion del usuario (25-nov-2026).
+Estilo: reflexivo tipo Farid Dieck (imagina…, preguntas, metáforas) + humor tipo Leyendas Legendarias (chistes cortos, cotidianos).
+Datos verificados en `docs/verificacion-gta6.md`. Las líneas con `>` son notas (no se leen). `[pantalla|voz]` = cómo se escribe | cómo se pronuncia.
+La voz se genera en CapCut con `voz-capcut.txt` (mismo texto, ya con la pronunciación).
+
+---
+
+## 0. Apertura
+> Tono: lento, íntimo. [VISUAL: Yami realista en penumbra; luego atardecer de playa/ciudad]
+
+Imagina que te dan una sola oportunidad de empezar de cero.
+
+Pero hay una condición: para conseguirla, tienes que seguir haciendo exactamente lo mismo que te trajo hasta aquí.
+
+¿La tomarías?
+
+Suena a filosofía de las tres de la mañana, pero esa pregunta es el corazón de una de las parejas más comentadas de los videojuegos.
+
+## 1. Presentación
+> Tono: cálido, con chispa. [VISUAL: portada/arte de GTA VI · fotos de Jason y Lucia]
+
+Hola, ¿cómo están? Soy Yami I. Nakamura, y hoy vamos a hablar de [Jason|Yéison] Duval y Lucia Caminos, los protagonistas de [GTA VI|yi ti ei seis], que salió el diecinueve de noviembre.
+
+Una pareja que quiere dejar atrás su pasado, juntar dinero y tener una vida tranquila.
+
+Y su plan para tener una vida tranquila es… meterse en problemas cada vez más grandes.
+
+O sea, es como querer bajar de peso inscribiéndote a un concurso de comer tacos. Spoiler: no suele funcionar.
+
+Pero hoy no vamos a hablar de robos ni de persecuciones. Vamos a hablar de lo que pasa por dentro. ¿Qué ocurre cuando dos personas se aman… y al mismo tiempo pueden ser el mayor peligro para la otra?
+
+## Aviso
+> [VISUAL: texto grande "SPOILERS" · Yami seria]
+
+Antes de seguir: este análisis tiene spoilers de la historia y de los finales. Si todavía no lo terminas, guárdalo para después. Yo aquí te espero. No me voy a ningún lado; literalmente, no puedo.
+
+Y una aclaración importante: [Jason|Yéison] y Lucia son personajes de ficción. Lo que hago aquí es una lectura con conceptos de psicología, no un diagnóstico.
+
+Ahora sí… comenzamos.
+
+## 2. Lucia: cuando la libertad se vuelve necesidad
+> Tono: cercano, analítico. [VISUAL: fotos de Lucia · prisión/rejas (sin violencia) · "LOCUS DE CONTROL · Rotter, 1966"]
+
+Empecemos con Lucia.
+
+Según su biografía oficial, su papá le enseñó a pelear casi desde que aprendió a caminar. Y la vida, desde entonces, no ha dejado de lanzarle golpes.
+
+Pelear por su familia la llevó a la penitenciaría de Leonida. Y en la historia, además, pierde la custodia de su hijo.
+
+Ahora piensa esto: ¿qué le pasa a una persona que siente que su vida la deciden otros?
+
+En psicología existe un concepto llamado locus de control. Lo propuso Julian Rotter en mil novecientos sesenta y seis. Habla de dónde creemos que está el control de lo que nos pasa: dentro de nosotros, en nuestras decisiones… o afuera, en la suerte, en el sistema, en los demás.
+
+Cuando alguien pasa mucho tiempo sintiendo que el control está afuera, recuperar el volante se vuelve casi una obsesión.
+
+Por eso, para Lucia, el dinero no es solo una casa bonita. Es dejar de depender de otros. Es tener opciones. Es no volver a sentirse encerrada… en ningún sentido.
+
+Rockstar lo resume así: Lucia aprendió la lección; de aquí en adelante, solo movimientos inteligentes.
+
+Y aquí viene la contradicción: para ganar libertad, se mete en una vida que puede quitársela otra vez.
+
+No porque sea tonta. Sino porque, cuando estás desesperado por salir, ves la puerta… y dejas de ver el precipicio que hay detrás.
+
+## 3. Jason: proteger como forma de amar
+> Tono: reflexivo. [VISUAL: fotos de Jason · los Cayos/mar · "MASCULINIDAD TRADICIONAL · APA, 2018"]
+
+Ahora, [Jason|Yéison].
+
+Creció entre estafadores, pasó por el ejército tratando de dejar atrás una adolescencia complicada, y terminó en los Cayos trabajando para traficantes locales. Un currículum que no pondrías en [LinkedIn|lincdin].
+
+Rockstar dice algo que me parece muy humano: [Jason|Yéison] quiere una vida fácil… pero las cosas no dejan de complicarse.
+
+[Jason|Yéison] no suele decir lo que siente. Lo demuestra haciendo: ayudando, protegiendo, resolviendo.
+
+La Asociación Americana de Psicología describe algo llamado ideología de la masculinidad tradicional: normas sociales que les piden a los hombres no mostrar debilidad, ser fuertes y tomar riesgos.
+
+Ojo: no es un diagnóstico ni algo que [Jason|Yéison] "tenga". Es una idea con la que muchos crecimos rodeados.
+
+Y nos ayuda a entender por qué, para él, proteger a Lucia puede volverse parte de quién es.
+
+El problema empieza cuando proteger se confunde con salvar.
+
+Porque apoyar a tu pareja es una cosa… y creer que eres responsable de rescatarla de todo es otra muy distinta.
+
+Ahí la ayuda se vuelve carga. Y el sacrificio empieza a disfrazarse de amor.
+
+## 4. ¿Por qué se necesitan tanto?
+> Tono: curioso. [VISUAL: Jason y Lucia juntos · tormenta/refugio · preguntas en pantalla]
+
+Rockstar describe a la pareja con una frase: siempre han sabido que la baraja está en su contra.
+
+Y cuando el mundo se siente hostil, encontrar a alguien de tu lado se siente como encontrar techo en plena tormenta.
+
+La psicología lo llama apoyo social. Y en pareja hay un término muy bonito: afrontamiento diádico, la forma en que dos personas enfrentan juntas el estrés. Las investigaciones lo relacionan con relaciones más sanas y con más bienestar.
+
+Pero hay una línea delgada entre apoyarse… y no poder funcionar sin el otro.
+
+Juntos, [Jason|Yéison] y Lucia se sienten capaces de todo. Y justo por eso, a veces se arriesgan a cosas que solos jamás harían.
+
+¿Eso los hace una pareja tóxica? No necesariamente. Una relación intensa no es automáticamente una relación dañina.
+
+Mejor pregúntate: ¿se respetan? ¿Pueden decir que no? ¿Puede cada uno decidir por su cuenta? ¿Se apoyan incluso cuando no están de acuerdo?
+
+Esas preguntas dicen mucho más que cualquier etiqueta.
+
+## 5. El dinero y la promesa de empezar de cero
+> Tono: más dinámico. [VISUAL: billetes/autos de lujo (sin armas) · "Killingsworth, Kahneman y Mellers, 2023"]
+
+Y ahora, lo que nunca falta en [GTA|yi ti ei]: el dinero. Mucho. Del que no se declara.
+
+Durante años se repitió que el dinero no da la felicidad. Pero los estudios son más complicados.
+
+Una investigación de dos mil veintitrés, de [Killingsworth|Kílingsworth], [Kahneman|Kániman] y Mellers, encontró que, para la mayoría de las personas, más ingresos sí se asocian con más bienestar. Solo en el grupo más infeliz, a partir de cierto punto, el dinero deja de mejorar las cosas.
+
+O sea: el dinero ayuda. Pero no arregla lo que duele por dentro si nadie lo atiende.
+
+[Jason|Yéison] y Lucia no quieren solo dinero. Quieren otra vida.
+
+Y aquí está la pregunta incómoda: ¿se puede construir una vida nueva usando las mismas acciones que te metieron en problemas?
+
+Si para escapar necesitas repetir lo que te atrapó… quizá no estás escapando. Solo estás cambiando de escenario.
+
+## 6. Confianza y autonomía
+> Tono: reflexivo. [VISUAL: luces de patrulla de lejos · "Rempel, Holmes y Zanna, 1985" · "Teoría de la autodeterminación"]
+
+Hablemos de confianza.
+
+En mil novecientos ochenta y cinco, los investigadores [Rempel|Rémpel], [Holmes|Jolms] y [Zanna|Zana] describieron tres piezas de la confianza en pareja: previsibilidad, saber cómo va a actuar el otro; fiabilidad, poder contar con él cuando hay riesgo; y fe, creer que seguirá ahí aunque el futuro sea incierto.
+
+Ahora imagínate construir todo eso… mientras te persigue media policía de Leonida.
+
+Cuando una relación vive bajo amenaza constante, el miedo a perder al otro puede volverse control. La preocupación, vigilancia. Y la protección, una excusa para decidir por la otra persona.
+
+La teoría de la autodeterminación dice que necesitamos dos cosas a la vez: sentirnos conectados… y sentirnos dueños de nuestras decisiones.
+
+Una pareja puede ser un equipo sin convertirse en una sola persona.
+
+## 7. Los finales (sí, en plural)
+> Tono: emotivo sin exagerar. [VISUAL: amanecer · familia de espaldas (sin rostros) · "RESILIENCIA · APA"]
+
+Y llegamos a los finales. Sí, en plural.
+
+[GTA VI|yi ti ei seis] tiene varios desenlaces, y dependen de tus decisiones, de cuánto ahorraste y de qué tan fuerte es la relación entre ellos.
+
+En algunos, la historia termina en tragedia. En otros, uno de los dos queda en prisión.
+
+Y en el mejor, según las guías del juego, la familia vuelve a estar junta: [Jason|Yéison], Lucia y su hijo, Tomás.
+
+Pero incluso ese final no borra lo que hicieron. Lo que cambia es la posibilidad de construir algo distinto.
+
+La psicología tiene una palabra para eso: resiliencia. La Asociación Americana de Psicología la define como el proceso de adaptarse bien a experiencias difíciles. Y depende mucho del apoyo de los demás.
+
+No es ser invencible. Es tener a alguien, y algo, de dónde agarrarse.
+
+Pero no basta con sobrevivir. Hay que aprender a vivir de otra manera.
+
+## 8. Lo que nos dejan + despedida
+> Tono: cercano, como plática; al final, cálido. [VISUAL: Yami realista · logo/pantalla final del canal]
+
+Así que me quedo con tres ideas.
+
+Uno: amar no debería ser una obligación de salvar al otro.
+
+Dos: conseguir lo que quieres no siempre es resolver lo que necesitas.
+
+Y tres: una relación puede ayudarte a cambiar, pero no puede decidir por ti.
+
+Ahora quiero leerte: ¿[Jason|Yéison] y Lucia se ayudan a crecer… o se empujan al peligro? Y si ya lo jugaste: ¿qué final te tocó?
+
+Si te gustó este análisis, suscríbete a Otoosantales y acompáñame en el siguiente tema.
+
+Soy Yami I. Nakamura.
+
+Y recuerda: no todo lo que parece amor es saludable… pero tampoco todo lo que parece complicado está condenado a terminar mal.
+
+---
+
+## Fuentes (para la descripción del video)
+- Lanzamiento 19-nov-2026, varios finales, hijo (Tomás), custodia: https://en.wikipedia.org/wiki/Grand_Theft_Auto_VI
+- Biografías y premisa oficial (Rockstar): https://www.rockstargames.com/VI/only-in-leonida · https://www.rockstargames.com/VI/trailer-1
+- Finales según guías: https://comicbook.com/gaming/list/every-known-ending-of-gta-6-explained-how-to-unlock-each-of-them/ · https://beebom.com/gta-6-endings/
+- Locus de control (Rotter, 1966): https://dictionary.apa.org/locus-of-control
+- Masculinidad tradicional (APA, 2018): https://www.apa.org/about/policy/boys-men-practice-guidelines.pdf
+- Apoyo social: https://dictionary.apa.org/social-support · afrontamiento diádico: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6443825/
+- Dinero y bienestar (Killingsworth, Kahneman y Mellers, 2023): https://pmc.ncbi.nlm.nih.gov/articles/PMC10013834/
+- Confianza (Rempel, Holmes y Zanna, 1985): https://www.yorku.ca/rokada/psyctest/trust.pdf
+- Teoría de la autodeterminación: https://dictionary.apa.org/self-determination-theory
+- Resiliencia (APA): https://dictionary.apa.org/resilience
