@@ -43,12 +43,14 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
   Kotonoha (55 s, `assets/voces/r1-ingrid-toma1.mp3`). r2 (Nice boat) y r3 (Kotonoha vs Yuno): guion y fondos listos.
 - Reel 4 (yandere más popular, `guiones/semana-02-yandere-ranking/`): entregado (48 s), retratos detrás de Yami (`tras:`) y
   portadas oficiales al mencionar cada anime (`portada:`; se descargan a la caché, no se suben al repo público).
-- ElevenLabs: 6,346 de 10,000 créditos usados este mes (plan gratis, sin uso comercial).
+- ElevenLabs: plan **Starter pagado** (con uso comercial). 33,654 créditos por periodo; se reinician el 25 dic 2026.
+  Sin cobro excedente en Starter: al acabarse se detiene. Presupuesto: Reel ≈ 800 créditos por toma; largo ≈ 7,900 (1 toma,
+  por partes; repetir solo la parte que falle). Mezcla sugerida al mes: 2 largos + ~10 Reels a 2 tomas.
 - Mezcla: cada pista se iguala antes de mezclar (voz -16, música -31, efectos -27 LUFS; final -14). `render.py --remezclar`
   rehace solo el audio de un Reel ya armado. (Antes la voz de ElevenLabs quedaba 15 dB bajo los efectos.)
 - Voces de CapCut: opción gratis para Reels; el usuario exporta la voz y se usa con `--audio` (pendiente de probar).
 - Meta de largos: 1 por semana en YouTube (8–10 min). Primer largo: esquema en `guiones/semana-01-kotonoha/largo-domingo-ESQUEMA.md`.
-- Pendiente: plan de pago de ElevenLabs; idea de APK (analizada, no iniciada); Yami realista como prueba; voz de Tsuki.
+- Pendiente: idea de APK (analizada, no iniciada); Yami realista como prueba; voz de Tsuki.
 
 ## Al empezar una sesión
 1. `bash produccion/setup.sh` (los modelos no persisten entre contenedores).
