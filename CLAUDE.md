@@ -3,8 +3,11 @@
 > **Rama `proyecto-meta-videos-largos`**: aquí se trabajan los VIDEOS LARGOS (YouTube, 8–10 min, domingo 7 pm).
 > Video 01: `guiones/largos/01-gta6-jason-lucia/` — guion verificado (`guion-adaptado.md`), texto para la voz de CapCut
 > (`voz-capcut.txt`). El usuario sube la voz y las fotos a `entrada/` (o las manda por el chat).
-> Pendiente al armarlo: diseño horizontal 16:9 (Yami a un lado, imagen al otro), Yami realista, poco lipsync,
-> render por partes de ~2 min (si el contenedor se reinicia, solo se rehace una parte), entrega en 720p o por partes.
+> Video 01 ARMADO con voz ElevenLabs (Ingrid, 1 toma, `assets/voces/largo01-parte{1,2,3}.mp3`, 7,692 créditos):
+> `produccion/largo.py <largo.yaml> voz|cues|video [--parte N]` (16:9 720p, render por partes de 2 min en paralelo,
+> imágenes del usuario en `entrada/fotos/`, cambios de imagen/rótulos/stickers por frase en `largo.yaml`).
+> Publicación: `publicar-youtube.txt`. Plan: GTA el jueves 26-nov (única vez), largo 02 yandere el domingo.
+> Las fotos realistas sugerentes que mande el usuario NO se usan ni se suben (regla de la biblia).
 > Los Reels siguen en la rama `proyecto-meta`; al terminar un largo, fusionar aquí → proyecto-meta si hace falta.
 
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
@@ -44,8 +47,9 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Reel 4 (yandere más popular, `guiones/semana-02-yandere-ranking/`): entregado (48 s), retratos detrás de Yami (`tras:`) y
   portadas oficiales al mencionar cada anime (`portada:`; se descargan a la caché, no se suben al repo público).
 - ElevenLabs: plan **Starter pagado** (con uso comercial). 33,654 créditos por periodo; se reinician el 25 dic 2026.
+  Usados: 7,692 (largo 01). Quedan ~25,960 → largo 02 (~8k) + ~10 Reels a 1 toma (o 2 tomas si sobra).
   Sin cobro excedente en Starter: al acabarse se detiene. Presupuesto: Reel ≈ 800 créditos por toma; largo ≈ 7,900 (1 toma,
-  por partes; repetir solo la parte que falle). Mezcla sugerida al mes: 2 largos + ~10 Reels a 2 tomas.
+  por partes; repetir solo la parte que falle). Mezcla al mes: 2 largos + Reels. El usuario pidió **1 sola toma** e imágenes sin gastar de más.
 - Mezcla: cada pista se iguala antes de mezclar (voz -16, música -31, efectos -27 LUFS; final -14). `render.py --remezclar`
   rehace solo el audio de un Reel ya armado. (Antes la voz de ElevenLabs quedaba 15 dB bajo los efectos.)
 - Voces de CapCut: opción gratis para Reels; el usuario exporta la voz y se usa con `--audio` (pendiente de probar).
