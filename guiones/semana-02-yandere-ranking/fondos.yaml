@@ -1,0 +1,25 @@
+# Fondos de la semana 2 (ranking yandere). Solo objetos y escenarios: nada de copiar diseños de personajes.
+estilo: >-
+  anime illustration, cinematic lighting, dark melancholic atmosphere, purple and crimson tones,
+  highly detailed background, masterpiece, best quality
+negativo: >-
+  blood, gore, corpse, weapon, knife, saw, axe, violence, nsfw, nude, cleavage, panties,
+  text, letters, watermark, signature, logo, lowres, bad anatomy, extra fingers, deformed
+
+fondos:
+  - id: corona
+    prompt: still life, a small golden crown on a dark velvet cushion, single spotlight from above, dust in the light, dramatic, object only
+    semilla: 201
+    negativo_extra: 1girl, girl, woman, person, human, face, body, skin, hands
+  - id: podio
+    prompt: empty award podium with three steps on a dark stage, spotlights, confetti on the floor, mysterious mood, no people
+    semilla: 211
+    negativo_extra: 1girl, girl, woman, person, human, face, body, crowd
+  - id: azucar
+    prompt: still life, glass jar full of pink sugar candies and a pink heart-shaped candy on a kitchen table at night, soft pink and purple light, sweet but eerie, object only
+    semilla: 221
+    negativo_extra: 1girl, girl, woman, person, human, face, body, skin, hands
+  - id: diosa-juno
+    prompt: ancient roman marble statue of a goddess with a peacock, inside a dark temple at night, moonlight through columns, purple tones, majestic
+    semilla: 231
+    negativo_extra: nude, naked, breasts, nipples
