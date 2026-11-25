@@ -5,8 +5,11 @@ voz:   # ElevenLabs v4, voz Ingrid, 1 toma por parte, sin indicaciones de tono
   - assets/voces/largo01-parte1.mp3
   - assets/voces/largo01-parte2.mp3
   - assets/voces/largo01-parte3.mp3
-portada_t: 31.0
+musica: assets/musica/tense-bassline.mp3   # la manda el usuario; va en bucle, bajita y con ducking bajo la voz
+musica_lufs: -29
+portada_t: 26.5
 
+# archivo: = está en el repo · rockstar: = arte oficial de rockstargames.com/VI (se descarga a la caché, NO se sube)
 imagenes:
   yami_noche:     {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-real-noche.jpg}
   yami_vinewood:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-real-vinewood.jpg}
@@ -20,47 +23,125 @@ imagenes:
   c_lluvia:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/collage.jpg, recorte: [0, 313, 835, 625]}
   c_auto:         {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/collage.jpg, recorte: [837, 313, 1672, 625]}
   c_libreta:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/collage.jpg, recorte: [837, 626, 1672, 941]}
-  st_risa:        {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/stickers.jpg, recorte: [372, 0, 1000, 774]}
-  st_guino:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/stickers.jpg, recorte: [0, 0, 340, 290]}
-  st_shh:         {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/stickers.jpg, recorte: [0, 490, 330, 774]}
-  st_cachetes:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/stickers.jpg, recorte: [1700, 230, 2031, 500]}
+  # Yami HD (tarjetas de capítulo)
+  hd_sonrisa:     {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-sonrisa.jpg}
+  hd_sonrisa2:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-sonrisa2.jpg}
+  hd_seria:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria.jpg}
+  hd_seria2:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria2.jpg}
+  hd_seria3:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria3.jpg}
+  # Yami IRL (stickers: celdas de 384x~340 de la hoja)
+  irl_guino:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 2, 380, 341]}
+  irl_mejilla:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [388, 2, 764, 341]}
+  irl_risa:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [772, 2, 1148, 341]}
+  irl_sorpresa:   {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 2, 1532, 341]}
+  irl_puchero:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 347, 380, 676]}
+  irl_corazones:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 347, 1532, 676]}
+  irl_shh:        {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 682, 380, 1022]}
+  irl_llora:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [388, 682, 764, 1022]}
+  irl_gato:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 682, 1532, 1022]}
+  irl_selfie:     {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-guino.jpg}
+  # Arte oficial de Rockstar Games (comentario/análisis)
+  r_portada:      {rockstar: poster_full.02ig6s_80ei58.jpg, credito: "Imagen: Rockstar Games"}
+  r_abrazo:       {rockstar: musicDesktop.0zwcbzhynnsc-.jpg, credito: "Imagen: Rockstar Games"}
+  r_auto:         {rockstar: trailer-1.06b6paykx247w.jpg, credito: "Imagen: Rockstar Games"}
+  r_mascaras:     {rockstar: an-extended-look.0ijbsha5fo1te.jpg, credito: "Imagen: Rockstar Games"}
+  r_intimo:       {rockstar: screenshotsDesktop.0q9.0q677hl7h.jpg, credito: "Imagen: Rockstar Games"}
+  r_skyline:      {rockstar: desktop.00.5pzu2sm-z4.jpg, credito: "Imagen: Rockstar Games"}
+  r_lucia_pelea:  {rockstar: Lucia_Caminos_01.0a7yqvewctkfp.jpg, credito: "Imagen: Rockstar Games"}
+  r_lucia_alberca: {rockstar: Lucia_Caminos_02.16n.5umvlu_48.jpg, credito: "Imagen: Rockstar Games"}
+  r_lucia_bar:    {rockstar: Lucia_Caminos_03.14xgd2y_ymmeg.jpg, credito: "Imagen: Rockstar Games"}
+  r_lucia_prision: {rockstar: Lucia_Caminos_05.0i5b7k6a7_w6p.jpg, credito: "Imagen: Rockstar Games"}
+  r_jason_pesca:  {rockstar: Jason_Duval_03.0-1vum7x-3vtp.jpg, credito: "Imagen: Rockstar Games"}
+  r_cayos:        {rockstar: Leonida_Keys_01.0zgz7tveur6y8.jpg, credito: "Imagen: Rockstar Games"}
+  r_vice_letrero: {rockstar: Vice_City_01.135x56yoeu.6t.jpg, credito: "Imagen: Rockstar Games"}
+  r_vice_noche:   {rockstar: Vice_City_08.0bbg_xp4hqdvz.jpg, credito: "Imagen: Rockstar Games"}
+  r_motel:        {rockstar: Port_Gellhorn_01.0fmisvza-5-cq.jpg, credito: "Imagen: Rockstar Games"}
+  # Investigadores (Wikimedia Commons, licencia libre)
+  kahneman:       {url: "https://commons.wikimedia.org/wiki/Special:FilePath/Daniel_Kahneman_(3283955327)_(cropped).jpg?width=800",
+                   nombre: kahneman.jpg, persona: "Daniel Kahneman", credito: "Foto: nrkbeta · CC BY-SA 2.0"}
 
-# Cada cue: cuándo (seccion: N  o  en: "frase dicha") y qué pasa (img, tarjeta+fuente, sticker).
+# Cada cue: cuándo (seccion: N  o  en: "frase dicha"; hasta: "frase" para Yami que habla) y qué pasa:
+#   img (fondo) · capitulo/numero/sub/retrato · tarjeta+fuente · yami (seria habla; pensativa|sorprendida|tierna|leyendo
+#   fijas) + lado · sticker (+lado, tam) · foto (investigador)
 cues:
+  # 0. Apertura
   - {seccion: 0, img: yami_noche}
   - {en: "Suena a filosofía", img: c_lluvia}
-  - {seccion: 1, img: yami_vinewood}
+  - {en: "una de las parejas más comentadas", img: r_abrazo}
+  # 1. Presentación
+  - {seccion: 1, img: r_skyline, yami: seria, lado: der, hasta: "diecinueve de noviembre"}
   - {en: "Jason Duval y Lucia", tarjeta: "GTA VI", fuente: "Jason Duval y Lucia Caminos"}
-  - {en: "Spoiler: no suele", sticker: st_risa}
+  - {en: "Una pareja que quiere", img: r_auto}
+  - {en: "Y su plan para", img: r_mascaras}
+  - {en: "O sea, es como", img: yami_vinewood}
+  - {en: "Spoiler: no suele", sticker: irl_risa}
   - {en: "Pero hoy no vamos", img: c_auto}
+  - {en: "¿Qué ocurre cuando", img: r_intimo}
+  # Aviso
   - {seccion: 2, img: spoiler}
-  - {en: "literalmente, no puedo", sticker: st_guino}
-  - {en: "Y una aclaración importante", img: c_podcast, tarjeta: "Personajes de ficción", fuente: "Lectura con psicología, no un diagnóstico", dur: 7}
-  - {seccion: 3, img: lucia}
-  - {en: "Pelear por su familia", img: c_lluvia}
+  - {en: "Yo aquí te espero", sticker: irl_guino, dur_sticker: 3.4}
+  - {en: "Y una aclaración importante", img: r_vice_noche, yami: seria, lado: der, hasta: "comenzamos",
+     tarjeta: "Personajes de ficción", fuente: "Lectura con psicología, no un diagnóstico", dur: 7}
+  # 2. Lucia
+  - {seccion: 3, img: r_lucia_bar, capitulo: "LUCIA", numero: "CAPÍTULO 1", sub: "Cuando la libertad se vuelve necesidad", retrato: hd_seria}
+  - {en: "su papá le enseñó", img: r_lucia_pelea}
+  - {en: "Pelear por su familia", img: r_lucia_prision}
+  - {en: "Ahora piensa esto", yami: pensativa, lado: der, hasta: "deciden otros"}
   - {en: "En psicología existe", img: lucia, tarjeta: "LOCUS DE CONTROL", fuente: "Julian Rotter, 1966", dur: 8}
+  - {en: "Cuando alguien pasa mucho", img: r_vice_letrero}
+  - {en: "Por eso, para Lucia", img: r_lucia_alberca}
   - {en: "Rockstar lo resume", img: c_libreta}
   - {en: "Y aquí viene la contradicción", img: lucia}
-  - {seccion: 4, img: escudo}
-  - {en: "Un currículum que", sticker: st_cachetes, dur_sticker: 3.2}
-  - {en: "Jason no suele decir", img: yami_vinewood}
-  - {en: "La Asociación Americana de Psicología describe", tarjeta: "MASCULINIDAD TRADICIONAL", fuente: "Asociación Americana de Psicología (APA), 2018", dur: 8}
+  - {en: "No porque sea tonta", img: r_motel, yami: seria, lado: der, hasta: "hay detrás"}
+  # 3. Jason
+  - {seccion: 4, img: r_jason_pesca, capitulo: "JASON", numero: "CAPÍTULO 2", sub: "Proteger como forma de amar", retrato: hd_seria2}
+  - {en: "terminó en los Cayos", img: r_cayos}
+  - {en: "Un currículum que", sticker: irl_sorpresa, dur_sticker: 3.0}
+  - {en: "Rockstar dice algo", img: escudo}
+  - {en: "Jason no suele decir", img: r_abrazo}
+  - {en: "La Asociación Americana de Psicología describe", img: escudo, tarjeta: "MASCULINIDAD TRADICIONAL", fuente: "Asociación Americana de Psicología (APA), 2018", dur: 8}
+  - {en: "Ojo: no es", img: r_skyline, yami: seria, lado: der, hasta: "crecimos rodeados"}
+  - {en: "Y nos ayuda a entender", img: r_auto}
   - {en: "El problema empieza", img: balanza}
-  - {seccion: 5, img: c_auto}
-  - {en: "La psicología lo llama", tarjeta: "AFRONTAMIENTO DIÁDICO", fuente: "Enfrentar el estrés en pareja", dur: 8}
+  # 4. ¿Por qué se necesitan?
+  - {seccion: 5, img: r_auto, capitulo: "¿POR QUÉ SE\nNECESITAN TANTO?", numero: "CAPÍTULO 3", retrato: hd_sonrisa}
+  - {en: "Y cuando el mundo", img: r_motel}
+  - {en: "La psicología lo llama", img: c_auto, tarjeta: "AFRONTAMIENTO DIÁDICO", fuente: "Enfrentar el estrés en pareja", dur: 8}
+  - {en: "un término muy bonito", sticker: irl_corazones}
   - {en: "Pero hay una línea delgada", img: balanza}
+  - {en: "Juntos, Jason y Lucia", img: r_mascaras}
+  - {en: "¿Eso los hace", img: r_vice_noche, yami: seria, lado: der, hasta: "relación dañina"}
   - {en: "Mejor pregúntate", img: c_libreta}
-  - {seccion: 6, img: seis_ideas}
-  - {en: "Del que no se declara", sticker: st_shh}
-  - {en: "Una investigación de", tarjeta: "MÁS INGRESOS, MÁS BIENESTAR", fuente: "Killingsworth, Kahneman y Mellers, 2023", dur: 9}
+  # 5. Dinero
+  - {seccion: 6, img: seis_ideas, capitulo: "EL DINERO", numero: "CAPÍTULO 4", sub: "Y la promesa de empezar de cero", retrato: hd_seria3}
+  - {en: "Del que no se declara", sticker: irl_shh}
+  - {en: "Durante años se repitió", img: r_vice_letrero}
+  - {en: "Una investigación de", img: r_vice_noche, tarjeta: "MÁS INGRESOS, MÁS BIENESTAR", fuente: "Killingsworth, Kahneman y Mellers, 2023", dur: 9}
+  - {en: "Kahneman y Mellers", foto: kahneman, dur_foto: 7}
+  - {en: "O sea: el dinero ayuda", img: r_skyline, yami: seria, lado: der, hasta: "nadie lo atiende"}
+  - {en: "Jason y Lucia no quieren", img: r_abrazo}
   - {en: "Y aquí está la pregunta incómoda", img: yami_noche}
-  - {seccion: 7, img: escudo}
+  # 6. Confianza
+  - {seccion: 7, img: r_intimo, capitulo: "CONFIANZA", numero: "CAPÍTULO 5", sub: "Y autonomía", retrato: hd_seria}
   - {en: "En mil novecientos ochenta y cinco", tarjeta: "PREVISIBILIDAD · FIABILIDAD · FE", fuente: "Rempel, Holmes y Zanna, 1985", dur: 10}
-  - {en: "Ahora imagínate construir", img: c_auto}
+  - {en: "Ahora imagínate construir", img: c_auto, yami: sorprendida, lado: der, hasta: "policía de Leonida"}
+  - {en: "Cuando una relación vive", img: escudo}
   - {en: "La teoría de la autodeterminación", img: balanza, tarjeta: "TEORÍA DE LA AUTODETERMINACIÓN", fuente: "Conexión + autonomía", dur: 7}
-  - {seccion: 8, img: final}
-  - {en: "La psicología tiene una palabra", tarjeta: "RESILIENCIA", fuente: "Adaptarse bien a experiencias difíciles (APA)", dur: 8}
-  - {seccion: 9, img: seis_ideas}
+  - {en: "Una pareja puede ser", img: r_auto}
+  # 7. Finales
+  - {seccion: 8, img: final, capitulo: "LOS FINALES", numero: "CAPÍTULO 6", sub: "Sí, en plural", retrato: hd_sonrisa2}
+  - {en: "En algunos, la historia", img: r_lucia_prision}
+  - {en: "termina en tragedia", sticker: irl_llora}
+  - {en: "Y en el mejor", img: final}
+  - {en: "Pero incluso ese final", img: r_skyline}
+  - {en: "La psicología tiene una palabra", img: final, tarjeta: "RESILIENCIA", fuente: "Adaptarse bien a experiencias difíciles (APA)", dur: 8}
+  - {en: "No es ser invencible", img: r_abrazo}
+  # 8. Cierre
+  - {seccion: 9, img: r_vice_noche, capitulo: "LO QUE\nNOS DEJAN", numero: "PARA CERRAR", retrato: hd_sonrisa}
+  - {en: "Uno: amar", img: r_skyline, yami: seria, lado: der, hasta: "decidir por ti", tarjeta: "1 · Amar no es salvar al otro", dur: 4.5}
+  - {en: "Dos: conseguir", tarjeta: "2 · Lo que quieres ≠ lo que necesitas", dur: 4.5}
+  - {en: "Y tres: una", tarjeta: "3 · Nadie decide por ti", dur: 5}
   - {en: "Ahora quiero leerte", img: c_podcast}
   - {en: "Si te gustó este análisis", img: yami_vinewood, tarjeta: "Suscríbete", fuente: "Otoosantales", dur: 6}
+  - {en: "Soy Yami I. Nakamura", sticker: irl_selfie, tam: 300, dur_sticker: 3.2}
   - {en: "Y recuerda", img: yami_noche}

@@ -8,6 +8,11 @@
 > imágenes del usuario en `entrada/fotos/`, cambios de imagen/rótulos/stickers por frase en `largo.yaml`).
 > Publicación: `publicar-youtube.txt`. Plan: GTA el jueves 26-nov (única vez), largo 02 yandere el domingo.
 > Las fotos realistas sugerentes que mande el usuario NO se usan ni se suben (regla de la biblia).
+> v2 (pedido del usuario: más atractivo visual): Yami anime habla (lipsync `yami: seria`, `hasta:`) entrando por un lado
+> en frases clave; stickers Yami IRL; tarjetas de capítulo con retratos HD; arte OFICIAL de Rockstar (`rockstar:` →
+> se descarga a ~/.cache/proyecto-meta/imagenes, NO al repo) con crédito en pantalla; foto de Kahneman (Commons);
+> música del usuario `assets/musica/tense-bassline.mp3` en bucle a -29 LUFS con ducking bajo la voz; barra de progreso.
+> `largo.py ... muestra --t 24 91` saca cuadros sueltos para revisar; `... audio` rehace solo la mezcla.
 > Los Reels siguen en la rama `proyecto-meta`; al terminar un largo, fusionar aquí → proyecto-meta si hace falta.
 
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
