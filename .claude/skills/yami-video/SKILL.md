@@ -33,6 +33,10 @@ Córrelo en segundo plano. Revisa las imágenes (sin texto raro, sin sangre/arma
    `creative_get_flow_run_status` y descargar las tomas a `assets/voces/<id>-tomaN.mp3`.
 3. Elegir la toma que Whisper transcribe mejor y renderizar con `--audio`.
 
+## 3d. Voz con CapCut (gratis; la usa el usuario para el video largo y puede usarla en Reels)
+`python texto_capcut.py <guion>` → `salida/<id>/<id>_voz_capcut.txt` (ortografía hablada, una escena por párrafo).
+El usuario lo pega en CapCut (Texto a voz), exporta la voz y la manda; se renderiza con `--audio <archivo>`.
+
 ## 4. Render
 ```bash
 cd produccion && ~/.cache/proyecto-meta/venv/bin/python render.py ../guiones/semana-NN-tema/r1-....yaml --audio ../assets/voces/<id>-toma1.mp3
