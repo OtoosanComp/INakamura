@@ -33,6 +33,8 @@ ellos cuentan con humor; **nosotros explicamos la mente** (psicología + anime +
 6. Etiqueta de IA activada siempre.
 7. **(Nuevo)** Sin tomas sugerentes de Yami: Meta no monetiza contenido sugerente. En video se usan solo recortes de rostro.
 8. **(Nuevo)** Sin clips ni capturas de anime: Meta castiga el contenido no original y hay derechos de autor.
+   Excepción acordada: la **portada oficial** de la obra, chica y breve, cada vez que se menciona un anime (para ubicarlo),
+   con "Portadas © de sus respectivos autores" en la descripción.
 9. **(Nuevo)** Personajes de ficción: "se parece a…", nunca diagnósticos.
 
 ## Formato (70/30)

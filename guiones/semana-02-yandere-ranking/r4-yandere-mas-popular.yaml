@@ -10,6 +10,7 @@ resaltar: [yandere, popular, Yuno, Toga, datos, favoritos, cinco, Japón, Satou,
 
 escenas:
   # tras: imagen detrás de Yami (retratos ORIGINALES inspirados en cada personaje, no arte oficial)
+  # portada: portada oficial chica de la obra (assets/portadas.yaml) para que se ubique el anime
   - visual: fondo/corona
     texto: "¿La yandere más popular del mundo? Unos dicen Yuno... otros, Toga. Vamos a los datos."
   - visual: yami/seria
@@ -17,14 +18,17 @@ escenas:
     texto: "No tengas miedo... yo te explico."
   - visual: yami/seria
     tras: fondo/yuno-retrato
+    portada: mirai-nikki
     etiqueta: "YUNO · CASI 30 MIL FAVORITOS"
     texto: "En [MyAnimeList|mai ánime list], una de las bases de anime más grandes, Yuno Gasai tiene casi treinta mil favoritos."
   - visual: yami/sorprendida
     tras: fondo/toga-retrato
+    portada: my-hero-academia
     etiqueta: "TOGA · CASI 5 VECES MENOS"
     texto: "Toga viene de un anime gigante... y tiene casi cinco veces menos."
   - visual: yami/seria
     tras: fondo/satou-retrato
+    portada: happy-sugar-life
     etiqueta: "JAPÓN · GANA SATOU"
     texto: "Pero en Japón, en una votación de [ranking.net|ranking punto net], gana Satou, de [Happy Sugar Life|jápi shúgar laif]... con Yuno pegadita en segundo."
   - visual: yami/pensativa
@@ -36,6 +40,7 @@ escenas:
     texto: "Dato raro: su creador la llamó así por Juno, la diosa romana del amor."
   - visual: yami/sorprendida
     tras: fondo/mikasa-retrato
+    portada: attack-on-titan
     texto: "Los números cambian cada día... y Mikasa no cuenta. ¿O sí?"
   - visual: yami/tierna
     tras: fondo/corona
@@ -46,6 +51,7 @@ descripcion: |
   Favoritos en MyAnimeList y una votación japonesa (ranking.net), consultados el 25 de noviembre de 2026.
 
   Contenido educativo y de divulgación, sin material gráfico.
+  Portadas © de sus respectivos autores; se muestran solo como referencia.
   Avatar virtual con IA.
 hashtags: ["#yandere", "#anime", "#yunogasai"]
 comentario_fijado: "Vota con un emoji: 🩷 Yuno · 💛 Toga · 🍬 Satou · 🗡️ otra (¿Mikasa cuenta?) 👇"

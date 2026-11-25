@@ -15,6 +15,9 @@ Un YAML por Reel en `guiones/semana-NN-tema/rN-slug.yaml`. Copia la forma de
 
 - `visual`: `yami/<recorte>` (seria, seria2, ojo, sonrisa; ver `personajes/yami/recortes.yaml`) o `fondo/<id>`
   (definido en `guiones/<semana>/fondos.yaml`; prompt en inglés, solo escenarios/siluetas).
+- `tras: fondo/<id>` (opcional): imagen detrás de Yami, p. ej. el retrato de la personaje de la que se habla.
+- `portada: <id>` (opcional): portada oficial chica de la obra (`assets/portadas.yaml`); úsala SIEMPRE que se
+  mencione un anime, porque mucha gente no lo ubica por nombre. Las portadas no se suben al repo (es público).
 - `texto`: lo que dice la voz. Para que se lea distinto de cómo suena: `[pantalla|pronunciación]`.
 
 ## Pronunciación (Kokoro en español)

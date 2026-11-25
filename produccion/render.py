@@ -23,7 +23,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import audio
 import subtitulos
 import voz
-from comun import ALTO, ANCHO, FPS, RAIZ, SALIDA, duracion, ffmpeg
+from comun import ALTO, ANCHO, CACHE, FPS, RAIZ, SALIDA, duracion, ffmpeg
 
 FUENTES = RAIZ / "assets" / "fuentes"
 COBRE = (232, 115, 74)
@@ -95,6 +95,36 @@ def etiqueta(texto, y=240):
     d.rounded_rectangle((0, 0, w - 1, 85), radius=43, fill=COBRE + (235,))
     d.text((32, 14), texto, font=f, fill=(255, 255, 255))
     return Capa(img, (ANCHO - w) / 2, y)
+
+
+def tarjeta_portada(clave, x=40, y=770, ancho=250):
+    """Portada oficial chica + título y año, para ubicar la obra. Se descarga a la caché (no va al repo)."""
+    datos = yaml.safe_load((RAIZ / "assets" / "portadas.yaml").read_text())[clave]
+    cache = CACHE / "portadas"
+    cache.mkdir(parents=True, exist_ok=True)
+    ruta = cache / f"{clave}.{datos['url'].rsplit('.', 1)[-1]}"
+    if not ruta.exists():
+        subprocess.run(["curl", "-sfL", "-o", str(ruta), datos["url"]], check=True)
+    img = Image.open(ruta).convert("RGB")
+    alto_img = int(ancho * img.height / img.width)
+    img = img.resize((ancho, alto_img), Image.LANCZOS)
+    f1, f2 = fuente("Black", 30), fuente("SemiBold", 26)
+    lienzo = Image.new("RGBA", (ancho + 40, alto_img + 120), (0, 0, 0, 0))
+    sombra = Image.new("RGBA", lienzo.size, (0, 0, 0, 0))
+    ImageDraw.Draw(sombra).rounded_rectangle((20, 26, 20 + ancho, 26 + alto_img), 18, fill=(0, 0, 0, 190))
+    lienzo.alpha_composite(sombra.filter(ImageFilter.GaussianBlur(12)))
+    mascara = Image.new("L", img.size, 0)
+    ImageDraw.Draw(mascara).rounded_rectangle((0, 0, ancho - 1, alto_img - 1), 18, fill=255)
+    lienzo.paste(img, (20, 20), mascara)
+    d = ImageDraw.Draw(lienzo)
+    d.rounded_rectangle((20, 20, 19 + ancho, 19 + alto_img), 18, outline=COBRE + (220,), width=4)
+    titulo = datos["titulo"]
+    while d.textlength(titulo, font=f1) > ancho + 10 and f1.size > 18:
+        f1 = fuente("Black", f1.size - 2)
+    d.text((20, 32 + alto_img), titulo, font=f1, fill=(255, 255, 255), stroke_width=4, stroke_fill=(0, 0, 0))
+    d.text((20, 32 + alto_img + f1.size + 6), f"ANIME · {datos['anio']}", font=f2, fill=COBRE, stroke_width=3,
+           stroke_fill=(0, 0, 0))
+    return Capa(lienzo, x, y)
 
 
 def marca():
@@ -355,6 +385,7 @@ def render(ruta_guion, solo_voz=False, audio_externo=None):
     gancho = texto_grande(g["gancho_pantalla"].split("\n"), Y_TITULO)
     cierre = texto_grande(g["cierre_pantalla"].split("\n"), Y_TITULO, tam=86)
     etiquetas = [etiqueta(e["etiqueta"]) if e.get("etiqueta") else None for e in g["escenas"]]
+    portadas = [tarjeta_portada(e["portada"]) if e.get("portada") else None for e in g["escenas"]]
     sello, acabado = marca(), Acabado()
     limpio = out / f"{g['id']}.mp4"
     enc = subprocess.Popen(
@@ -375,6 +406,12 @@ def render(ruta_guion, solo_voz=False, audio_externo=None):
         e = escenas[i]
         if etiquetas[i]:
             etiquetas[i].pegar(f, suave((t - e.ini) / 0.25) * suave((e.fin - t) / 0.25))
+        if portadas[i]:  # entra deslizándose desde la izquierda
+            entra = suave((t - e.ini) / 0.35)
+            x0 = portadas[i].x
+            portadas[i].x = int(x0 - (1 - entra) * 320)
+            portadas[i].pegar(f, entra * suave((e.fin - t) / 0.25))
+            portadas[i].x = x0
         gancho.pegar(f, 1.0 if t < 2.4 else suave((2.9 - t) / 0.5))
         if i == len(escenas) - 1:
             cierre.pegar(f, suave((t - e.ini) / 0.4))
