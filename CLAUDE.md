@@ -1,5 +1,12 @@
 # Proyecto Meta — memoria para Claude
 
+> **Rama `proyecto-meta-videos-largos`**: aquí se trabajan los VIDEOS LARGOS (YouTube, 8–10 min, domingo 7 pm).
+> Video 01: `guiones/largos/01-gta6-jason-lucia/` — guion verificado (`guion-adaptado.md`), texto para la voz de CapCut
+> (`voz-capcut.txt`). El usuario sube la voz y las fotos a `entrada/` (o las manda por el chat).
+> Pendiente al armarlo: diseño horizontal 16:9 (Yami a un lado, imagen al otro), Yami realista, poco lipsync,
+> render por partes de ~2 min (si el contenedor se reinicia, solo se rehace una parte), entrega en 720p o por partes.
+> Los Reels siguen en la rama `proyecto-meta`; al terminar un largo, fusionar aquí → proyecto-meta si hace falta.
+
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
 teléfono** con Claude Code en la nube: no tiene PC. Todo se produce en el contenedor y se le entrega con la herramienta de
 envío de archivos. Escribe en español de México.
