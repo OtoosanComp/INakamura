@@ -23,3 +23,22 @@ fondos:
     prompt: ancient roman marble statue of a goddess with a peacock, inside a dark temple at night, moonlight through columns, purple tones, majestic
     semilla: 231
     negativo_extra: nude, naked, breasts, nipples
+
+  # Retratos ORIGINALES inspirados en las personajes (no arte oficial), para que se reconozcan detrás de Yami.
+  # Encuadre: cara en el tercio de arriba (Yami va abajo, al frente).
+  - id: yuno-retrato
+    prompt: gasai yuno, mirai nikki, 1girl, upper body portrait, long pink hair with two small side pigtails, pink eyes, school uniform, holding a pink cellphone near her face, sweet smile, looking at viewer, dark purple background
+    semilla: 241
+    negativo_extra: blood, knife, weapon, cleavage, nsfw, multiple girls
+  - id: toga-retrato
+    prompt: toga himiko, boku no hero academia, 1girl, upper body portrait, blonde hair in two messy buns, yellow cat-like eyes, small fang, sailor school uniform with beige cardigan, playful smile, looking at viewer, dark background
+    semilla: 251
+    negativo_extra: blood, knife, weapon, syringe, cleavage, nsfw, multiple girls
+  - id: satou-retrato
+    prompt: matsuzaka satou, happy sugar life, 1girl, upper body portrait, very long light pink hair, purple eyes, school uniform, gentle smile, holding a jar of pink candies, looking at viewer, soft pink and dark background
+    semilla: 261
+    negativo_extra: blood, knife, weapon, cleavage, nsfw, multiple girls
+  - id: mikasa-retrato
+    prompt: mikasa ackerman, shingeki no kyojin, 1girl, upper body portrait, short black hair, grey eyes, red scarf, brown military jacket, serious expression, looking at viewer, dark cloudy background
+    semilla: 271
+    negativo_extra: blood, sword, weapon, cleavage, nsfw, multiple girls

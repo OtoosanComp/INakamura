@@ -32,6 +32,7 @@ COLA = 1.2       # segundos extra al final
 FUNDIDO = 0.30   # transición entre escenas
 # Zonas seguras de Reels (1080x1920): arriba ~0-180 y abajo ~1450-1920 los tapa la interfaz.
 Y_TITULO, Y_TARJETA, Y_SUBS = 300, 950, 1290
+Y_TARJETA_TRAS = 1120  # con imagen detrás: tarjeta más chica y más abajo, para que se vea la cara de atrás
 ENTRADA_YAMI = 0.55  # segundos que tarda Yami en subir desde abajo
 
 
@@ -142,9 +143,10 @@ class Animador:
 
 
 class Escena:
-    def __init__(self, visual, ini, fin, semilla, animador=None):
+    def __init__(self, visual, ini, fin, semilla, animador=None, tras=None):
         rng = np.random.default_rng(semilla)
         self.ini, self.fin, self.animador = ini, fin, animador
+        self.y_tarjeta = Y_TARJETA
         tipo, nombre = visual.split("/", 1)
         self.tarjetas = None
         if tipo == "fondo":
@@ -161,8 +163,13 @@ class Escena:
                 variantes = {"base": RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png"}
                 alto = 820
             caras = {k: Image.open(v).convert("RGB") for k, v in variantes.items()}
-            self.fondo = self._cubrir(caras["base"]).filter(ImageFilter.GaussianBlur(36))
-            self.fondo = Image.eval(self.fondo, lambda v: int(v * 0.42))
+            if tras:  # imagen detrás de Yami (p. ej. la personaje de la que habla): Yami más chica y abajo
+                self.fondo = Image.eval(Image.open(RAIZ / "assets" / "fondos" / f"{tras.split('/', 1)[-1]}.jpg")
+                                        .convert("RGB"), lambda v: int(v * 0.85))
+                alto, self.y_tarjeta = 640, Y_TARJETA_TRAS
+            else:
+                self.fondo = self._cubrir(caras["base"]).filter(ImageFilter.GaussianBlur(36))
+                self.fondo = Image.eval(self.fondo, lambda v: int(v * 0.42))
             self.tarjetas = {k: self._tarjeta(c, cuadrada=(nombre == "ojo"), alto_max=alto) for k, c in caras.items()}
         self.z0, self.z1 = (1.0, 1.09) if rng.random() < 0.6 else (1.09, 1.0)
         self.dx, self.dy = rng.uniform(-0.5, 0.5), rng.uniform(-0.5, 0.5)
@@ -221,7 +228,7 @@ class Escena:
                 dy += -6 * energia + 3 * math.sin(t * 2.1)
                 tj = tarjeta.resize((int(tarjeta.width * s), int(tarjeta.height * s)), Image.BILINEAR)
                 img = img.convert("RGBA")
-                img.alpha_composite(tj, ((ANCHO - tj.width) // 2, int(Y_TARJETA - tj.height / 2 + dy)))
+                img.alpha_composite(tj, ((ANCHO - tj.width) // 2, int(self.y_tarjeta - tj.height / 2 + dy)))
                 img = img.convert("RGB")
         return np.asarray(img, dtype=np.float32)
 
@@ -343,7 +350,7 @@ def render(ruta_guion, solo_voz=False, audio_externo=None):
     print("· video")
     finales = inicios[1:] + [total]
     animador = Animador(ruta_voz, palabras)
-    escenas = [Escena(e["visual"], a, b, i + 11, animador)
+    escenas = [Escena(e["visual"], a, b, i + 11, animador, e.get("tras"))
                for i, (e, a, b) in enumerate(zip(g["escenas"], inicios, finales))]
     gancho = texto_grande(g["gancho_pantalla"].split("\n"), Y_TITULO)
     cierre = texto_grande(g["cierre_pantalla"].split("\n"), Y_TITULO, tam=86)

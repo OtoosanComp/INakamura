@@ -9,27 +9,36 @@ cierre_pantalla: "¿YUNO, TOGA O SATOU?\n¿A QUIÉN LE DAS LA CORONA?"
 resaltar: [yandere, popular, Yuno, Toga, datos, favoritos, cinco, Japón, Satou, segundo, principio, fin, Juno, amor, Mikasa, corona]
 
 escenas:
+  # tras: imagen detrás de Yami (retratos ORIGINALES inspirados en cada personaje, no arte oficial)
   - visual: fondo/corona
     texto: "¿La yandere más popular del mundo? Unos dicen Yuno... otros, Toga. Vamos a los datos."
   - visual: yami/seria
+    tras: fondo/corona
     texto: "No tengas miedo... yo te explico."
-  - visual: fondo/diario-rosa
+  - visual: yami/seria
+    tras: fondo/yuno-retrato
     etiqueta: "YUNO · CASI 30 MIL FAVORITOS"
     texto: "En [MyAnimeList|mai ánime list], una de las bases de anime más grandes, Yuno Gasai tiene casi treinta mil favoritos."
-  - visual: fondo/podio
+  - visual: yami/sorprendida
+    tras: fondo/toga-retrato
     etiqueta: "TOGA · CASI 5 VECES MENOS"
     texto: "Toga viene de un anime gigante... y tiene casi cinco veces menos."
-  - visual: fondo/azucar
-    etiqueta: "JAPÓN · RANKING.NET"
+  - visual: yami/seria
+    tras: fondo/satou-retrato
+    etiqueta: "JAPÓN · GANA SATOU"
     texto: "Pero en Japón, en una votación de [ranking.net|ranking punto net], gana Satou, de [Happy Sugar Life|jápi shúgar laif]... con Yuno pegadita en segundo."
   - visual: yami/pensativa
+    tras: fondo/yuno-retrato
     texto: "¿Y por qué Yuno? Porque es yandere de principio a fin... no solo en un arco."
-  - visual: fondo/diosa-juno
+  - visual: yami/leyendo
+    tras: fondo/diosa-juno
     etiqueta: "DATO RARO"
     texto: "Dato raro: su creador la llamó así por Juno, la diosa romana del amor."
   - visual: yami/sorprendida
+    tras: fondo/mikasa-retrato
     texto: "Los números cambian cada día... y Mikasa no cuenta. ¿O sí?"
   - visual: yami/tierna
+    tras: fondo/corona
     texto: "¿Tú a cuál le darías la corona?"
 
 descripcion: |
