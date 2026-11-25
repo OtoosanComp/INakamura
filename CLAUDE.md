@@ -1,5 +1,8 @@
 # Proyecto Meta — memoria para Claude
 
+> Los VIDEOS LARGOS se trabajan en la rama **`proyecto-meta-videos-largos`** (video 01: GTA VI, Jason y Lucia).
+> Esta rama (`proyecto-meta`) es para los Reels.
+
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
 teléfono** con Claude Code en la nube: no tiene PC. Todo se produce en el contenedor y se le entrega con la herramienta de
 envío de archivos. Escribe en español de México.
