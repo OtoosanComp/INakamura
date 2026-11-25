@@ -146,7 +146,8 @@ class Animador:
         a = a.mean(axis=1) if a.ndim > 1 else a
         paso = sr // FPS
         n = len(a) // paso + 1
-        rms = np.array([np.sqrt(np.mean(a[i * paso:(i + 1) * paso] ** 2) + 1e-12) for i in range(n)])
+        rms = np.array([np.sqrt(np.mean(a[i * paso:(i + 1) * paso] ** 2) + 1e-12) if i * paso < len(a) else 0.0
+                        for i in range(n)])  # el último pedazo puede venir vacío
         ref = np.percentile(rms[rms > 1e-4], 90) if (rms > 1e-4).any() else 1.0
         self.energia = np.clip(rms / ref, 0, 1.5)
         # dentro de una palabra y con energía → boca abierta (mínimo 2 cuadros por estado, sin parpadeos raros)
