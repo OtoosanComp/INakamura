@@ -36,9 +36,13 @@ ellos cuentan con humor; **nosotros explicamos la mente** (psicología + anime +
 9. **(Nuevo)** Personajes de ficción: "se parece a…", nunca diagnósticos.
 
 ## Formato (70/30)
-- **Reels de 60 s o menos**: idealmente uno al día, **sin horario ni días fijos** (y nunca prometer horarios en los videos).
-- **Meta de videos largos: 1 por semana, el día que se pueda**, de 8–10 min, en **YouTube** (ver `docs/videos-largos.md`).
-  De cada largo salen 3–4 Reels/Shorts. Facebook e Instagram para Reels; TikTok y Spotify como extra.
+- **Calendario interno (acordado; NUNCA se anuncia en los videos, y si un día no se puede no pasa nada):**
+  - **Reels (≤ 60 s): lunes, miércoles y viernes, 2 por día: 1:00 pm y 8:00 pm (CDMX).** Facebook e Instagram + Shorts.
+  - **Video largo (8–10 min): domingo 7:00 pm (CDMX) en YouTube.** Revisar en YouTube Studio a las 3–4 semanas y ajustar.
+- **Los Reels son la base del largo:** el largo de la semana junta y amplía los Reels del tema. Del largo salen 3–4 Shorts.
+- **Producción del largo:** guion en `.txt` → la voz en off se genera en CapCut (gratis) → se arma el video con **Yami realista**
+  y poco lipsync (solo unos minutos de Yami hablando; el resto, fondos e información).
+- Plataformas: ver `docs/videos-largos.md` (YouTube primero; TikTok y Spotify como extra).
 
 ## Estructura de cada Reel (≤ 60 s)
 | Segundos | Parte |

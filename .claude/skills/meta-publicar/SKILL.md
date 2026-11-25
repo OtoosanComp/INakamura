@@ -18,8 +18,9 @@ Basado en `docs/investigacion-semana-01.md` (Parte B). Las políticas cambian: s
 - [ ] Sin contenido sugerente de Yami.
 
 ## Calendario
-Sin horario fijo: idealmente un Reel al día, cuando se pueda. Nunca anunciar días u horarios en los videos.
-Meta: 1 video largo por semana (8–10 min) en YouTube, el día que se pueda; recortar 3–4 Reels/Shorts de cada largo.
+Calendario interno (nunca se anuncia en los videos): Reels lunes, miércoles y viernes a la 1:00 pm y 8:00 pm (CDMX);
+video largo (8–10 min) el domingo a las 7:00 pm (CDMX) en YouTube. Si un día no se puede, no pasa nada.
+Los Reels son la base del largo; del largo se recortan 3–4 Reels/Shorts.
 Ver `docs/videos-largos.md` (requisitos de YouTube, TikTok, Spotify y Facebook desde México).
 
 ## Monetización

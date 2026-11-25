@@ -10,7 +10,8 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 
 ## Decisiones tomadas (no re-discutir)
 - Reels de **60 s o menos**, gancho en el segundo 1, idealmente uno al día **sin horario fijo** (no mencionar horarios en los videos).
-  Meta de largos: **1 por semana (8–10 min) en YouTube**, día libre; de cada largo salen 3–4 Reels/Shorts (`docs/videos-largos.md`).
+  **Calendario interno**: Reels lun/mié/vie a la 1 pm y 8 pm; largo **domingo 7 pm (CDMX) en YouTube**, 8–10 min.
+  Los Reels son la base del largo. Largo: entregar guion `.txt` (voz en off la hace el usuario en CapCut), Yami realista, poco lipsync.
 - **Nada de "uwu" ni expresiones así.** Cierre: "¿Tú qué hubieras hecho?". No abrir susurrando.
 - **Voz: ElevenLabs v4, voz "Ingrid - natural & soft" (KVJNlB9xei0FCE8ekWnI), SIN indicaciones de tono y SIN cambio de tono.**
   (Antes "Kevin": con [whispering]/[serious] bajaba a 120–140 Hz y sonaba masculina; Ingrid queda en ~220 Hz, nunca < 195.)
