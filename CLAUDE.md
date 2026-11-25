@@ -34,6 +34,9 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Entregados con voz Ingrid (sin uwu, sin horarios): presentación p0 (41 s, `assets/voces/p0-ingrid-toma2.mp3`) y Reel r1
   Kotonoha (55 s, `assets/voces/r1-ingrid-toma1.mp3`). r2 (Nice boat) y r3 (Kotonoha vs Yuno): guion y fondos listos.
 - ElevenLabs: 5,056 de 10,000 créditos usados este mes (plan gratis, sin uso comercial).
+- Mezcla: cada pista se iguala antes de mezclar (voz -16, música -31, efectos -27 LUFS; final -14). `render.py --remezclar`
+  rehace solo el audio de un Reel ya armado. (Antes la voz de ElevenLabs quedaba 15 dB bajo los efectos.)
+- Voces de CapCut: opción gratis para Reels; el usuario exporta la voz y se usa con `--audio` (pendiente de probar).
 - Meta de largos: 1 por semana en YouTube (8–10 min). Primer largo: esquema en `guiones/semana-01-kotonoha/largo-domingo-ESQUEMA.md`.
 - Pendiente: plan de pago de ElevenLabs; idea de APK (analizada, no iniciada); Yami realista como prueba; voz de Tsuki.
 

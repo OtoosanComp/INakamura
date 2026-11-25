@@ -264,6 +264,49 @@ def normalizar(entrada, salida, objetivo=-14.0, pico=-1.5):
            "-ar", 48000, salida)
 
 
+# Niveles de mezcla (LUFS). La voz manda: música y efectos siempre por debajo.
+NIVEL_VOZ, NIVEL_MUSICA, NIVEL_EFECTOS = -16.0, -31.0, -27.0
+
+
+def mezclar(out, ruta_voz, total, inicios, entradas_yami, destino):
+    """Iguala cada pista a su nivel ANTES de mezclar (la voz de ElevenLabs llega mucho más baja que la de Kokoro)."""
+    audio.musica(total, out / "musica.wav")
+    audio.efectos(total, inicios, out / "efectos.wav", entradas_yami=entradas_yami)
+    pistas = {}
+    for nombre, ruta, nivel in (("voz", ruta_voz, NIVEL_VOZ), ("musica", out / "musica.wav", NIVEL_MUSICA),
+                                ("efectos", out / "efectos.wav", NIVEL_EFECTOS)):
+        pistas[nombre] = out / f"_{nombre}_nivel.wav"
+        normalizar(ruta, pistas[nombre], objetivo=nivel, pico=-3.0)
+    cruda = out / "mezcla_cruda.wav"
+    ffmpeg("-i", pistas["voz"], "-i", pistas["musica"], "-i", pistas["efectos"], "-filter_complex",
+           "[0:a]apad,asplit=2[v][sc];"
+           "[1:a][sc]sidechaincompress=threshold=0.02:ratio=6:attack=20:release=400[md];"
+           "[v][md][2:a]amix=inputs=3:normalize=0:duration=longest,"
+           f"atrim=0:{total:.3f}", "-ar", 48000, "-ac", 2, cruda)
+    normalizar(cruda, destino)
+    for f in list(pistas.values()) + [cruda, out / "musica.wav", out / "efectos.wav"]:
+        f.unlink(missing_ok=True)
+
+
+def remezclar(ruta_guion):
+    """Rehace solo el audio de un Reel ya renderizado (misma voz y tiempos) y lo cambia en sus MP4."""
+    g = yaml.safe_load(Path(ruta_guion).read_text())
+    out = SALIDA / g["id"]
+    rep = json.loads((out / "reporte.json").read_text())
+    total = rep["duracion_s"]
+    inicios = [e["ini"] for e in rep["escenas"]]
+    entradas = [e["ini"] for e in rep["escenas"] if e["visual"].startswith("yami/") and e["ini"] > 0]
+    mezcla = out / "mezcla.wav"
+    mezclar(out, out / f"{g['id']}_voz.wav", total, inicios, entradas, mezcla)
+    for video in (out / f"{g['id']}.mp4", out / f"{g['id']}_subtitulado.mp4"):
+        tmp = video.with_suffix(".tmp.mp4")
+        ffmpeg("-i", video, "-i", mezcla, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+               "-shortest", "-movflags", "+faststart", tmp)
+        tmp.replace(video)
+    mezcla.unlink()
+    print(f"✓ audio rehecho: {out}")
+
+
 # ---------------------------------------------------------------- principal
 
 def render(ruta_guion, solo_voz=False, audio_externo=None):
@@ -293,17 +336,9 @@ def render(ruta_guion, solo_voz=False, audio_externo=None):
 
     print("· audio")
     inicios = [0.0] + [t0 for t0, _ in tramos[1:]]
-    audio.musica(total, out / "musica.wav")
     entradas_yami = [a for e, a in zip(g["escenas"], inicios) if e["visual"].startswith("yami/") and a > 0]
-    audio.efectos(total, inicios, out / "efectos.wav", entradas_yami=entradas_yami)
-    mezcla_cruda, mezcla = out / "mezcla_cruda.wav", out / "mezcla.wav"
-    ffmpeg("-i", ruta_voz, "-i", out / "musica.wav", "-i", out / "efectos.wav", "-filter_complex",
-           "[0:a]apad,asplit=2[v][sc];[1:a]volume=0.55[m];"
-           "[m][sc]sidechaincompress=threshold=0.03:ratio=8:attack=20:release=350[md];"
-           "[v][md][2:a]amix=inputs=3:normalize=0:duration=longest,"
-           f"atrim=0:{total:.3f}", "-ar", 48000, "-ac", 2, mezcla_cruda)
-    normalizar(mezcla_cruda, mezcla)
-    mezcla_cruda.unlink()
+    mezcla = out / "mezcla.wav"
+    mezclar(out, ruta_voz, total, inicios, entradas_yami, mezcla)
 
     print("· video")
     finales = inicios[1:] + [total]
@@ -378,6 +413,10 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("guion")
     ap.add_argument("--solo-voz", action="store_true")
-    ap.add_argument("--audio", help="voz ya generada (ElevenLabs): mp3/wav del guion completo")
+    ap.add_argument("--audio", help="voz ya generada (ElevenLabs, CapCut…): mp3/wav del guion completo")
+    ap.add_argument("--remezclar", action="store_true", help="solo rehacer el audio de un Reel ya renderizado")
     a = ap.parse_args()
-    render(a.guion, a.solo_voz, a.audio)
+    if a.remezclar:
+        remezclar(a.guion)
+    else:
+        render(a.guion, a.solo_voz, a.audio)
