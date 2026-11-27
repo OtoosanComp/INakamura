@@ -10,7 +10,7 @@ Cómo leer este archivo:
 ---
 
 ## 0. Gancho
-> 🎬 cosplay Yami-Yuno a pantalla completa → corazón con candado (h-corazon-candado) · golpe grave en el segundo 0
+> 🎬 cosplay Yami-Yuno a pantalla completa → corazón con candado (corazon-cadena) · golpe grave en el segundo 0
 
 🔁 r5-2 0.00–5.68 · Te dicen: haría cualquier cosa por ti. ¿Romántico… o aterrador?
 
@@ -111,7 +111,7 @@ Tercero, algo más serio: la erotomanía, también llamada síndrome de [De Clé
 > 🎬 h-ojos-ventana · rótulo "EROTOMANÍA · DSM-5: trastorno delirante"
 
 Y cuarto, lo más importante: las conductas de control. Revisar el celular, decidir con quién hablas, aparecer "de casualidad" donde estás. En el anime se ve dramático. En la vida real empieza mucho más pequeño… y casi siempre se disfraza de amor.
-> 🎬 h-celular-mapa → h-corazon-candado · 2D-habla (seria) · rótulo "CONDUCTAS DE CONTROL"
+> 🎬 h-celular-mapa → corazon-cadena · 2D-habla (seria) · rótulo "CONDUCTAS DE CONTROL"
 
 Ojo: estos son personajes, no diagnósticos. Pero los conceptos sí existen.
 
