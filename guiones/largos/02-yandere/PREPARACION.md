@@ -56,6 +56,12 @@ Duración objetivo: 9–10 min (YouTube, 16:9). Formato igual que el largo 01 (`
   Doki Doki Literature Club, MiSide.
 - Yami: anime (9 expresiones + 5 HD + hoja de modelo), IRL (12 stickers, selfie guiño, hoja de uniforme con 7 expresiones).
 
+## 5b. Recibido el 27-nov (recortes de busto/cara en `personajes/gemelas/cosplay/`)
+- yami-monika (IRL), yami-yuno-anime, tsuki-albedo, tsuki-kurumi, tsuki-kurumi2, tsuki-mita.
+- Gag cómico: `tsuki-kurumi-censura.jpg` (Yami enojada tapando el escote + "¡TSUKI, TÁPATE!"). Si llega la Yami chibi con
+  toalla, se rehace desde el original (`salida/originales/`, no se sube: escote/ligueros).
+- Las tomas originales con escote, ligueros o de espaldas (Albedo derecha) NO se usan completas ni se suben.
+
 ## 6. LO QUE FALTA (pedir a ChatGPT) — por prioridad
 **A. Yami IRL que "habla" (indispensable para lo que pediste)**
 - 1 foto realista de Yami de **busto, de frente a cámara**, fondo de su cuarto oscuro con luz morada (figuras anime
