@@ -122,6 +122,8 @@ def resolver_cues(conf, datos):
             _, i1 = _buscar(normas, c["hasta"], i0)
             c["t_fin"] = pal[i1]["fin"] + 0.35
         cues.append(c)
+    rellenar(conf, datos, cues)
+    cues.sort(key=lambda c: c["t"])
     # un rótulo suelto que cae encima de una tarjeta de capítulo espera a que ésta termine
     caps = [(c["t"], c["t"] + c.get("dur", 3.2)) for c in cues if c.get("capitulo")]
     for c in cues:
@@ -130,6 +132,139 @@ def resolver_cues(conf, datos):
                 if a <= c["t"] < b:
                     c["t"] = b + 0.1
     return cues
+
+
+def _fin_cue(c):
+    fines = [c["t"] + 0.5]
+    for clave, dur in (("yami", None), ("irl", None), ("cosplay", "dur_cosplay"), ("sticker", "dur_sticker"),
+                       ("capitulo", "dur"), ("foto", "dur_foto")):
+        if c.get(clave):
+            fines.append(c.get("t_fin", c["t"] + 4.0) if dur is None else c["t"] + c.get(dur, 6.0 if clave != "capitulo" else 3.2))
+    return max(fines)
+
+
+def rellenar(conf, datos, cues):
+    """Si pasan más de `umbral` s sin nada nuevo en pantalla, mete algo: Yami IRL hablando (PNGtuber), Yami 2D
+    hablando o una foto de cosplay. En las secciones de `serias` solo Yami 2D (sin fotos ni chistes)."""
+    r = conf.get("relleno")
+    if not r:
+        return
+    import random
+    rnd = random.Random(7)
+    secs = datos["secciones"]
+    total = datos["duracion"]
+    pal = datos["palabras"]
+    eventos = sorted(cues, key=lambda c: c["t"])
+    tiempos = [c["t"] for c in eventos] + [total]
+    ocupado = 0.0
+    tipos = r.get("orden", ["irl", "yami", "cosplay"])
+    n = 0
+    nuevos = []
+    for i, c in enumerate(eventos):
+        ocupado = max(ocupado, _fin_cue(c))
+        a, b = c["t"], tiempos[i + 1]
+        t0 = max(a + r.get("espera", 2.5), ocupado + 0.6)
+        while b - t0 > 3.5:
+            sec = max([j for j, x in enumerate(secs) if x["ini"] <= t0] or [0])
+            serio = sec in r.get("serias", [])
+            tipo = "yami" if serio else tipos[n % len(tipos)]
+            dur = min(r.get("dur", 6.0), b - t0 - 0.4)
+            # termina en el final de una palabra para que no corte a la mitad
+            fin = max([p["fin"] for p in pal if t0 + 2.0 <= p["fin"] <= t0 + dur] or [t0 + dur]) + 0.3
+            nc = {"t": t0, "auto": True}
+            lado = "der" if n % 3 != 2 else "izq"
+            if tipo == "irl":
+                nc.update(irl=rnd.sample(r["irl"], 3), t_fin=fin, lado=lado, cambio=max((fin - t0) / 3, 1.2))
+            elif tipo == "yami":
+                nc.update(yami=rnd.choice(r.get("yami", ["seria"])) if not serio else "seria", t_fin=fin, lado=lado)
+            else:
+                nc.update(cosplay=r["cosplay"][n // len(tipos) % len(r["cosplay"])], dur_cosplay=fin - t0,
+                          lado_cosplay=lado, inclina=rnd.choice([-5, -3, 3, 5]))
+            nuevos.append(nc)
+            n += 1
+            ocupado = fin
+            t0 = fin + r.get("cada", 4.0)
+    cues.extend(nuevos)
+
+
+# ---------------- subtítulos dinámicos (al centro del espacio libre, palabra activa en naranja neón) ----------------
+
+NEON = (255, 122, 47)
+
+
+def bloques_dinamicos(palabras, max_pal=3, max_chars=20):
+    out, act = [], []
+    corte = re.compile(r"[.?!…:;,]$")
+    for i, p in enumerate(palabras):
+        act.append(p)
+        texto = " ".join(x["palabra"] for x in act)
+        sig = palabras[i + 1] if i + 1 < len(palabras) else None
+        if (sig is None or corte.search(p["palabra"]) or len(act) >= max_pal
+                or len(texto) + 1 + len(sig["palabra"]) > max_chars or sig["ini"] - p["fin"] > 0.5):
+            out.append({"pal": [dict(x) for x in act], "ini": act[0]["ini"], "fin": act[-1]["fin"]})
+            act = []
+    for a, b in zip(out, out[1:]):
+        if b["ini"] - a["fin"] < 0.35:
+            a["fin"] = b["ini"]
+        else:
+            a["fin"] += 0.25
+    return out
+
+
+def _limpia(w):
+    return re.sub(r"(\.\.\.|…|,|\.|:|;)$", "", w)
+
+
+_fd = {}
+
+
+def render_bloque(b, activa, tam):
+    k = (id(b), activa, tam)
+    if k in _cache:
+        return _cache[k]
+    fz = _fd.setdefault(tam, fuente("Black", tam))
+    palabras = [_limpia(p["palabra"]).upper() for p in b["pal"]]
+    esp = int(tam * 0.28)
+    anchos = [fz.getbbox(w)[2] for w in palabras]
+    w = sum(anchos) + esp * (len(palabras) - 1) + 40
+    h = int(tam * 1.5)
+    capa = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    brillo = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d, db = ImageDraw.Draw(capa), ImageDraw.Draw(brillo)
+    x = 20
+    for i, (pw, aw) in enumerate(zip(palabras, anchos)):
+        if i == activa:
+            db.text((x, 8), pw, font=fz, fill=NEON + (255,))
+        d.text((x, 8), pw, font=fz, fill=NEON if i == activa else (255, 255, 255), stroke_width=max(4, tam // 12),
+               stroke_fill=(0, 0, 0))
+        x += aw + esp
+    out = brillo.filter(ImageFilter.GaussianBlur(tam // 5))
+    out.alpha_composite(capa)
+    _cache[k] = out
+    return out
+
+
+def subtitulo_dinamico(f, bloques, t, izq_ocupado, der_ocupado):
+    for b in bloques:
+        if b["ini"] <= t < b["fin"]:
+            break
+    else:
+        return
+    activa = max([i for i, p in enumerate(b["pal"]) if p["ini"] - 0.05 <= t] or [0])
+    if izq_ocupado and der_ocupado:
+        cx, cy, tam = W // 2, H - 95, 44
+    elif der_ocupado:
+        cx, cy, tam = int(W * 0.36), int(H * 0.56), 58
+    elif izq_ocupado:
+        cx, cy, tam = int(W * 0.64), int(H * 0.56), 58
+    else:
+        cx, cy, tam = W // 2, int(H * 0.62), 62
+    im = render_bloque(b, activa, tam)
+    dt = t - b["ini"]
+    if dt < 0.12:  # aparece con un pequeño "pop"
+        s = 0.85 + 0.15 * suave(dt / 0.12)
+        im = im.resize((max(1, int(im.width * s)), max(1, int(im.height * s))))
+    f.alpha_composite(im, (cx - im.width // 2, cy - im.height // 2))
 
 
 # ---------------- subtítulos (línea de hasta ~42 caracteres) ----------------
@@ -491,6 +626,7 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
     cred = conf["imagenes"][c["img"]].get("credito")
     f.alpha_composite(vineta())
     hay_capitulo = False
+    izq = der = False
     for c in cues:
         if c.get("capitulo") and c["t"] <= t < c["t"] + c.get("dur", 3.2):
             capitulo(f, c, t, conf)
@@ -505,6 +641,7 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
         if c.get("foto") and c["t"] <= t < c["t"] + c.get("dur_foto", 7.0):
             foto_persona(f, c, t, conf)
         if c.get("yami") and c["t"] <= t < c.get("t_fin", c["t"] + 4.0):
+            izq, der = (True, der) if c.get("lado", "der") == "izq" else (izq, True)
             fin_y = c.get("t_fin", c["t"] + 4.0)
             boca, parp, energia = animador(d_out, palabras).estado(t)
             im = yami_cara(c["yami"], boca, parp)
@@ -516,10 +653,12 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
             y = int(H - im.height - 70 - 6 * energia * (c["yami"] != "seria"))
             f.alpha_composite(im, (x, y))
         if c.get("cosplay") and c["t"] <= t < c["t"] + c.get("dur_cosplay", 6.0):
+            izq, der = (True, der) if c.get("lado_cosplay", "izq") == "izq" else (izq, True)
             cosplay(f, c, t, conf)
         if c.get("portada") and c["t"] <= t < c["t"] + c.get("dur_portada", 5.0):
             portada(f, c, t, conf)
         if c.get("irl") and c["t"] <= t < c.get("t_fin", c["t"] + 4.0):
+            izq, der = (True, der) if c.get("lado", "der") == "izq" else (izq, True)
             yami_irl(f, c, t, conf, animador(d_out, palabras).estado(t)[2])
         if c.get("sticker") and c["t"] <= t < c["t"] + c.get("dur_sticker", 2.8):
             dt = t - c["t"]
@@ -532,6 +671,7 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
             s = 1.0 + 0.12 * math.sin(min(dt / 0.3, 1) * math.pi)
             sub = suave(dt / 0.3) * suave((fin_st - t) / 0.3)
             if sub > 0.02:
+                izq, der = (True, der) if c.get("lado", "der") == "izq" else (izq, True)
                 im = st.resize((int(st.width * s), int(st.height * s))) if s > 1.001 else st
                 izq = c.get("lado", "der") == "izq"
                 x = 30 if izq else W - im.width - 30
@@ -540,10 +680,14 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
                                   (x, max(y, 10)))
     if cred and not hay_capitulo:
         credito(f, cred)
-    for s in subs:
-        if s["ini"] <= t < s["fin"] and not hay_capitulo:
-            subtitulo(f, s["texto"])
-            break
+    if not hay_capitulo:
+        if conf.get("subs_dinamicos"):
+            subtitulo_dinamico(f, subs, t, izq, der)
+        else:
+            for s in subs:
+                if s["ini"] <= t < s["fin"]:
+                    subtitulo(f, s["texto"])
+                    break
     barra_progreso(f, t, total, [c["t"] for c in cues if c.get("capitulo")])
     return f.convert("RGB")
 
@@ -555,7 +699,7 @@ def cargar(ruta_conf):
     conf["_dir"] = str(Path(ruta_conf).parent)
     datos = json.loads((SALIDA / conf["id"] / "alineacion.json").read_text())
     cues = resolver_cues(conf, datos)
-    subs = bloques_subs(datos["palabras"])
+    subs = bloques_dinamicos(datos["palabras"]) if conf.get("subs_dinamicos") else bloques_subs(datos["palabras"])
     return conf, datos, cues, subs
 
 
@@ -639,7 +783,7 @@ def video(ruta_conf, solo=None, sin_partes=False):
     salida = d / f"{conf['id']}_subtitulado.mp4"
     ffmpeg("-f", "concat", "-safe", 0, "-i", lista, "-i", final_a, "-map", "0:v", "-map", "1:a",
            "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", salida)
-    escribir_srt(subs, d / f"{conf['id']}.es-419.srt")
+    escribir_srt(bloques_subs(datos["palabras"]), d / f"{conf['id']}.es-419.srt")
     cuadro(conf.get("portada_t", 2.0), conf, cues, [], total, d, datos["palabras"]).save(d / "portada.jpg", quality=90)
     caps = [(c["t"], c["capitulo"].replace("\n", " ")) for c in cues if c.get("capitulo")]
     print("capítulos:", [(f"{int(t // 60)}:{int(t % 60):02d}", n) for t, n in caps])

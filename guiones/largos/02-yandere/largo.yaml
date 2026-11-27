@@ -6,10 +6,21 @@ voz: [assets/voces/largo02-montaje.mp3]
 musica: assets/musica/tense-bassline.mp3
 musica_lufs: -29
 portada_t: 3.0
+subs_dinamicos: true
+relleno:   # si pasan > ~6 s sin cambio visual, entra Yami IRL / Yami 2D / cosplay
+  orden: [irl, yami, cosplay, irl, yami]
+  espera: 2.5
+  cada: 3.0
+  dur: 5.5
+  serias: [8]          # "Fuera de la pantalla": solo Yami 2D
+  yami: [seria, seria, pensativa, sorprendida, leyendo]
+  irl: [i_neutral, i_risa, i_pensativa, i_burlona, i_sorpresa, i_maliciosa, s_guino, s_mejilla, s_risa, s_sorpresa,
+        s_puchero, s_corazones, s_shh, s_gato, s_leyendo]
+  cosplay: [c_yuno, c_toga, c_mikasa, c_satou, c_lucy, c_mita, c_monika, c_selfie, c_albedo]
 
 imagenes:
   # fondos (assets/fondos)
-  corazon:     {archivo: assets/fondos/corazon-cadena.jpg}
+  corazon:     {archivo: assets/fondos/corazon-cadena.jpg, llenar: false}
   diario:      {archivo: assets/fondos/diario-rosa.jpg}
   siluetas:    {archivo: assets/fondos/dos-siluetas.jpg}
   lluvia:      {archivo: assets/fondos/estacion-lluvia.jpg}
@@ -18,12 +29,12 @@ imagenes:
   paraguas:    {archivo: assets/fondos/paraguas.jpg}
   pasillo:     {archivo: assets/fondos/pasillo-rumores.jpg}
   salon:       {archivo: assets/fondos/salon-vacio.jpg}
-  tele:        {archivo: assets/fondos/tele-antigua.jpg}
-  telefono:    {archivo: assets/fondos/telefono-noche.jpg, y: 0.8}
-  corona:      {archivo: assets/fondos/corona.jpg}
-  podio:       {archivo: assets/fondos/podio.jpg}
+  tele:        {archivo: assets/fondos/tele-antigua.jpg, llenar: false}
+  telefono:    {archivo: assets/fondos/telefono-noche.jpg, llenar: false}
+  corona:      {archivo: assets/fondos/corona.jpg, llenar: false}
+  podio:       {archivo: assets/fondos/podio.jpg, llenar: false}
   azucar:      {archivo: assets/fondos/azucar.jpg}
-  juno:        {archivo: assets/fondos/diosa-juno.jpg}
+  juno:        {archivo: assets/fondos/diosa-juno.jpg, llenar: false}
   ysim:        {archivo: assets/fondos/yandere-sim.jpg, llenar: false}
   kotonoha:    {archivo: assets/fondos/kotonoha-retrato.jpg}
   calle:       {archivo: assets/fondos/h-calle-noche-japon.jpg}
@@ -33,6 +44,13 @@ imagenes:
   celular:     {archivo: assets/fondos/h-celular-mapa.jpg}
   gamer:       {archivo: assets/fondos/h-cuarto-gamer.jpg}
   ventana:     {archivo: assets/fondos/h-ojos-ventana.jpg}
+  libros:      {archivo: assets/fondos/h-libros-psicologia.jpg}
+  libreta:     {archivo: assets/fondos/h-libreta-nombre.jpg}
+  consultorio: {archivo: assets/fondos/h-consultorio.jpg}
+  periodico:   {archivo: assets/fondos/h-periodico.jpg}
+  juzgado:     {archivo: assets/fondos/h-juzgado.jpg}
+  comisaria:   {archivo: assets/fondos/h-comisaria.jpg}
+  mensajes:    {archivo: assets/fondos/h-mensajes.jpg}
   yami_noche:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-real-noche.jpg}
   # cosplays de las gemelas (los de escote van con la chibi "¡Tsuki, tápate!")
   c_yuno:      {archivo: personajes/gemelas/cosplay/yami-yuno.png}
@@ -47,6 +65,7 @@ imagenes:
   c_albedo:    {archivo: personajes/gemelas/cosplay/tsuki-albedo-amplia.jpg}
   c_monika:    {archivo: personajes/gemelas/cosplay/yami-monika-amplia.jpg}
   c_mita:      {archivo: personajes/gemelas/cosplay/tsuki-mita-amplia.jpg}
+  c_esdeath:   {archivo: personajes/gemelas/cosplay/tsuki-esdeath-censura.jpg}
   # Yami HD (tarjetas de capítulo)
   hd_seria:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria.jpg}
   hd_seria2:   {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria2.jpg}
@@ -69,6 +88,9 @@ imagenes:
   s_gato:      {archivo: personajes/yami/irl/stickers/gato.jpg}
   s_shh:       {archivo: personajes/yami/irl/stickers/shh.jpg}
   s_selfie:    {archivo: personajes/yami/irl/selfie-guino.jpg}
+  s_mejilla:   {archivo: personajes/yami/irl/stickers/mejilla.jpg}
+  s_corazones: {archivo: personajes/yami/irl/stickers/corazones.jpg}
+  s_llora:     {archivo: personajes/yami/irl/stickers/llora.jpg}
   # portadas oficiales (referencia breve; se descargan a la caché, no al repo)
   p_school:    {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx756-XAbKbFaUTDiA.jpg", nombre: school-days.jpg, titulo: "SCHOOL DAYS"}
   p_mirai:     {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10620-dUZeNej0W4QN.png", nombre: mirai-nikki.png, titulo: "MIRAI NIKKI"}
@@ -118,7 +140,7 @@ cues:
   - {en: "Primer lugar", tarjeta: "#1 YUNO GASAI · 29,479", dur: 3.5}
   - {en: "Segundo: Kurumi", cosplay: c_kurumi, lado_cosplay: der, inclina: -5, dur_cosplay: 7, rebote: true, portada: p_dal, tarjeta: "#2 KURUMI TOKISAKI · 23,487", dur: 6}
   - {en: "Tercero: Lucy", cosplay: c_lucy, lado_cosplay: izq, inclina: 4, dur_cosplay: 5, portada: p_elfen, tarjeta: "#3 LUCY · 13,636", dur: 4.5}
-  - {en: "Cuarto: Esdeath", portada: p_akame, dur_portada: 4, tarjeta: "#4 ESDEATH · 12,537", dur: 4}
+  - {en: "Cuarto: Esdeath", cosplay: c_esdeath, lado_cosplay: izq, inclina: -4, dur_cosplay: 4.5, rebote: true, portada: p_akame, dur_portada: 4, tarjeta: "#4 ESDEATH · 12,537", dur: 4}
   - {en: "Y quinto: Albedo", cosplay: c_albedo, lado_cosplay: der, inclina: -4, dur_cosplay: 8, portada: p_overlord, tarjeta: "#5 ALBEDO · 8,840", dur: 5}
   - {en: "amor a primera actualización", sticker: s_risa, lado: izq}
   - {en: "Y el dato que más", img: kotonoha, tarjeta: "KOTONOHA · 1,441", fuente: "La más famosa… no la más querida", dur: 7}
@@ -150,22 +172,25 @@ cues:
   - {en: "Un estudio en una casa", img: ventana, tarjeta: "EL MIEDO JUSTO", fuente: "Andersen, Clasen et al.", dur: 7}
   - {en: "O sea: una yandere", sticker: s_gato, dur_sticker: 3.5}
   # 7. Psicología
-  - {seccion: 7, img: siluetas, capitulo: "LA MENTE\nYANDERE", numero: "CAPÍTULO 6", retrato: hd_seria3}
+  - {seccion: 7, img: libros, capitulo: "LA MENTE\nYANDERE", numero: "CAPÍTULO 6", retrato: hd_seria3}
   - {en: "No seas así", sticker: s_enojada}
   - {en: "Ven, no tengas miedo", yami: seria, lado: der, hasta: "yo te explico"}
-  - {en: "Primero, el apego ansioso", img: diario, tarjeta: "APEGO ANSIOSO", fuente: "Miedo al abandono", dur: 7}
+  - {en: "Primero, el apego ansioso", img: mensajes, tarjeta: "APEGO ANSIOSO", fuente: "Miedo al abandono", dur: 7}
   - {en: "Kotonoha lo vive como espera", img: paraguas}
-  - {en: "Segundo, la limerencia", img: telefono, irl: [i_neutral, i_pensativa, i_risa, i_burlona], hasta: "sin freno de mano", tarjeta: "LIMERENCIA", fuente: "Dorothy Tennov, 1979", dur: 8}
-  - {en: "Tercero, algo más serio", img: ventana, tarjeta: "EROTOMANÍA", fuente: "DSM-5: subtipo del trastorno delirante", dur: 9}
+  - {en: "Segundo, la limerencia", img: libreta, irl: [i_neutral, i_pensativa, i_risa, i_burlona], hasta: "sin freno de mano", tarjeta: "LIMERENCIA", fuente: "Dorothy Tennov, 1979", dur: 8}
+  - {en: "Tercero, algo más serio", img: consultorio, tarjeta: "EROTOMANÍA", fuente: "DSM-5: subtipo del trastorno delirante", dur: 9}
   - {en: "Y cuarto, lo más importante", img: celular, tarjeta: "CONDUCTAS DE CONTROL", dur: 7}
   - {en: "En el anime se ve", img: corazon, yami: seria, lado: der, hasta: "se disfraza de amor"}
-  - {en: "Ojo: estos son personajes", img: siluetas}
+  - {en: "Ojo: estos son personajes", img: libros}
   # 8. Fuera de la pantalla (sin stickers ni chistes)
   - {seccion: 8, img: calle, capitulo: "FUERA DE\nLA PANTALLA", numero: "CAPÍTULO 7", retrato: hd_seria}
   - {en: "Japón, octubre de", tarjeta: "JAPÓN · 1999", fuente: "Okegawa, Saitama", dur: 6}
+  - {en: "Ella fue a la policía", img: comisaria}
+  - {en: "No voy a entrar", img: periodico}
   - {en: "El caso indignó", img: leyes, tarjeta: "LEY CONTRA EL ACOSO", fuente: "Japón · noviembre de 2000", dur: 9}
   - {en: "Y para que veas", img: cine, tarjeta: "EE. UU. · 1981", dur: 6}
   - {en: "Eso se parece a una relación", tarjeta: "OBSESIÓN PARASOCIAL", dur: 6}
+  - {en: "Lo declararon no culpable", img: juzgado}
   - {en: "¿Ves el patrón?", img: siluetas, yami: seria, lado: der, hasta: "estaban ahí antes"}
   # 9. Cierre
   - {seccion: 9, img: mar, capitulo: "PARA\nCERRAR", numero: "FINAL", retrato: hd_sonrisa}

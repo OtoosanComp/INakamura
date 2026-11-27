@@ -30,3 +30,25 @@ fondos:
   - id: h-ojos-ventana
     prompt: window at night seen from outside a dark house, curtains slightly open, light inside, rain, ominous mood, empty street
     semilla: 371
+  # representativos para psicología y casos (corrección del 28-nov)
+  - id: h-libros-psicologia
+    prompt: stack of old psychology books and an anatomical brain model on a wooden desk, warm lamp light, notebook and pen, cozy study at night
+    semilla: 401
+  - id: h-libreta-nombre
+    prompt: open notebook on a desk filled with many small hand drawn hearts, pink highlighter, polaroid photos pinned on a corkboard behind, dim purple light, obsessive mood
+    semilla: 411
+  - id: h-consultorio
+    prompt: empty therapist office, comfortable armchair and couch, bookshelf, soft window light, plant, calm but serious mood
+    semilla: 421
+  - id: h-periodico
+    prompt: old folded newspapers on a wooden table under a desk lamp, coffee cup, night, documentary mood, unreadable text
+    semilla: 431
+  - id: h-juzgado
+    prompt: empty courtroom with wooden benches and judge bench, dim light through tall windows, solemn atmosphere
+    semilla: 441
+  - id: h-comisaria
+    prompt: empty police station desk at night with stacks of paper files, old telephone, blinds with streetlight, lonely mood
+    semilla: 451
+  - id: h-mensajes
+    prompt: smartphone glowing on a bed at night showing many notification bubbles, dark bedroom, purple light, anxious mood, object only
+    semilla: 461
