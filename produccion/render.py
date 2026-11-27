@@ -34,6 +34,7 @@ FUNDIDO = 0.30   # transición entre escenas
 Y_TITULO, Y_TARJETA, Y_SUBS = 300, 950, 1290
 Y_TARJETA_TRAS = 1120  # con imagen detrás: tarjeta más chica y más abajo, para que se vea la cara de atrás
 ENTRADA_YAMI = 0.55  # segundos que tarda Yami en subir desde abajo
+COMPLETO = False  # --completo: versión con fotos completas de las gemelas (salida/<id>-completo/)
 
 
 def fuente(peso, tam):
@@ -191,7 +192,9 @@ class Escena:
                         variantes[clave] = anime / f"{nombre}{sufijo}.png"
                 alto = 900
             elif tipo == "cosplay":  # cosplay/<nombre> → fotos de las gemelas en cosplay (personajes/gemelas/cosplay)
-                variantes = {"base": RAIZ / "personajes" / "gemelas" / "cosplay" / f"{nombre}.png"}
+                # Versión "completa" (Patreon): fotos enteras, guardadas FUERA del repo público.
+                carpeta = (CACHE / "cosplay-completo") if COMPLETO else (RAIZ / "personajes" / "gemelas" / "cosplay")
+                variantes = {"base": carpeta / f"{nombre}.png"}
                 alto = 820
             else:  # yamireal/<recorte> → fotos realistas
                 variantes = {"base": RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png"}
@@ -352,6 +355,8 @@ def remezclar(ruta_guion):
 
 def render(ruta_guion, solo_voz=False, audio_externo=None):
     g = yaml.safe_load(Path(ruta_guion).read_text())
+    if COMPLETO:
+        g["id"] += "-completo"
     out = SALIDA / g["id"]
     out.mkdir(parents=True, exist_ok=True)
     textos = [e["texto"] for e in g["escenas"]]
@@ -463,7 +468,9 @@ if __name__ == "__main__":
     ap.add_argument("--solo-voz", action="store_true")
     ap.add_argument("--audio", help="voz ya generada (ElevenLabs, CapCut…): mp3/wav del guion completo")
     ap.add_argument("--remezclar", action="store_true", help="solo rehacer el audio de un Reel ya renderizado")
+    ap.add_argument("--completo", action="store_true", help="versión con fotos completas de las gemelas (Patreon)")
     a = ap.parse_args()
+    COMPLETO = a.completo
     if a.remezclar:
         remezclar(a.guion)
     else:
