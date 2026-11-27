@@ -30,16 +30,16 @@ imagenes:
   hd_seria2:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria2.jpg}
   hd_seria3:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria3.jpg}
   # Yami IRL (stickers: celdas de 384x~340 de la hoja)
-  irl_guino:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 2, 380, 341]}
-  irl_mejilla:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [388, 2, 764, 341]}
-  irl_risa:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [772, 2, 1148, 341]}
-  irl_sorpresa:   {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 2, 1532, 341]}
-  irl_puchero:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 347, 380, 676]}
-  irl_corazones:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 347, 1532, 676]}
-  irl_shh:        {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [4, 682, 380, 1022]}
-  irl_llora:      {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [388, 682, 764, 1022]}
-  irl_gato:       {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-stickers.jpg, recorte: [1156, 682, 1532, 1022]}
-  irl_selfie:     {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-irl-guino.jpg}
+  irl_guino:      {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [4, 2, 380, 341]}
+  irl_mejilla:    {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [388, 2, 764, 341]}
+  irl_risa:       {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [772, 2, 1148, 341]}
+  irl_sorpresa:   {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [1156, 2, 1532, 341]}
+  irl_puchero:    {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [4, 347, 380, 676]}
+  irl_corazones:  {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [1156, 347, 1532, 676]}
+  irl_shh:        {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [4, 682, 380, 1022]}
+  irl_llora:      {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [388, 682, 764, 1022]}
+  irl_gato:       {archivo: personajes/yami/irl/stickers-expresiones.jpg, recorte: [1156, 682, 1532, 1022]}
+  irl_selfie:     {archivo: personajes/yami/irl/selfie-guino.jpg}
   # Arte oficial de Rockstar Games (comentario/análisis)
   r_portada:      {rockstar: poster_full.02ig6s_80ei58.jpg, credito: "Imagen: Rockstar Games"}
   r_abrazo:       {rockstar: musicDesktop.0zwcbzhynnsc-.jpg, credito: "Imagen: Rockstar Games"}
