@@ -21,6 +21,15 @@
 > De él salen r6 (ranking mundial) y r7 (videojuegos), se suben el lunes. Eslogan: "Ven, no tengas miedo… yo te explico."
 > Los Reels siguen en la rama `proyecto-meta`; al terminar un largo, fusionar aquí → proyecto-meta si hace falta.
 
+## Notas del usuario para los siguientes largos y Reels (28-nov, tras revisar el largo 02 v2)
+- **Subtítulos dinámicos: SÍ** (`subs_dinamicos: true`: al centro del espacio libre, palabra activa en naranja neón). Se quedan así.
+- **Punto medio de visuales:** el v2 se pasó un poco (demasiadas apariciones). Usar `relleno` más espaciado
+  (p. ej. `espera: 4`, `cada: 7`, `dur: 5`) y menos stickers/cosplays seguidos; que cada aparición tenga motivo.
+- **Sí usar material real de la época** en casos y datos: recortes/portadas de periódicos, portadas de revistas o juegos,
+  con crédito en pantalla y "© de sus respectivos autores" en la descripción (uso de comentario). Siguen prohibidas las
+  fotos de víctimas, cuerpos, sangre o escenas del crimen.
+- En general el formato del largo 02 v2 gustó: estructura, guion, Yami 2D + IRL estilo PNGtuber, chibi de censura.
+
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
 teléfono** con Claude Code en la nube: no tiene PC. Todo se produce en el contenedor y se le entrega con la herramienta de
 envío de archivos. Escribe en español de México.
