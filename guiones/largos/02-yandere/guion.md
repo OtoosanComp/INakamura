@@ -14,8 +14,8 @@ Cómo leer este archivo:
 
 🔁 r5-2 0.00–5.68 · Te dicen: haría cualquier cosa por ti. ¿Romántico… o aterrador?
 
-Si dijiste romántico… quédate, que hoy te vas a llevar un par de sustos. Hola, soy Yami I. Nakamura, y esta es la semana de las [yandere|llandere]: las del anime, las de los videojuegos… y las que, por desgracia, se salieron de la pantalla.
-> 🎬 IRL-habla (irl-neutral → irl-burlona) sobre el skyline morado · rótulo "LA SEMANA DE LAS YANDERE"
+Si dijiste romántico… quédate, que hoy te vas a llevar un par de sustos. Ven, no tengas miedo… yo te explico. Hola, soy Yami I. Nakamura, y hoy hablamos de las [yandere|llandere]: las del anime, las de los videojuegos… y las que, por desgracia, se salieron de la pantalla.
+> 🎬 IRL-habla (irl-neutral → irl-burlona) sobre el skyline morado · sticker IRL `guino` en "Ven, no tengas miedo" · rótulo "YANDERE: DEL ANIME A LA VIDA REAL"
 
 ## 1. ¿Qué es una yandere?
 > 🎬 CAPÍTULO 1 "¿QUÉ ES UNA YANDERE?" (retrato HD) · rótulo "病んでる + デレデレ"
@@ -98,7 +98,7 @@ O sea: una yandere es como una montaña rusa. Gritas… pero porque sabes que el
 ## 7. La psicología de fondo
 > 🎬 CAPÍTULO 6 "LA MENTE YANDERE" · fondo dos-siluetas
 
-Ahora sí, quitémosle el uniforme escolar a la yandere y veamos qué hay debajo… en la mente. No seas así.
+Ahora sí, quitémosle el uniforme escolar a la yandere y veamos qué hay debajo… en la mente. No seas así. Ven, no tengas miedo… yo te explico.
 > 🎬 sticker IRL `enojada` en "No seas así"
 
 Primero, el apego ansioso: un miedo enorme a que te abandonen. Yuno lo vive como control: saber dónde está él cada diez minutos. [Kotonoha|Kotonoja] lo vive como espera: quedarse, aunque duela.
@@ -139,7 +139,7 @@ Y para que veas que no es cosa de un solo país: Estados Unidos, mil novecientos
 Así que disfruta tus animes, tus juegos y tus memes de Yuno… pero si alguien en la vida real te revisa el celular, te aleja de tus amigos o te dice "si no eres mía, no eres de nadie"… eso no es un anime. Eso es una señal. Y pedir ayuda no te hace exagerada.
 > 🎬 2D-habla (seria → tierna)
 
-Ahora dime: ¿cuál es tu yandere favorita… y cuál te daría más miedo tener de novia? Te leo en los comentarios. Si te gustó, suscríbete a Otoosantales, que esta semana todavía vienen más [yandere|llandere]. Soy Yami I. Nakamura. Y si fueras [Kotonoha|Kotonoja]… ¿tú qué hubieras hecho?
+Ahora dime: ¿cuál es tu yandere favorita… y cuál te daría más miedo tener de novia? Te leo en los comentarios. Si te gustó, suscríbete a Otoosantales. Soy Yami I. Nakamura. Y la pregunta de hoy: si tú fueras una [yandere|llandere]… ¿qué serías capaz de hacer por amor? ¿Tú qué hubieras hecho?
 > 🎬 IRL-habla (irl-risa) · rótulo "Suscríbete · Otoosantales" · selfie guiño al final
 
 ---
@@ -147,6 +147,11 @@ Ahora dime: ¿cuál es tu yandere favorita… y cuál te daría más miedo tener
 ## Reels que salen de este audio (sin voz extra)
 - **r6 · El ranking mundial de las yandere (≈55 s):** sección 3 desde "Y si armamos el top mundial…" hasta "¿Tú a cuál le darías la corona?" (con el gag de Kurumi).
 - **r7 · Las yandere de los videojuegos (≈55 s):** sección 5 completa ("En 2015…" hasta "O eso te hace creer") + "¿Tú qué hubieras hecho?" del cierre.
+- Calendario: el largo sale el domingo; r6 y r7 el lunes (1 pm y 8 pm). Ningún video lo anuncia.
+
+## Imágenes de cosplay (corrección del 27-nov)
+- Se muestran más amplias (hasta la cintura), como tarjeta tipo foto un poco inclinada, no solo la cara.
+- Tomas con escote/ligueros: se tapan con la chibi "¡Tsuki, tápate!", con un sticker de Yami o con el subtítulo encima.
 
 ## Cálculo de voz nueva
-≈ 7,000 caracteres → ≈ 7,000 créditos (quedan 24,410 → ~17,400 después). Reutilizado ≈ 2 min 45 s.
+≈ 7,100 caracteres → ≈ 7,000 créditos (quedan 24,410 → ~17,400 después). Reutilizado ≈ 2 min 45 s.
