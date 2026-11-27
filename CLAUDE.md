@@ -13,8 +13,12 @@
 > se descarga a ~/.cache/proyecto-meta/imagenes, NO al repo) con crédito en pantalla; foto de Kahneman (Commons);
 > música del usuario `assets/musica/tense-bassline.mp3` en bucle a -29 LUFS con ducking bajo la voz; barra de progreso.
 > `largo.py ... muestra --t 24 91` saca cuadros sueltos para revisar; `... audio` rehace solo la mezcla.
-> Largo 02 (yandere): `guiones/largos/02-yandere/PREPARACION.md` (estructura, audios r1/r4/r5 que se reutilizan,
-> imágenes que faltan) + `docs/investigacion-yandere-largo.md`. De él salen r6 (ranking mundial) y r7 (videojuegos).
+> Largo 02 (yandere, domingo): ARMADO. `guiones/largos/02-yandere/guion.md` (🔁 = audio reutilizado de r1/r4/r5) →
+> `produccion/montaje.py guion.md textos|armar largo02` (corta audios viejos en silencios + 3 partes nuevas) →
+> `assets/voces/largo02-montaje.mp3` → `largo.py largo.yaml voz|video`. Nuevos elementos en largo.py: `cosplay:` (foto
+> inclinada), `portada:` (portada oficial chica), `irl: [caras]` (Yami realista estilo PNGtuber, rebota con la voz),
+> fondos verticales de Reels se recortan a 16:9. Cosplays con escote: chibi "¡Tsuki, tápate!" (`personajes/yami/chibi/`).
+> De él salen r6 (ranking mundial) y r7 (videojuegos), se suben el lunes. Eslogan: "Ven, no tengas miedo… yo te explico."
 > Los Reels siguen en la rama `proyecto-meta`; al terminar un largo, fusionar aquí → proyecto-meta si hace falta.
 
 Rama `proyecto-meta` del repo OtoosanComp/INakamura (rama huérfana, separada del POS). El usuario trabaja **solo desde el
@@ -56,7 +60,7 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
 - Reel 5 (por qué el mundo se obsesionó con las yandere): entregado (55 s), con cosplays de las gemelas (`cosplay/…`,
   recortes de cara en `personajes/gemelas/cosplay/`). Siguiente: video largo de las yandere (junta Reels 1–5).
 - ElevenLabs: plan **Starter pagado** (con uso comercial). 33,654 créditos por periodo; se reinician el 25 dic 2026.
-  Usados: 9,244 al 27-nov (largo 01 + r5). Quedan ~24,410 → largo 02 (~8k) + ~10 Reels a 1 toma (o 2 tomas si sobra).
+  Usados: 16,191 al 27-nov (largo 01, r5, largo 02). Quedan ~17,460 → largo 02 (~8k) + ~10 Reels a 1 toma (o 2 tomas si sobra).
   Sin cobro excedente en Starter: al acabarse se detiene. Presupuesto: Reel ≈ 800 créditos por toma; largo ≈ 7,900 (1 toma,
   por partes; repetir solo la parte que falle). Mezcla al mes: 2 largos + Reels. El usuario pidió **1 sola toma** e imágenes sin gastar de más.
 - Mezcla: cada pista se iguala antes de mezclar (voz -16, música -31, efectos -27 LUFS; final -14). `render.py --remezclar`
