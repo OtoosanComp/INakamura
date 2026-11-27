@@ -133,13 +133,13 @@ Y para que veas que no es cosa de un solo país: Estados Unidos, mil novecientos
 > 🎬 CAPÍTULO "PARA CERRAR" · fondo mar-noche
 
 🔁 r5-2 42.26–48.12 · Pero ojo: romantizar el control en la vida real es otra cosa. Una yandere es buena ficción.
-🔁 r5-1 ≈50.9–53.0 · Un amor que controla, no.
+🔁 r5-1 50.12–51.80 · Un amor que controla, no.
 > 🎬 cosplay gemelas-selfie → IRL-habla
 
 Así que disfruta tus animes, tus juegos y tus memes de Yuno… pero si alguien en la vida real te revisa el celular, te aleja de tus amigos o te dice "si no eres mía, no eres de nadie"… eso no es un anime. Eso es una señal. Y pedir ayuda no te hace exagerada.
 > 🎬 2D-habla (seria → tierna)
 
-Ahora dime: ¿cuál es tu yandere favorita… y cuál te daría más miedo tener de novia? Te leo en los comentarios. Si te gustó, suscríbete a Otoosantales. Soy Yami I. Nakamura. Y la pregunta de hoy: si tú fueras una [yandere|llandere]… ¿qué serías capaz de hacer por amor? ¿Tú qué hubieras hecho?
+Ahora dime: ¿cuál es tu yandere favorita… y cuál te daría más miedo tener de novia? Te leo en los comentarios. Si te gustó, suscríbete a Otoosantales. Soy Yami I. Nakamura. Y la pregunta de hoy: si tú fueras una [yandere|llandere]… ¿qué serías capaz de hacer por amor?
 > 🎬 IRL-habla (irl-risa) · rótulo "Suscríbete · Otoosantales" · selfie guiño al final
 
 ---

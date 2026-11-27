@@ -1,0 +1,177 @@
+# Video largo 02 — La semana de las yandere (render: produccion/largo.py)
+# Voz: montaje de audios existentes (r1, r4, r5) + voz nueva en 3 partes → produccion/montaje.py
+id: largo02-yandere
+guion: guion-voz.md
+voz: [assets/voces/largo02-montaje.mp3]
+musica: assets/musica/tense-bassline.mp3
+musica_lufs: -29
+portada_t: 3.0
+
+imagenes:
+  # fondos (assets/fondos)
+  corazon:     {archivo: assets/fondos/corazon-cadena.jpg}
+  diario:      {archivo: assets/fondos/diario-rosa.jpg}
+  siluetas:    {archivo: assets/fondos/dos-siluetas.jpg}
+  lluvia:      {archivo: assets/fondos/estacion-lluvia.jpg}
+  fiordo:      {archivo: assets/fondos/fiordo-barco.jpg}
+  mar:         {archivo: assets/fondos/mar-noche.jpg}
+  paraguas:    {archivo: assets/fondos/paraguas.jpg}
+  pasillo:     {archivo: assets/fondos/pasillo-rumores.jpg}
+  salon:       {archivo: assets/fondos/salon-vacio.jpg}
+  tele:        {archivo: assets/fondos/tele-antigua.jpg}
+  telefono:    {archivo: assets/fondos/telefono-noche.jpg, y: 0.8}
+  corona:      {archivo: assets/fondos/corona.jpg}
+  podio:       {archivo: assets/fondos/podio.jpg}
+  azucar:      {archivo: assets/fondos/azucar.jpg}
+  juno:        {archivo: assets/fondos/diosa-juno.jpg}
+  ysim:        {archivo: assets/fondos/yandere-sim.jpg, llenar: false}
+  kotonoha:    {archivo: assets/fondos/kotonoha-retrato.jpg}
+  calle:       {archivo: assets/fondos/h-calle-noche-japon.jpg}
+  leyes:       {archivo: assets/fondos/h-leyes.jpg}
+  cine:        {archivo: assets/fondos/h-cine-vacio.jpg}
+  monitor:     {archivo: assets/fondos/h-monitor-monika.jpg}
+  celular:     {archivo: assets/fondos/h-celular-mapa.jpg}
+  gamer:       {archivo: assets/fondos/h-cuarto-gamer.jpg}
+  ventana:     {archivo: assets/fondos/h-ojos-ventana.jpg}
+  yami_noche:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-real-noche.jpg}
+  # cosplays de las gemelas (los de escote van con la chibi "¡Tsuki, tápate!")
+  c_yuno:      {archivo: personajes/gemelas/cosplay/yami-yuno.png}
+  c_yuno2:     {archivo: personajes/gemelas/cosplay/yami-yuno-anime-amplia.jpg}
+  c_toga:      {archivo: personajes/gemelas/cosplay/yami-toga.png}
+  c_mikasa:    {archivo: personajes/gemelas/cosplay/tsuki-mikasa.png}
+  c_satou:     {archivo: personajes/gemelas/cosplay/tsuki-satou.png}
+  c_selfie:    {archivo: personajes/gemelas/cosplay/gemelas-selfie.png}
+  c_kurumi:    {archivo: personajes/gemelas/cosplay/tsuki-kurumi-amplia-censura.jpg}
+  c_kurumi2:   {archivo: personajes/gemelas/cosplay/tsuki-kurumi2-amplia-censura.jpg}
+  c_lucy:      {archivo: personajes/gemelas/cosplay/tsuki-lucy-amplia.jpg}
+  c_albedo:    {archivo: personajes/gemelas/cosplay/tsuki-albedo-amplia.jpg}
+  c_monika:    {archivo: personajes/gemelas/cosplay/yami-monika-amplia.jpg}
+  c_mita:      {archivo: personajes/gemelas/cosplay/tsuki-mita-amplia.jpg}
+  # Yami HD (tarjetas de capítulo)
+  hd_seria:    {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria.jpg}
+  hd_seria2:   {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria2.jpg}
+  hd_seria3:   {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-seria3.jpg}
+  hd_sonrisa:  {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-sonrisa.jpg}
+  hd_sonrisa2: {archivo: guiones/largos/01-gta6-jason-lucia/entrada/fotos/yami-hd-sonrisa2.jpg}
+  # Yami IRL (stickers y PNGtuber)
+  i_neutral:   {archivo: personajes/yami/irl/stickers/irl-neutral.jpg}
+  i_risa:      {archivo: personajes/yami/irl/stickers/irl-risa.jpg}
+  i_pensativa: {archivo: personajes/yami/irl/stickers/irl-pensativa.jpg}
+  i_burlona:   {archivo: personajes/yami/irl/stickers/irl-burlona.jpg}
+  i_sorpresa:  {archivo: personajes/yami/irl/stickers/irl-sorpresa.jpg}
+  i_maliciosa: {archivo: personajes/yami/irl/stickers/irl-maliciosa.jpg}
+  s_guino:     {archivo: personajes/yami/irl/stickers/guino.jpg}
+  s_risa:      {archivo: personajes/yami/irl/stickers/risa.jpg}
+  s_sorpresa:  {archivo: personajes/yami/irl/stickers/sorpresa.jpg}
+  s_puchero:   {archivo: personajes/yami/irl/stickers/puchero.jpg}
+  s_enojada:   {archivo: personajes/yami/irl/stickers/enojada.jpg}
+  s_leyendo:   {archivo: personajes/yami/irl/stickers/leyendo.jpg}
+  s_gato:      {archivo: personajes/yami/irl/stickers/gato.jpg}
+  s_shh:       {archivo: personajes/yami/irl/stickers/shh.jpg}
+  s_selfie:    {archivo: personajes/yami/irl/selfie-guino.jpg}
+  # portadas oficiales (referencia breve; se descargan a la caché, no al repo)
+  p_school:    {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx756-XAbKbFaUTDiA.jpg", nombre: school-days.jpg, titulo: "SCHOOL DAYS"}
+  p_mirai:     {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10620-dUZeNej0W4QN.png", nombre: mirai-nikki.png, titulo: "MIRAI NIKKI"}
+  p_mha:       {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21459-nYh85uj2Fuwr.jpg", nombre: mha.jpg, titulo: "MY HERO ACADEMIA"}
+  p_hsl:       {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101351-TWLbnRdE1tBI.jpg", nombre: hsl.jpg, titulo: "HAPPY SUGAR LIFE"}
+  p_aot:       {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-buvcRTBx4NSm.jpg", nombre: aot.jpg, titulo: "ATTACK ON TITAN"}
+  p_elfen:     {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx226-MibyRKhIrnTe.png", nombre: elfen-lied.png, titulo: "ELFEN LIED"}
+  p_dal:       {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx15583-Sxd2J4RJdRhj.jpg", nombre: date-a-live.jpg, titulo: "DATE A LIVE"}
+  p_akame:     {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20613-HXHpec4bemk5.jpg", nombre: akame.jpg, titulo: "AKAME GA KILL!"}
+  p_overlord:  {url: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20832-vUNm5zrYWifc.jpg", nombre: overlord.jpg, titulo: "OVERLORD"}
+  p_ddlc:      {url: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/698780/header.jpg", nombre: ddlc.jpg, titulo: "DOKI DOKI LITERATURE CLUB", ancho: 300}
+  p_miside:    {url: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2527500/header.jpg", nombre: miside.jpg, titulo: "MISIDE", ancho: 300}
+
+cues:
+  # 0. Gancho
+  - {seccion: 0, img: corazon, cosplay: c_yuno, lado_cosplay: der, inclina: 4, dur_cosplay: 5.5}
+  - {en: "Si dijiste romántico", img: yami_noche, irl: [i_maliciosa, i_burlona, i_neutral], hasta: "un par de sustos"}
+  - {en: "Ven, no tengas miedo", sticker: s_guino, dur_sticker: 2.6}
+  - {en: "Hola, soy Yami", irl: [i_neutral, i_risa, i_burlona], hasta: "de la pantalla", tarjeta: "YANDERE", fuente: "Del anime a la vida real", dur: 7}
+  # 1. Qué es
+  - {seccion: 1, img: corazon, capitulo: "¿QUÉ ES UNA\nYANDERE?", numero: "CAPÍTULO 1", retrato: hd_sonrisa}
+  - {en: "Yandere viene de", tarjeta: "病んでる + デレデレ", fuente: "yanderu (enfermo) + deredere (empalagoso)", dur: 8}
+  - {en: "O sea: amor dulce", yami: seria, lado: der, hasta: "se echa a perder"}
+  - {en: "terminan revisándote el celular", img: celular}
+  - {en: "ellas ya se la sabían", sticker: s_risa}
+  - {en: "Y para entenderlo", img: kotonoha}
+  # 2. Kotonoha
+  - {seccion: 2, img: salon, capitulo: "KOTONOHA", numero: "CAPÍTULO 2", sub: "No nació así", retrato: hd_seria}
+  - {en: "Kotonoha era la chica", portada: p_school, sticker: s_leyendo, dur_sticker: 3.2}
+  - {en: "Primero: su novio", img: telefono}
+  - {en: "Segundo: empezaron los rumores", img: pasillo}
+  - {en: "Tercero: él le dijo", img: lluvia}
+  - {en: "Eso tiene nombre", yami: seria, lado: der, hasta: "se hace más fuerte", tarjeta: "VÍNCULO TRAUMÁTICO", fuente: "Dutton y Painter, 1981", dur: 9}
+  - {en: "No es un diagnóstico", img: kotonoha}
+  - {en: "Y ya que estamos", img: tele, irl: [i_burlona, i_maliciosa], hasta: "parece inventado"}
+  - {en: "En esos paisajes", img: fiordo, tarjeta: "NICE BOAT", fuente: "El meme de 2007", dur: 7}
+  - {en: "Lo más irónico", img: mar}
+  - {en: "también termina en un barco", sticker: s_sorpresa}
+  - {en: "Eso tiene que ver con algo", yami: pensativa, lado: der, hasta: "se vuelve leyenda", tarjeta: "REACTANCIA", fuente: "Jack Brehm, 1966", dur: 8}
+  - {en: "Es como el brócoli", sticker: s_risa, dur_sticker: 3.2}
+  # 3. Ranking
+  - {seccion: 3, img: corona, capitulo: "EL RANKING\nMUNDIAL", numero: "CAPÍTULO 3", retrato: hd_sonrisa2}
+  - {en: "Para no pelearnos", irl: [i_maliciosa, i_risa], hasta: "contar favoritos"}
+  - {en: "En MyAnimeList, una de las bases", img: podio, cosplay: c_yuno2, lado_cosplay: izq, inclina: -4, dur_cosplay: 6, portada: p_mirai}
+  - {en: "Toga viene de", cosplay: c_toga, lado_cosplay: der, inclina: 5, dur_cosplay: 5, portada: p_mha}
+  - {en: "Y si armamos el top", tarjeta: "TOP MUNDIAL · MyAnimeList", fuente: "Favoritos al 27-nov-2026", dur: 6}
+  - {en: "Primer lugar", tarjeta: "#1 YUNO GASAI · 29,479", dur: 3.5}
+  - {en: "Segundo: Kurumi", cosplay: c_kurumi, lado_cosplay: der, inclina: -5, dur_cosplay: 7, rebote: true, portada: p_dal, tarjeta: "#2 KURUMI TOKISAKI · 23,487", dur: 6}
+  - {en: "Tercero: Lucy", cosplay: c_lucy, lado_cosplay: izq, inclina: 4, dur_cosplay: 5, portada: p_elfen, tarjeta: "#3 LUCY · 13,636", dur: 4.5}
+  - {en: "Cuarto: Esdeath", portada: p_akame, dur_portada: 4, tarjeta: "#4 ESDEATH · 12,537", dur: 4}
+  - {en: "Y quinto: Albedo", cosplay: c_albedo, lado_cosplay: der, inclina: -4, dur_cosplay: 8, portada: p_overlord, tarjeta: "#5 ALBEDO · 8,840", dur: 5}
+  - {en: "amor a primera actualización", sticker: s_risa, lado: izq}
+  - {en: "Y el dato que más", img: kotonoha, tarjeta: "KOTONOHA · 1,441", fuente: "La más famosa… no la más querida", dur: 7}
+  - {en: "Querida… no tanto", sticker: s_puchero}
+  - {en: "Pero en Japón", img: azucar, cosplay: c_satou, lado_cosplay: izq, inclina: -4, dur_cosplay: 7, portada: p_hsl}
+  - {en: "¿Y por qué Yuno?", img: juno, yami: seria, lado: der, hasta: "en un arco"}
+  - {en: "Los números cambian", img: podio, cosplay: c_mikasa, lado_cosplay: izq, inclina: 4, dur_cosplay: 6, portada: p_aot, tarjeta: "MIKASA · 57,473", fuente: "¿Cuenta como yandere?", dur: 5}
+  - {en: "¿O sí?", sticker: s_guino}
+  # 4. Lucy
+  - {seccion: 4, img: lluvia, cosplay: c_lucy, lado_cosplay: izq, inclina: -3, dur_cosplay: 9, portada: p_elfen, dur_portada: 6}
+  - {en: "Lucy no es la típica", img: lluvia}
+  - {en: "Lo que la mete", img: pasillo}
+  - {en: "Ahí está la clave", yami: seria, lado: der, hasta: "lo único bueno que tienen"}
+  # 5. Videojuegos
+  - {seccion: 5, img: ysim, capitulo: "LOS\nVIDEOJUEGOS", numero: "CAPÍTULO 4", retrato: hd_sonrisa}
+  - {en: "Pero el juego que", img: gamer, portada: p_ddlc, dur_portada: 6}
+  - {en: "Ahí está Monika", cosplay: c_monika, lado_cosplay: der, inclina: 4, dur_cosplay: 7}
+  - {en: "se enamora de ti", sticker: s_sorpresa, lado: izq}
+  - {en: "borra los archivos", img: monitor}
+  - {en: "En pocos meses", tarjeta: "+2 MILLONES DE DESCARGAS", fuente: "Doki Doki Literature Club! (2017)", dur: 5}
+  - {en: "Y en dos mil veinticuatro", img: celular, cosplay: c_mita, lado_cosplay: izq, inclina: -4, dur_cosplay: 8, portada: p_miside, dur_portada: 6}
+  - {en: "Tuvo más de cuarenta mil", tarjeta: "+40,000 RESEÑAS EN STEAM", fuente: "MiSide (dic-2024)", dur: 5}
+  - {en: "¿Ves el cambio?", img: gamer, irl: [i_sorpresa, i_pensativa, i_maliciosa], hasta: "te hace creer"}
+  - {en: "Eso se parece a lo que", tarjeta: "RELACIÓN PARASOCIAL", fuente: "Horton y Wohl, 1956", dur: 8}
+  # 6. Por qué nos atraen
+  - {seccion: 6, img: corazon, capitulo: "¿POR QUÉ\nNOS ATRAEN?", numero: "CAPÍTULO 5", retrato: hd_seria2}
+  - {en: "Y en TikTok", img: diario, cosplay: c_selfie, lado_cosplay: izq, inclina: -3, dur_cosplay: 6}
+  - {en: "Los psicólogos hablan", tarjeta: "MASOQUISMO BENIGNO", fuente: "Rozin et al., 2013", dur: 7}
+  - {en: "Un estudio en una casa", img: ventana, tarjeta: "EL MIEDO JUSTO", fuente: "Andersen, Clasen et al.", dur: 7}
+  - {en: "O sea: una yandere", sticker: s_gato, dur_sticker: 3.5}
+  # 7. Psicología
+  - {seccion: 7, img: siluetas, capitulo: "LA MENTE\nYANDERE", numero: "CAPÍTULO 6", retrato: hd_seria3}
+  - {en: "No seas así", sticker: s_enojada}
+  - {en: "Ven, no tengas miedo", yami: seria, lado: der, hasta: "yo te explico"}
+  - {en: "Primero, el apego ansioso", img: diario, tarjeta: "APEGO ANSIOSO", fuente: "Miedo al abandono", dur: 7}
+  - {en: "Kotonoha lo vive como espera", img: paraguas}
+  - {en: "Segundo, la limerencia", img: telefono, irl: [i_neutral, i_pensativa, i_risa, i_burlona], hasta: "sin freno de mano", tarjeta: "LIMERENCIA", fuente: "Dorothy Tennov, 1979", dur: 8}
+  - {en: "Tercero, algo más serio", img: ventana, tarjeta: "EROTOMANÍA", fuente: "DSM-5: subtipo del trastorno delirante", dur: 9}
+  - {en: "Y cuarto, lo más importante", img: celular, tarjeta: "CONDUCTAS DE CONTROL", dur: 7}
+  - {en: "En el anime se ve", img: corazon, yami: seria, lado: der, hasta: "se disfraza de amor"}
+  - {en: "Ojo: estos son personajes", img: siluetas}
+  # 8. Fuera de la pantalla (sin stickers ni chistes)
+  - {seccion: 8, img: calle, capitulo: "FUERA DE\nLA PANTALLA", numero: "CAPÍTULO 7", retrato: hd_seria}
+  - {en: "Japón, octubre de", tarjeta: "JAPÓN · 1999", fuente: "Okegawa, Saitama", dur: 6}
+  - {en: "El caso indignó", img: leyes, tarjeta: "LEY CONTRA EL ACOSO", fuente: "Japón · noviembre de 2000", dur: 9}
+  - {en: "Y para que veas", img: cine, tarjeta: "EE. UU. · 1981", dur: 6}
+  - {en: "Eso se parece a una relación", tarjeta: "OBSESIÓN PARASOCIAL", dur: 6}
+  - {en: "¿Ves el patrón?", img: siluetas, yami: seria, lado: der, hasta: "estaban ahí antes"}
+  # 9. Cierre
+  - {seccion: 9, img: mar, capitulo: "PARA\nCERRAR", numero: "FINAL", retrato: hd_sonrisa}
+  - {en: "romantizar el control", cosplay: c_selfie, lado_cosplay: izq, inclina: 3, dur_cosplay: 6}
+  - {en: "Así que disfruta", img: yami_noche, yami: seria, lado: der, hasta: "no te hace exagerada"}
+  - {en: "Ahora dime", img: podio, irl: [i_risa, i_burlona, i_maliciosa], hasta: "en los comentarios"}
+  - {en: "Si te gustó", tarjeta: "Suscríbete", fuente: "Otoosantales", dur: 6}
+  - {en: "Soy Yami I. Nakamura", sticker: s_selfie, tam: 300, dur_sticker: 3}
+  - {en: "Y la pregunta de hoy", img: corazon, yami: tierna, lado: der, hasta: "por amor"}

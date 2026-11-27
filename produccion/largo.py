@@ -203,6 +203,13 @@ def lienzo(ref, conf):
     if k not in _cache:
         im = imagen(ref, conf)
         ar = im.width / im.height
+        d = conf["imagenes"][ref]
+        if ar < 1 and d.get("llenar", str(d.get("archivo", "")).startswith("assets/fondos/") and "retrato" not in str(d.get("archivo", ""))):
+            # fondo vertical de Reel (escenario sin personaje): se recorta a 16:9 y llena la pantalla
+            h = int(im.width * 9 / 16)
+            y0 = int((im.height - h) * d.get("y", 0.45))
+            _cache[k] = im.crop((0, y0, im.width, y0 + h))
+            return _cache[k]
         if 1.3 <= ar <= 2.0 or (ar > 2.0 and ar < 2.7 and im.height >= 700):  # panorámicas en HD: llenan
             _cache[k] = im
         else:
@@ -348,6 +355,62 @@ def capitulo(f, c, t, conf):
         f.alpha_composite(im, (xr, (H - im.height) // 2 - 20))
 
 
+def cosplay(f, c, t, conf):
+    """Foto grande tipo polaroid, un poco inclinada, que entra deslizándose por un lado."""
+    dur = c.get("dur_cosplay", 6.0)
+    a = entrada(t, c["t"], c["t"] + dur, 0.5, 0.4)
+    k = ("cos", c["cosplay"], c.get("inclina", -4))
+    if k not in _cache:
+        im = tarjeta_imagen(imagen(c["cosplay"], conf), alto=c.get("alto_cosplay", 560), borde=(255, 255, 255),
+                            grosor=10, r=10)
+        _cache[k] = im.rotate(c.get("inclina", -4), expand=True, resample=Image.BICUBIC)
+    im = _cache[k]
+    izq = c.get("lado_cosplay", "izq") == "izq"
+    x_final = 40 if izq else W - im.width - 40
+    x_fuera = -im.width - 20 if izq else W + 20
+    dt = t - c["t"]
+    rebote = 1.0 + (0.06 * math.sin(min(dt / 0.35, 1) * math.pi) if c.get("rebote") else 0)
+    if rebote > 1.001:
+        im = im.resize((int(im.width * rebote), int(im.height * rebote)))
+    f.alpha_composite(im, (int(x_fuera + (x_final - x_fuera) * a), (H - im.height) // 2 - 30))
+
+
+def portada(f, c, t, conf):
+    """Portada oficial chica (referencia), abajo a la izquierda, con título y año."""
+    dur = c.get("dur_portada", 5.0)
+    a = entrada(t, c["t"], c["t"] + dur, 0.4, 0.4)
+    k = ("port", c["portada"])
+    if k not in _cache:
+        d = conf["imagenes"][c["portada"]]
+        im = tarjeta_imagen(imagen(c["portada"], conf), ancho=d.get("ancho", 170), borde=COBRE, grosor=4, r=12)
+        out = Image.new("RGBA", (max(im.width, 260), im.height + 40), (0, 0, 0, 0))
+        out.alpha_composite(im)
+        ImageDraw.Draw(out).text((24, im.height - 14), d.get("titulo", ""), font=fuente("ExtraBold", 22),
+                                 fill=(255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
+        _cache[k] = out
+    im = _cache[k]
+    f.alpha_composite(con_alfa(im, a), (int(20 - 40 * (1 - a)), H - im.height - 100))
+
+
+def yami_irl(f, c, t, conf, energia):
+    """Yami realista "hablando" estilo PNGtuber: rebota con la voz y cambia de expresión cada ~2.4 s."""
+    fin = c.get("t_fin", c["t"] + 4.0)
+    caras = c["irl"] if isinstance(c["irl"], list) else [c["irl"]]
+    i = min(int((t - c["t"]) / c.get("cambio", 2.4)), len(caras) - 1)
+    k = ("irl", caras[i])
+    if k not in _cache:
+        _cache[k] = tarjeta_imagen(imagen(caras[i], conf), alto=ALTO_YAMI + 20, borde=(255, 255, 255), grosor=6)
+    im = _cache[k]
+    a = entrada(t, c["t"], fin)
+    s = 1.0 + 0.035 * min(energia, 1.2)
+    im = im.resize((int(im.width * s), int(im.height * s)))
+    izq = c.get("lado", "der") == "izq"
+    x_final = 30 if izq else W - im.width - 30
+    x_fuera = -im.width - 10 if izq else W + 10
+    y = int(H - im.height - 60 - 14 * min(energia, 1.2))
+    f.alpha_composite(im, (int(x_fuera + (x_final - x_fuera) * a), y))
+
+
 def foto_persona(f, c, t, conf):
     """Foto real de un investigador con su nombre y crédito."""
     dur = c.get("dur_foto", 7.0)
@@ -452,6 +515,12 @@ def cuadro(t, conf, cues, subs, total, d_out=None, palabras=None):
             x = int(x_fuera + (x_final - x_fuera) * a)
             y = int(H - im.height - 70 - 6 * energia * (c["yami"] != "seria"))
             f.alpha_composite(im, (x, y))
+        if c.get("cosplay") and c["t"] <= t < c["t"] + c.get("dur_cosplay", 6.0):
+            cosplay(f, c, t, conf)
+        if c.get("portada") and c["t"] <= t < c["t"] + c.get("dur_portada", 5.0):
+            portada(f, c, t, conf)
+        if c.get("irl") and c["t"] <= t < c.get("t_fin", c["t"] + 4.0):
+            yami_irl(f, c, t, conf, animador(d_out, palabras).estado(t)[2])
         if c.get("sticker") and c["t"] <= t < c["t"] + c.get("dur_sticker", 2.8):
             dt = t - c["t"]
             k = ("st", c["sticker"], c.get("tam", 250))
@@ -533,7 +602,7 @@ def mezclar_audio(conf, d, cues, total):
     normalizar(mus, mn, conf.get("musica_lufs", -29))
     fx = d / "efectos.wav"
     capitulos = [0.0] + [c["t"] for c in cues if c.get("capitulo")]
-    entradas = [c["t"] for c in cues if c.get("sticker") or c.get("yami")]
+    entradas = [c["t"] for c in cues if c.get("sticker") or c.get("yami") or c.get("irl") or c.get("rebote")]
     audio.efectos(total, capitulos, fx, entradas_yami=entradas)
     fxn = d / "efectos_n.wav"
     normalizar(fx, fxn, -30)
@@ -593,7 +662,7 @@ if __name__ == "__main__":
     elif a.paso == "cues":
         conf, datos, cues, subs = cargar(a.conf)
         for c in cues:
-            que = " ".join(f"{k}={c[k]}" for k in ("img", "capitulo", "tarjeta", "yami", "sticker", "foto") if c.get(k))
+            que = " ".join(f"{k}={c[k]}" for k in ("img", "capitulo", "tarjeta", "yami", "irl", "cosplay", "portada", "sticker", "foto") if c.get(k))
             print(f"{c['t']:7.1f}  {c.get('t_fin', 0) or '':>6} {que}")
     elif a.paso == "muestra":
         conf, datos, cues, subs = cargar(a.conf)
