@@ -204,10 +204,10 @@ def bloques_dinamicos(palabras, max_pal=3, max_chars=20):
             out.append({"pal": [dict(x) for x in act], "ini": act[0]["ini"], "fin": act[-1]["fin"]})
             act = []
     for a, b in zip(out, out[1:]):
-        if b["ini"] - a["fin"] < 0.35:
+        if b["ini"] - a["fin"] < 1.2:   # en pausas cortas se queda el bloque anterior (sin pantalla vacía)
             a["fin"] = b["ini"]
         else:
-            a["fin"] += 0.25
+            a["fin"] += 0.5
     return out
 
 
@@ -524,7 +524,10 @@ def portada(f, c, t, conf):
                                  fill=(255, 255, 255), stroke_width=3, stroke_fill=(0, 0, 0))
         _cache[k] = out
     im = _cache[k]
-    f.alpha_composite(con_alfa(im, a), (int(20 - 40 * (1 - a)), H - im.height - 100))
+    if c.get("cosplay") and c.get("lado_cosplay", "izq") == "izq":   # no encimar con la foto de cosplay
+        f.alpha_composite(con_alfa(im, a), (int(W - im.width - 20 + 40 * (1 - a)), H - im.height - 100))
+    else:
+        f.alpha_composite(con_alfa(im, a), (int(20 - 40 * (1 - a)), H - im.height - 100))
 
 
 def yami_irl(f, c, t, conf, energia):

@@ -32,8 +32,9 @@ fondos:
     semilla: 371
   # representativos para psicología y casos (corrección del 28-nov)
   - id: h-libros-psicologia
-    prompt: stack of old psychology books and an anatomical brain model on a wooden desk, warm lamp light, notebook and pen, cozy study at night
-    semilla: 401
+    prompt: still life, stack of old books on a wooden desk, open notebook and pen, reading glasses, warm desk lamp, bookshelf behind, cozy study at night, object only
+    semilla: 405
+    negativo_extra: skull, skeleton, bones, brain, monster, creature, face
   - id: h-libreta-nombre
     prompt: open notebook on a desk filled with many small hand drawn hearts, pink highlighter, polaroid photos pinned on a corkboard behind, dim purple light, obsessive mood
     semilla: 411
