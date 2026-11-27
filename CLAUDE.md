@@ -39,7 +39,9 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
   Kotonoha (55 s, `assets/voces/r1-ingrid-toma1.mp3`). r2 (Nice boat) y r3 (Kotonoha vs Yuno): guion y fondos listos.
 - Reel 4 (yandere más popular, `guiones/semana-02-yandere-ranking/`): entregado (48 s), retratos detrás de Yami (`tras:`) y
   portadas oficiales al mencionar cada anime (`portada:`; se descargan a la caché, no se suben al repo público).
-- ElevenLabs: 6,346 de 10,000 créditos usados este mes (plan gratis, sin uso comercial).
+- Reel 5 (por qué el mundo se obsesionó con las yandere): entregado (55 s), con cosplays de las gemelas (`cosplay/…`,
+  recortes de cara en `personajes/gemelas/cosplay/`). Siguiente: video largo de las yandere (junta Reels 1, 4 y 5).
+- ElevenLabs: ~7,900 de 10,000 créditos usados este mes (plan gratis, sin uso comercial).
 - Mezcla: cada pista se iguala antes de mezclar (voz -16, música -31, efectos -27 LUFS; final -14). `render.py --remezclar`
   rehace solo el audio de un Reel ya armado. (Antes la voz de ElevenLabs quedaba 15 dB bajo los efectos.)
 - Voces de CapCut: opción gratis para Reels; el usuario exporta la voz y se usa con `--audio` (pendiente de probar).
