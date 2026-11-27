@@ -1,0 +1,35 @@
+# Fondos genéricos del largo 02 (16:9, calidad media). Solo escenarios y objetos: sin personas, sin sangre, sin armas.
+formato: horizontal
+escalar: false
+estilo: >-
+  anime background art, cinematic lighting, dark melancholic atmosphere, purple and crimson tones,
+  highly detailed, masterpiece, best quality, no humans
+negativo: >-
+  blood, gore, corpse, weapon, knife, gun, violence, nsfw, nude, 1girl, girl, woman, man, person, human, face, body,
+  text, letters, watermark, signature, logo, lowres, blurry, deformed
+
+fondos:
+  - id: h-calle-noche-japon
+    prompt: quiet residential street in a japanese suburb at night, utility poles and wires, single streetlight, closed shutters, wet asphalt, lonely
+    semilla: 301
+  - id: h-leyes
+    prompt: old thick law book open on a wooden desk with scales of justice, warm desk lamp, dark office at night, documents and stamps
+    semilla: 311
+  - id: h-cine-vacio
+    prompt: empty old movie theater, rows of red seats, glowing blank white screen, dust in the projector light beam, dark
+    semilla: 321
+  - id: h-monitor
+    prompt: dark bedroom at night, single computer monitor glowing on a desk, keyboard, cables, posters on the wall, purple neon light
+    semilla: 331
+  - id: h-celular-mapa
+    prompt: smartphone lying on a dark table at night, screen glowing with a city map, soft purple light, close up, object only
+    semilla: 341
+  - id: h-cuarto-gamer
+    prompt: cozy gamer room at night, game controller on a desk, two monitors glowing, purple and pink LED lights, anime figures on shelves
+    semilla: 351
+  - id: h-corazon-candado
+    prompt: red heart-shaped padlock locked on a chain fence at night, rain drops, purple bokeh city lights, symbolic, object only
+    semilla: 361
+  - id: h-ojos-ventana
+    prompt: window at night seen from outside a dark house, curtains slightly open, light inside, rain, ominous mood, empty street
+    semilla: 371

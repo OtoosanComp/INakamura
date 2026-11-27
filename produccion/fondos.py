@@ -3,6 +3,8 @@
 Uso:  python fondos.py ../guiones/semana-01-kotonoha [--solo id1,id2] [--rehacer]
 Lee <semana>/fondos.yaml y guarda assets/fondos/<id>.jpg (1215x2160, con margen
 para el movimiento de cámara). Los que ya existen se saltan salvo --rehacer.
+Para videos largos (16:9): en fondos.yaml `formato: horizontal` → 896x512 y salida 1600x900; `escalar: false`
+se salta Real-ESRGAN (calidad media, mucho más rápido).
 """
 import argparse
 import time
@@ -48,15 +50,18 @@ def main():
     if not pendientes:
         print("Nada que generar.")
         return
+    horizontal = conf.get("formato") == "horizontal"
+    w, h = (896, 512) if horizontal else (512, 896)
+    final = (1600, 900) if horizontal else (1215, 2160)
     pipe = pipeline()
     for f in pendientes:
         t = time.time()
         neg = negativo + (", " + f["negativo_extra"] if f.get("negativo_extra") else "")
         img = pipe(f"{f['prompt']}, {estilo}", negative_prompt=neg,
                    num_inference_steps=f.get("pasos", 6), guidance_scale=1.5,
-                   width=512, height=896,
+                   width=w, height=h,
                    generator=torch.Generator().manual_seed(f.get("semilla", 7))).images[0]
-        grande = escalar_x4(img).resize((1215, 2160), Image.LANCZOS)
+        grande = (escalar_x4(img) if conf.get("escalar", True) else img).resize(final, Image.LANCZOS)
         grande.save(SALIDA / f"{f['id']}.jpg", quality=90)
         print(f"{f['id']}: {time.time() - t:.0f} s", flush=True)
 
