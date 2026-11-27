@@ -190,6 +190,9 @@ class Escena:
                     if (anime / f"{nombre}{sufijo}.png").exists():
                         variantes[clave] = anime / f"{nombre}{sufijo}.png"
                 alto = 900
+            elif tipo == "cosplay":  # cosplay/<nombre> → fotos de las gemelas en cosplay (personajes/gemelas/cosplay)
+                variantes = {"base": RAIZ / "personajes" / "gemelas" / "cosplay" / f"{nombre}.png"}
+                alto = 820
             else:  # yamireal/<recorte> → fotos realistas
                 variantes = {"base": RAIZ / "personajes" / "yami" / "recortes" / f"{nombre}.png"}
                 alto = 820
