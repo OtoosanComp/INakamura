@@ -28,8 +28,8 @@ fondos:
     prompt: cozy gamer room at night, game controller on a desk, two monitors glowing, purple and pink LED lights, anime figures on shelves
     semilla: 351
   - id: h-corazon-candado
-    prompt: red heart-shaped padlock locked on a chain fence at night, rain drops, purple bokeh city lights, symbolic, object only
-    semilla: 361
+    prompt: close up of a big red heart shaped padlock hanging on a metal chain, still life, dark purple background, dramatic rim light, object only
+    semilla: 365
   - id: h-ojos-ventana
     prompt: window at night seen from outside a dark house, curtains slightly open, light inside, rain, ominous mood, empty street
     semilla: 371
