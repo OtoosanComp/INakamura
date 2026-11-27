@@ -1,0 +1,58 @@
+# Reel 5 — "¿Por qué el mundo se obsesionó con las yandere?" (continuación del ranking).
+# Datos: docs/investigacion-yandere-pico.md. Con las gemelas en cosplay (cosplay/…), recortes de cara.
+id: s02-r5-por-que-obsesion
+titulo: ¿Por qué el mundo se obsesionó con las yandere?
+publicar: Siguiente Reel del calendario
+pilar: Psicología de anime (40 %)
+gancho_pantalla: "¿ROMÁNTICO…\nO ATERRADOR?"
+cierre_pantalla: "¿MIEDO…\nO CURIOSIDAD?"
+resaltar: [romántico, aterrador, yandere, meme, Yuno, gamer, TikTok, millones, masoquismo, benigno, salvo, justo, curiosidad, control, ficción, miedo]
+
+escenas:
+  - visual: cosplay/yami-yuno
+    texto: "Te dicen: haría cualquier cosa por ti. ¿Romántico… o aterrador?"
+  - visual: yami/seria
+    tras: fondo/corona
+    texto: "No tengas miedo… yo te explico."
+  - visual: yami/sorprendida
+    tras: fondo/yuno-retrato
+    portada: mirai-nikki
+    etiqueta: "2011 · NACE EL MEME"
+    texto: "En [2011|dos mil once], la mirada de Yuno Gasai se volvió meme el mismo mes en que se estrenó [Mirai Nikki|Mirai Niki]."
+  - visual: fondo/yandere-sim
+    etiqueta: "2015 · YANDERE SIMULATOR"
+    texto: "En [2015|dos mil quince], youtubers como [PewDiePie|piudipái] jugaron [Yandere Simulator|yandere simuléitor]… y el arquetipo cruzó al mundo gamer."
+  - visual: cosplay/gemelas-selfie
+    etiqueta: "TIKTOK · 1,100 MILLONES"
+    texto: "Y en [TikTok|tik tok], el hashtag yandere llegó a unos mil cien millones de vistas."
+  - visual: yami/pensativa
+    tras: fondo/estacion-lluvia
+    etiqueta: "MASOQUISMO BENIGNO"
+    texto: "¿Por qué nos atrae? Los psicólogos hablan de masoquismo benigno: disfrutamos el miedo cuando sabemos que estamos a salvo."
+  - visual: cosplay/tsuki-mikasa
+    etiqueta: "EL MIEDO JUSTO"
+    texto: "Un estudio en una casa embrujada encontró que lo disfrutamos más con un miedo justo: ni poquito, ni demasiado."
+  - visual: cosplay/yami-toga
+    texto: "Pero ojo: romantizar el control en la vida real es otra cosa."
+  - visual: cosplay/tsuki-satou
+    texto: "Una yandere es buena ficción. Un amor que controla, no."
+  - visual: yami/tierna
+    tras: fondo/corona
+    texto: "¿Tú qué sientes con ellas: miedo… o curiosidad?"
+
+descripcion: |
+  ¿Por qué nos encantan las yandere? Del meme de Yuno (2011) a Yandere Simulator y TikTok, con la psicología detrás 🖤
+  Con Yami y Tsuki en cosplay.
+
+  Contenido educativo y de divulgación, sin material gráfico. Portadas © de sus respectivos autores.
+  Avatares virtuales con IA.
+hashtags: ["#yandere", "#cosplay", "#psicologiaoscura"]
+comentario_fijado: "¿Miedo 😨 o curiosidad 👀? ¿Y qué cosplay quieren ver después? 👇"
+
+fuentes:
+  - "Meme de Yuno (oct-2011): https://knowyourmeme.com/memes/mirai-nikki-yandere-face"
+  - "Yandere Simulator (2014–2015): https://en.wikipedia.org/wiki/Yandere_Simulator · let's plays: https://knowyourmeme.com/memes/subcultures/yandere-simulator"
+  - "TikTok #yandere ~1,100 millones de vistas (oct-2021): https://www.ladn.eu/?p=551654"
+  - "Masoquismo benigno (Rozin et al., 2013): https://econpapers.repec.org/RePEc:cup:judgdm:v:8:y:2013:i:4:p:439-447_4"
+  - "Miedo recreativo, casa embrujada (Andersen, Clasen et al.): https://www.psychologicalscience.org/observer/playing-with-fear"
+  - "Curiosidad morbosa y terror en pandemia (Scrivner et al., 2021): https://pmc.ncbi.nlm.nih.gov/articles/PMC7492010"

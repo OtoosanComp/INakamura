@@ -51,6 +51,8 @@ Lee `biblia/biblia-yami.md` antes de escribir nada. Skills del proyecto: `yami-g
   Kotonoha (55 s, `assets/voces/r1-ingrid-toma1.mp3`). r2 (Nice boat) y r3 (Kotonoha vs Yuno): guion y fondos listos.
 - Reel 4 (yandere más popular, `guiones/semana-02-yandere-ranking/`): entregado (48 s), retratos detrás de Yami (`tras:`) y
   portadas oficiales al mencionar cada anime (`portada:`; se descargan a la caché, no se suben al repo público).
+- Reel 5 (por qué el mundo se obsesionó con las yandere): entregado (55 s), con cosplays de las gemelas (`cosplay/…`,
+  recortes de cara en `personajes/gemelas/cosplay/`). Siguiente: video largo de las yandere (junta Reels 1–5).
 - ElevenLabs: plan **Starter pagado** (con uso comercial). 33,654 créditos por periodo; se reinician el 25 dic 2026.
   Usados: 7,692 (largo 01). Quedan ~25,960 → largo 02 (~8k) + ~10 Reels a 1 toma (o 2 tomas si sobra).
   Sin cobro excedente en Starter: al acabarse se detiene. Presupuesto: Reel ≈ 800 créditos por toma; largo ≈ 7,900 (1 toma,
